@@ -14,7 +14,7 @@ public class Advert {
     @GeneratedValue(strategy = GenerationType.SEQUENCE)
     private Long advert_id;
 
-    @OneToOne
+    @ManyToOne
     @JoinColumn(name="member_id")
     @Column(nullable = false)
     private Member member;
