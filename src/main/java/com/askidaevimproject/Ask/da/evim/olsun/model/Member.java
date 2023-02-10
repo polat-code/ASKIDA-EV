@@ -45,6 +45,10 @@ public class Member {
 
 
     @Column(name="is_activate")
+
+    /**
+     * After verify it activate will be changed.When the user is registered is_Activate default 0
+     * **/
     private int is_activate;
 
 
