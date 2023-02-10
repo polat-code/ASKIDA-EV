@@ -14,14 +14,14 @@ import org.springframework.transaction.annotation.Transactional;
 import java.util.List;
 
 @Service
-@Transactional
-@Slf4j
+
 public class AdvertService {
 
-    private final AdvertRepository advertRepository;
-    private final MemberRepository memberRepository;
-    private final DwellingRepository dwellingRepository;
+    private  AdvertRepository advertRepository;
+    private  MemberRepository memberRepository;
+    private  DwellingRepository dwellingRepository;
 
+    public AdvertService(){}
     public AdvertService(AdvertRepository advertRepository, MemberRepository memberRepository, DwellingRepository dwellingRepository) {
         this.advertRepository = advertRepository;
         this.memberRepository = memberRepository;

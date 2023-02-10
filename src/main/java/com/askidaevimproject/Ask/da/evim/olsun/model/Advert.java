@@ -1,32 +1,36 @@
 package com.askidaevimproject.Ask.da.evim.olsun.model;
 
+import javax.persistence.Id;
+
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
-import static jakarta.persistence.GenerationType.*;
 
+
+import static jakarta.persistence.FetchType.LAZY;
+
+
+@Entity
 @Data
 @NoArgsConstructor
 @AllArgsConstructor
 public class Advert {
 
+
     @Id
-    @GeneratedValue(strategy = SEQUENCE)
     private Long advert_id;
 
-    @ManyToOne
+    @ManyToOne(fetch = LAZY)
     @JoinColumn(name="member_id")
-    @Column(nullable = false)
     private Member member;
 
-    @OneToOne
+    @OneToOne(fetch = LAZY)
     @JoinColumn(name = "dwelling_id")
-    @Column(nullable = false)
     private Dwelling dwelling;
 
-    @Column(name="advert_title",nullable = false)
+
     private String advert_title;
 
 

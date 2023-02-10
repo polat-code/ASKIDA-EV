@@ -12,11 +12,12 @@ import java.util.List;
 @RequestMapping("/fuel")
 public class FuelController {
 
-    private final FuelService fuelService;
+    private FuelService fuelService;
 
     public FuelController(FuelService fuelService) {
         this.fuelService = fuelService;
     }
+    public FuelController(){}
 
     @GetMapping("/")
     public List<Fuel> getAllFuels(){

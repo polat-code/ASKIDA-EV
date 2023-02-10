@@ -11,11 +11,12 @@ import org.springframework.transaction.annotation.Transactional;
 import java.util.List;
 
 @Service
-@Transactional
-@Slf4j
+
 public class FuelService {
 
-    private final FuelRepository fuelRepository;
+    private  FuelRepository fuelRepository;
+
+    public FuelService(){}
 
     public FuelService(FuelRepository fuelRepository) {
         this.fuelRepository = fuelRepository;

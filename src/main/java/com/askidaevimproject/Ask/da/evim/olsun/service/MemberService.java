@@ -12,11 +12,12 @@ import org.springframework.transaction.annotation.Transactional;
 import java.util.List;
 
 @Service
-@Slf4j
-@Transactional
-public class MemberService {
-    private final MemberRepository memberRepository;
 
+public class MemberService {
+
+    private  MemberRepository memberRepository;
+
+    public MemberService(){}
     public MemberService(MemberRepository memberRepository) {
         this.memberRepository = memberRepository;
     }

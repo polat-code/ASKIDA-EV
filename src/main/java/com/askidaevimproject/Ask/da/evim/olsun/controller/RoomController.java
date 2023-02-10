@@ -12,7 +12,8 @@ import java.util.List;
 @RestController
 public class RoomController {
 
-    private final RoomService roomService;
+    private  RoomService roomService;
+    public RoomController(){}
 
     public RoomController(RoomService roomService) {
         this.roomService = roomService;

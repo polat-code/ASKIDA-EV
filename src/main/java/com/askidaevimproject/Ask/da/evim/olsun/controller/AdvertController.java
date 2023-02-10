@@ -3,18 +3,24 @@ package com.askidaevimproject.Ask.da.evim.olsun.controller;
 import com.askidaevimproject.Ask.da.evim.olsun.exception.AdvertNotFoundException;
 import com.askidaevimproject.Ask.da.evim.olsun.model.Advert;
 import com.askidaevimproject.Ask.da.evim.olsun.service.AdvertService;
+
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
 @RestController
 @RequestMapping("/advert")
+
 public class AdvertController {
 
-    private final AdvertService advertService;
+    private AdvertService advertService;
+
 
     public AdvertController(AdvertService advertService) {
         this.advertService = advertService;
+    }
+    public AdvertController(){
+
     }
 
     @GetMapping("/")

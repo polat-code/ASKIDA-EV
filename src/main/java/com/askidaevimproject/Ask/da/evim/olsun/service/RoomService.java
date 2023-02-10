@@ -12,10 +12,10 @@ import java.util.List;
 
 @Service
 @Slf4j
-@Transactional
 public class RoomService {
 
-    private final RoomRepository roomRepository;
+    private  RoomRepository roomRepository;
+    public RoomService(){}
 
     public RoomService(RoomRepository roomRepository) {
         this.roomRepository = roomRepository;

@@ -14,8 +14,9 @@ import java.util.List;
 
 public class MemberController {
 
-    private final MemberService memberService;
+    private  MemberService memberService;
 
+    public MemberController(){}
     public MemberController(MemberService memberService) {
         this.memberService = memberService;
     }
