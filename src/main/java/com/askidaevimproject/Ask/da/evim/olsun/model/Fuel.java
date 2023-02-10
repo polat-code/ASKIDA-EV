@@ -11,15 +11,15 @@ import lombok.NoArgsConstructor;
 @Data
 @AllArgsConstructor
 @NoArgsConstructor
-public class Room {
+
+public class Fuel {
 
     @Id
     @GeneratedValue(strategy = GenerationType.SEQUENCE)
-    @Column(name = "room_id")
-    private Long room_id;
+    @Column(name="fuel_id")
+    private Long fuel_id;
 
-    @Column(name = "room_type")
-    private String room_type;
-
+    @Column(name = "fuel_type")
+    private String fuel_type;
 
 }
