@@ -4,7 +4,7 @@ import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
-import javax.persistence.Id;
+
 
 @Data
 @AllArgsConstructor
@@ -12,12 +12,10 @@ import javax.persistence.Id;
 @Entity
 public class Room {
 
+
     @Id
-
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long room_id;
-
-
     private String room_type;
-
 
 }

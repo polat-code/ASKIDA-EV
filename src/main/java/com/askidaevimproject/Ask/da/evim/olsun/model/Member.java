@@ -4,7 +4,7 @@ import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
-import javax.persistence.Id;
+
 
 @Data
 @AllArgsConstructor
@@ -13,6 +13,7 @@ import javax.persistence.Id;
 public class Member {
 
     @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long member_id;
 
 
@@ -41,9 +42,6 @@ public class Member {
     @Lob
 
     private String member_address;
-
-
-
 
     /**
      * After verify it activate will be changed.When the user is registered is_Activate default 0
