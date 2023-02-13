@@ -30,7 +30,7 @@ public class Member {
      * ( @ )
      * **/
 
-    private String member_mail;
+    private String memberMail;
 
 
     private String member_password;

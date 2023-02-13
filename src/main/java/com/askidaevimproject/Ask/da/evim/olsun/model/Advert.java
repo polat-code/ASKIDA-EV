@@ -7,8 +7,6 @@ import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
-
-
 import static jakarta.persistence.FetchType.LAZY;
 
 
@@ -28,9 +26,9 @@ public class Advert {
     private Member member;
 
     @OneToOne(fetch = LAZY)
-    @JoinColumn(name = "dwelling_id")
+    @JoinColumn(name = "fk_dwelling_id",
+    referencedColumnName = "dwelling_id")
     private Dwelling dwelling;
-
 
     private String advert_title;
 

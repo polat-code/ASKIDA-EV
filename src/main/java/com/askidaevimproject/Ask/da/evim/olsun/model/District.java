@@ -17,12 +17,12 @@ public class District {
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Long district_id;
 
-    @ManyToOne(fetch = javax.persistence.FetchType.LAZY)
-    @JoinColumn(
-            name = "f_city_id", // add f_ tag to show
-            referencedColumnName = "city_id"
-    )
-    private City city;
+//    @ManyToOne(fetch = javax.persistence.FetchType.LAZY)
+//    @JoinColumn(
+//            name = "f_city_id", // add f_ tag to show
+//            referencedColumnName = "city_id"
+//    )
+//    private City city;
 
     private String district_name;
 }

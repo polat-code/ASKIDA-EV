@@ -18,4 +18,11 @@ public class Room {
     private Long room_id;
     private String room_type;
 
+    @ManyToOne
+    @JoinColumn(
+            name = "fk_dwelling_id",
+            referencedColumnName = "dwelling_id"
+    )
+    private Dwelling dwelling;
+
 }
