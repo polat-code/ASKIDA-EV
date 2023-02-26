@@ -1,15 +1,13 @@
 package com.askidaevimproject.Ask.da.evim.olsun.service;
 
 import com.askidaevimproject.Ask.da.evim.olsun.exception.AdvertNotFoundException;
-import com.askidaevimproject.Ask.da.evim.olsun.model.Advert;
-import com.askidaevimproject.Ask.da.evim.olsun.model.Dwelling;
-import com.askidaevimproject.Ask.da.evim.olsun.model.Member;
+import com.askidaevimproject.Ask.da.evim.olsun.model.concretes.Advert;
+import com.askidaevimproject.Ask.da.evim.olsun.model.concretes.Dwelling;
+import com.askidaevimproject.Ask.da.evim.olsun.model.concretes.Member;
 import com.askidaevimproject.Ask.da.evim.olsun.repository.AdvertRepository;
 import com.askidaevimproject.Ask.da.evim.olsun.repository.DwellingRepository;
 import com.askidaevimproject.Ask.da.evim.olsun.repository.MemberRepository;
-import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Service;
-import org.springframework.transaction.annotation.Transactional;
 
 import java.util.List;
 

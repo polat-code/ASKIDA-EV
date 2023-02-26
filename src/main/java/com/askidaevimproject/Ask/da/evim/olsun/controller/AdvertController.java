@@ -1,7 +1,7 @@
 package com.askidaevimproject.Ask.da.evim.olsun.controller;
 
 import com.askidaevimproject.Ask.da.evim.olsun.exception.AdvertNotFoundException;
-import com.askidaevimproject.Ask.da.evim.olsun.model.Advert;
+import com.askidaevimproject.Ask.da.evim.olsun.model.concretes.Advert;
 import com.askidaevimproject.Ask.da.evim.olsun.service.AdvertService;
 
 import org.springframework.web.bind.annotation.*;

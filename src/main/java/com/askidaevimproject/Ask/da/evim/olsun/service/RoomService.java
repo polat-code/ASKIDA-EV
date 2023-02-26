@@ -2,9 +2,8 @@ package com.askidaevimproject.Ask.da.evim.olsun.service;
 
 import com.askidaevimproject.Ask.da.evim.olsun.exception.RoomContainedException;
 import com.askidaevimproject.Ask.da.evim.olsun.exception.RoomNotFoundException;
-import com.askidaevimproject.Ask.da.evim.olsun.model.Room;
+import com.askidaevimproject.Ask.da.evim.olsun.model.concretes.Room;
 import com.askidaevimproject.Ask.da.evim.olsun.repository.RoomRepository;
-import jakarta.transaction.Transactional;
 import lombok.AllArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Service;

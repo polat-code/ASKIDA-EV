@@ -3,7 +3,7 @@ package com.askidaevimproject.Ask.da.evim.olsun.controller;
 import com.askidaevimproject.Ask.da.evim.olsun.exception.MemberIsAlreadyTakenException;
 import com.askidaevimproject.Ask.da.evim.olsun.exception.MemberMailException;
 import com.askidaevimproject.Ask.da.evim.olsun.exception.MemberNotFoundException;
-import com.askidaevimproject.Ask.da.evim.olsun.model.Member;
+import com.askidaevimproject.Ask.da.evim.olsun.model.concretes.Member;
 import com.askidaevimproject.Ask.da.evim.olsun.service.MemberService;
 import org.springframework.web.bind.annotation.*;
 

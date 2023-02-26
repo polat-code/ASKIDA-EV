@@ -1,6 +1,6 @@
 package com.askidaevimproject.Ask.da.evim.olsun.repository;
 
-import com.askidaevimproject.Ask.da.evim.olsun.model.Room;
+import com.askidaevimproject.Ask.da.evim.olsun.model.concretes.Room;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
 

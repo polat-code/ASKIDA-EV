@@ -2,11 +2,9 @@ package com.askidaevimproject.Ask.da.evim.olsun.service;
 
 import com.askidaevimproject.Ask.da.evim.olsun.exception.FuelIsAlreadyExıstException;
 import com.askidaevimproject.Ask.da.evim.olsun.exception.FuelIsNotFoundException;
-import com.askidaevimproject.Ask.da.evim.olsun.model.Fuel;
+import com.askidaevimproject.Ask.da.evim.olsun.model.concretes.Fuel;
 import com.askidaevimproject.Ask.da.evim.olsun.repository.FuelRepository;
-import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Service;
-import org.springframework.transaction.annotation.Transactional;
 
 import java.util.List;
 
