@@ -10,6 +10,7 @@ import com.askidaevimproject.Ask.da.evim.olsun.service.requests.CreateRoomReques
 import com.askidaevimproject.Ask.da.evim.olsun.service.requests.UpdateRoomRequest;
 import com.askidaevimproject.Ask.da.evim.olsun.service.responses.GetAllRoomResponse;
 import com.askidaevimproject.Ask.da.evim.olsun.service.responses.GetByRoomIdResponse;
+import com.askidaevimproject.Ask.da.evim.olsun.service.responses.GetByRoomTypeResponse;
 import lombok.AllArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Service;
@@ -67,6 +68,12 @@ public class RoomServiceImpl implements RoomService {
     public GetByRoomIdResponse findByRoom_id(Long room_id) throws RoomNotFoundException {
         Room room = this.roomRepository.findByRoom_id(room_id).orElseThrow(()-> new RoomNotFoundException("The Room is not found exception"));
         return this.modelMapperService.forResponse().map(room,GetByRoomIdResponse.class);
+    }
+
+    @Override
+    public GetByRoomTypeResponse findByRoom_type(String room_type) throws RoomNotFoundException {
+        Room room = this.roomRepository.findByRoom_type(room_type).orElseThrow(()-> new RoomNotFoundException("The room is not found exception"));
+        return this.modelMapperService.forResponse().map(room,GetByRoomTypeResponse.class);
     }
 
 

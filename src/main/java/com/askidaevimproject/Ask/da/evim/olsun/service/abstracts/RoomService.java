@@ -5,6 +5,7 @@ import com.askidaevimproject.Ask.da.evim.olsun.service.requests.CreateRoomReques
 import com.askidaevimproject.Ask.da.evim.olsun.service.requests.UpdateRoomRequest;
 import com.askidaevimproject.Ask.da.evim.olsun.service.responses.GetAllRoomResponse;
 import com.askidaevimproject.Ask.da.evim.olsun.service.responses.GetByRoomIdResponse;
+import com.askidaevimproject.Ask.da.evim.olsun.service.responses.GetByRoomTypeResponse;
 
 import java.util.List;
 
@@ -19,4 +20,6 @@ public interface RoomService {
     void updateRoom (UpdateRoomRequest updateRoom);
 
     GetByRoomIdResponse findByRoom_id(Long room_id) throws RoomNotFoundException;
+
+    GetByRoomTypeResponse findByRoom_type(String room_type) throws RoomNotFoundException;
 }

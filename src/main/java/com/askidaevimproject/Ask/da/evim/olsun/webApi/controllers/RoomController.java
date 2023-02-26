@@ -9,6 +9,7 @@ import com.askidaevimproject.Ask.da.evim.olsun.service.requests.CreateRoomReques
 import com.askidaevimproject.Ask.da.evim.olsun.service.requests.UpdateRoomRequest;
 import com.askidaevimproject.Ask.da.evim.olsun.service.responses.GetAllRoomResponse;
 import com.askidaevimproject.Ask.da.evim.olsun.service.responses.GetByRoomIdResponse;
+import com.askidaevimproject.Ask.da.evim.olsun.service.responses.GetByRoomTypeResponse;
 import lombok.AllArgsConstructor;
 import org.springframework.web.bind.annotation.*;
 
@@ -45,6 +46,12 @@ public class RoomController {
     @GetMapping("/{room_id}")
     public GetByRoomIdResponse findByRoom_id(@PathVariable Long room_id) throws RoomNotFoundException {
         return roomService.findByRoom_id(room_id);
+    }
+
+    @GetMapping("/{room_type}")
+
+    public GetByRoomTypeResponse findByRoom_type(@PathVariable String room_type){
+        return roomService.findByRoom_type(room_type);
     }
 
 }
