@@ -1,11 +1,15 @@
 package com.askidaevimproject.Ask.da.evim.olsun.model.concretes;
 
-import jakarta.persistence.Entity;
-import javax.persistence.Id;
+
+import jakarta.persistence.*;
+
 
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
+
+
+import javax.validation.constraints.NotBlank;
 
 import static jakarta.persistence.GenerationType.*;
 
@@ -16,7 +20,58 @@ import static jakarta.persistence.GenerationType.*;
 public class Dwelling {
 
     @Id
+    @GeneratedValue(strategy = IDENTITY)
     private Long dwelling_id;
+
+   @ManyToOne
+    @JoinColumn(
+           name = "f_city_id",
+           referencedColumnName = "city_id"
+   )
+    private City city;
+
+    @OneToOne
+    @JoinColumn(
+            name = "f_district_id",
+            referencedColumnName = "district_id"
+    )
+    private District district;
+
+    @OneToOne
+    @JoinColumn(
+            name = "fk_neighborhood_id",
+            referencedColumnName = "neighborhood_id"
+    )
+    private Neighborhood neighborhood;
+
+    @OneToOne
+    @JoinColumn(
+            name = "fk_fuel_id",
+            referencedColumnName = "fuel_id"
+    )
+    private Fuel fuel;
+
+
+
+    @Column(name="description")
+    @NotBlank(message = "Description may not be blank")
+    private String description;
+    @Column(name = "age_of_dwelling")
+    @NotBlank(message = "age of dwelling may not be blank")
+    private String age_of_dwelling;
+
+    @Column(name="meter_square")
+    @NotBlank(message = "meter-square may not be blank")
+    private String meter_square;
+
+    @Column(name="is_activate")
+    private int is_activate;
+
+
+
+
+
+
 
 
 

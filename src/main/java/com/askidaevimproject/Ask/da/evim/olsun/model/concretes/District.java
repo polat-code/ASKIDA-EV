@@ -1,6 +1,5 @@
 package com.askidaevimproject.Ask.da.evim.olsun.model.concretes;
 
-import com.askidaevimproject.Ask.da.evim.olsun.model.Dwelling;
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Data;
@@ -12,31 +11,26 @@ import static jakarta.persistence.FetchType.LAZY;
 import static jakarta.persistence.GenerationType.*;
 
 
-@Table(name="advert")
+@Table(name="district")
 @Entity
 @Data
 @NoArgsConstructor
 @AllArgsConstructor
-public class Advert {
-
+public class District {
 
     @Id
     @GeneratedValue(strategy = IDENTITY)
-    @Column(name = "advert_id")
-    private Long advert_id;
+    @Column(name="district_id")
+    private Long district_id;
 
     @ManyToOne(fetch = LAZY)
-    @JoinColumn(name="member_id")
-    private Member member;
+    @JoinColumn(
+               name = "f_city_id", // add f_ tag to show
+              referencedColumnName = "city_id"
+    )
+    private City city;
 
-    @OneToOne(fetch = LAZY)
-    @JoinColumn(name = "dwelling_id")
-    private Dwelling dwelling;
-
-
-    @Column(name = "advert_title")
-    @NotBlank(message = "Advert Title may not be blank ")
-    private String advert_title;
-
-
+    @Column(name="district_name")
+    @NotBlank(message = "The district name may not be blank ")
+    private String district_name;
 }

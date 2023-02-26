@@ -1,10 +1,10 @@
-package com.askidaevimproject.Ask.da.evim.olsun.service;
+package com.askidaevimproject.Ask.da.evim.olsun.service.concretes;
 
 import com.askidaevimproject.Ask.da.evim.olsun.exception.MemberIsAlreadyTakenException;
 import com.askidaevimproject.Ask.da.evim.olsun.exception.MemberMailException;
 import com.askidaevimproject.Ask.da.evim.olsun.exception.MemberNotFoundException;
 import com.askidaevimproject.Ask.da.evim.olsun.model.concretes.Member;
-import com.askidaevimproject.Ask.da.evim.olsun.repository.MemberRepository;
+import com.askidaevimproject.Ask.da.evim.olsun.repository.abstracts.MemberRepository;
 import org.springframework.stereotype.Service;
 
 import java.util.List;

@@ -1,8 +1,8 @@
-package com.askidaevimproject.Ask.da.evim.olsun.controller;
+package com.askidaevimproject.Ask.da.evim.olsun.webApi.controllers;
 import com.askidaevimproject.Ask.da.evim.olsun.exception.FuelIsAlreadyExıstException;
 import com.askidaevimproject.Ask.da.evim.olsun.exception.FuelIsNotFoundException;
 import com.askidaevimproject.Ask.da.evim.olsun.model.concretes.Fuel;
-import com.askidaevimproject.Ask.da.evim.olsun.service.FuelService;
+import com.askidaevimproject.Ask.da.evim.olsun.service.concretes.FuelService;
 
 import org.springframework.web.bind.annotation.*;
 

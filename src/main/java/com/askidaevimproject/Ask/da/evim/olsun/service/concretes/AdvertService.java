@@ -1,30 +1,26 @@
-package com.askidaevimproject.Ask.da.evim.olsun.service;
+package com.askidaevimproject.Ask.da.evim.olsun.service.concretes;
 
 import com.askidaevimproject.Ask.da.evim.olsun.exception.AdvertNotFoundException;
 import com.askidaevimproject.Ask.da.evim.olsun.model.concretes.Advert;
 import com.askidaevimproject.Ask.da.evim.olsun.model.concretes.Dwelling;
 import com.askidaevimproject.Ask.da.evim.olsun.model.concretes.Member;
-import com.askidaevimproject.Ask.da.evim.olsun.repository.AdvertRepository;
-import com.askidaevimproject.Ask.da.evim.olsun.repository.DwellingRepository;
-import com.askidaevimproject.Ask.da.evim.olsun.repository.MemberRepository;
+import com.askidaevimproject.Ask.da.evim.olsun.repository.abstracts.AdvertRepository;
+import com.askidaevimproject.Ask.da.evim.olsun.repository.abstracts.DwellingRepository;
+import com.askidaevimproject.Ask.da.evim.olsun.repository.abstracts.MemberRepository;
+import lombok.AllArgsConstructor;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
 
 @Service
-
+@AllArgsConstructor
 public class AdvertService {
 
     private  AdvertRepository advertRepository;
     private  MemberRepository memberRepository;
     private  DwellingRepository dwellingRepository;
 
-    public AdvertService(){}
-    public AdvertService(AdvertRepository advertRepository, MemberRepository memberRepository, DwellingRepository dwellingRepository) {
-        this.advertRepository = advertRepository;
-        this.memberRepository = memberRepository;
-        this.dwellingRepository = dwellingRepository;
-    }
+
 
     public List<Advert> getAllAdvert() {
         return advertRepository.findAll();

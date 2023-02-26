@@ -1,7 +1,6 @@
-package com.askidaevimproject.Ask.da.evim.olsun.controller;
+package com.askidaevimproject.Ask.da.evim.olsun.webApi.controllers;
 
-import com.askidaevimproject.Ask.da.evim.olsun.service.DwellingService;
-import lombok.RequiredArgsConstructor;
+import com.askidaevimproject.Ask.da.evim.olsun.service.concretes.DwellingService;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 

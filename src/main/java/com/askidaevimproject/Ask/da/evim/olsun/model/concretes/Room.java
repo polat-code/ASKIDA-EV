@@ -19,12 +19,12 @@ public class Room {
     @Id
     @GeneratedValue(strategy = IDENTITY)
     @Column(name = "room_id")
-    @NotBlank
+
     private Long room_id;
 
 
     @Column(name="room_type")
-    @NotBlank
+    @NotBlank(message = "Room type may not be blank ")
     private String room_type;
 
 

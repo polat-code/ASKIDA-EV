@@ -1,9 +1,9 @@
-package com.askidaevimproject.Ask.da.evim.olsun.controller;
+package com.askidaevimproject.Ask.da.evim.olsun.webApi.controllers;
 
 import com.askidaevimproject.Ask.da.evim.olsun.exception.RoomContainedException;
 import com.askidaevimproject.Ask.da.evim.olsun.exception.RoomNotFoundException;
 import com.askidaevimproject.Ask.da.evim.olsun.model.concretes.Room;
-import com.askidaevimproject.Ask.da.evim.olsun.service.RoomService;
+import com.askidaevimproject.Ask.da.evim.olsun.service.concretes.RoomService;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
