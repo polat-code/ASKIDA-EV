@@ -22,7 +22,6 @@ public class City {
     private Long city_id;
 
     @Column(name = "city_name")
-    @NotBlank(message = "City name is required field please fill in the blank ")
     private String city_name;
 
 

@@ -1,8 +1,6 @@
 package com.askidaevimproject.Ask.da.evim.olsun.service.concretes;
 
 import com.askidaevimproject.Ask.da.evim.olsun.core.mappers.abstracts.ModelMapperService;
-import com.askidaevimproject.Ask.da.evim.olsun.exception.MemberIsAlreadyTakenException;
-import com.askidaevimproject.Ask.da.evim.olsun.exception.MemberMailException;
 import com.askidaevimproject.Ask.da.evim.olsun.exception.MemberNotFoundException;
 import com.askidaevimproject.Ask.da.evim.olsun.model.concretes.Member;
 import com.askidaevimproject.Ask.da.evim.olsun.repository.abstracts.MemberRepository;
@@ -11,7 +9,6 @@ import com.askidaevimproject.Ask.da.evim.olsun.service.requests.CreateMemberRequ
 import com.askidaevimproject.Ask.da.evim.olsun.service.requests.UpdateMemberRequest;
 import com.askidaevimproject.Ask.da.evim.olsun.service.responses.GetAllMemberResponse;
 import com.askidaevimproject.Ask.da.evim.olsun.service.responses.GetByMemberIdResponse;
-import com.askidaevimproject.Ask.da.evim.olsun.service.responses.GetByMemberMailResponse;
 import lombok.AllArgsConstructor;
 import org.springframework.stereotype.Service;
 
@@ -45,12 +42,6 @@ public class MemberServiceImpl implements MemberService {
     }
 
 
-    public GetByMemberMailResponse findByEmail(String member_mail) throws MemberMailException {
-
-        Member member = this.memberRepository.findByEmail(member_mail).orElseThrow(()->new MemberMailException("The mail address not found exception .. "));
-        return  this.modelMapperService.forResponse().map(member,GetByMemberMailResponse.class);
-
-    }
 
 
 

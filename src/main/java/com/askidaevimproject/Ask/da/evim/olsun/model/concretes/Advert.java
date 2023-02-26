@@ -34,7 +34,6 @@ public class Advert {
 
 
     @Column(name = "advert_title")
-    @NotBlank(message = "Advert Title may not be blank ")
     private String advert_title;
 
 

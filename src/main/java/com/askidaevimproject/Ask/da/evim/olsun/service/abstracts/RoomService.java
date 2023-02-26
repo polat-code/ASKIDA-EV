@@ -1,13 +1,13 @@
 package com.askidaevimproject.Ask.da.evim.olsun.service.abstracts;
-
 import com.askidaevimproject.Ask.da.evim.olsun.exception.RoomNotFoundException;
 import com.askidaevimproject.Ask.da.evim.olsun.service.requests.CreateRoomRequest;
 import com.askidaevimproject.Ask.da.evim.olsun.service.requests.UpdateRoomRequest;
 import com.askidaevimproject.Ask.da.evim.olsun.service.responses.GetAllRoomResponse;
 import com.askidaevimproject.Ask.da.evim.olsun.service.responses.GetByRoomIdResponse;
-import com.askidaevimproject.Ask.da.evim.olsun.service.responses.GetByRoomTypeResponse;
+
 
 import java.util.List;
+
 
 public interface RoomService {
 
@@ -21,5 +21,5 @@ public interface RoomService {
 
     GetByRoomIdResponse findByRoom_id(Long room_id) throws RoomNotFoundException;
 
-    GetByRoomTypeResponse findByRoom_type(String room_type) throws RoomNotFoundException;
+
 }

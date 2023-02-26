@@ -66,15 +66,10 @@ public class RoomServiceImpl implements RoomService {
 
     @Override
     public GetByRoomIdResponse findByRoom_id(Long room_id) throws RoomNotFoundException {
-        Room room = this.roomRepository.findByRoom_id(room_id).orElseThrow(()-> new RoomNotFoundException("The Room is not found exception"));
+        Room room = this.roomRepository.findById(room_id).orElseThrow(()-> new RoomNotFoundException("The Room is not found exception"));
         return this.modelMapperService.forResponse().map(room,GetByRoomIdResponse.class);
     }
 
-    @Override
-    public GetByRoomTypeResponse findByRoom_type(String room_type) throws RoomNotFoundException {
-        Room room = this.roomRepository.findByRoom_type(room_type).orElseThrow(()-> new RoomNotFoundException("The room is not found exception"));
-        return this.modelMapperService.forResponse().map(room,GetByRoomTypeResponse.class);
-    }
 
 
 }

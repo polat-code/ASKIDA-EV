@@ -4,8 +4,6 @@ import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
-import javax.persistence.Id;
-import javax.validation.constraints.NotBlank;
 
 import static jakarta.persistence.GenerationType.IDENTITY;
 
@@ -19,12 +17,10 @@ public class Room {
     @Id
     @GeneratedValue(strategy = IDENTITY)
     @Column(name = "room_id")
-
     private Long room_id;
 
 
     @Column(name="room_type")
-    @NotBlank(message = "Room type may not be blank ")
     private String room_type;
 
 

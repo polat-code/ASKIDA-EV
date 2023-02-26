@@ -13,6 +13,7 @@ import javax.validation.constraints.NotBlank;
 
 import static jakarta.persistence.GenerationType.*;
 
+@Table(name="dwelling")
 @Entity
 @Data
 @AllArgsConstructor
@@ -54,14 +55,11 @@ public class Dwelling {
 
 
     @Column(name="description")
-    @NotBlank(message = "Description may not be blank")
     private String description;
     @Column(name = "age_of_dwelling")
-    @NotBlank(message = "age of dwelling may not be blank")
     private String age_of_dwelling;
 
     @Column(name="meter_square")
-    @NotBlank(message = "meter-square may not be blank")
     private String meter_square;
 
     @Column(name="is_activate")

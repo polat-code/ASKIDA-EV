@@ -31,7 +31,7 @@ public class RoomController {
     }
     @PostMapping("")
     @ResponseStatus(HttpStatus.CREATED)
-    public void addRoom(@RequestBody CreateRoomRequest createRoomRequest){
+    public void addRoom(@RequestBody() CreateRoomRequest createRoomRequest){
         roomService.addRoom(createRoomRequest);
     }
     @DeleteMapping("/{room_id}")
@@ -49,9 +49,6 @@ public class RoomController {
         return roomService.findByRoom_id(room_id);
     }
 
-    @GetMapping("/{room_type}")
-    public GetByRoomTypeResponse findByRoom_type(@PathVariable String room_type) throws RoomNotFoundException {
-        return roomService.findByRoom_type(room_type);
-    }
+
 
 }

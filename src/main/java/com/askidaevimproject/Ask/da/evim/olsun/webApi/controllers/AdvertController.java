@@ -17,7 +17,6 @@ public class AdvertController {
     private AdvertService advertService;
 
 
-
     @GetMapping("")
     public List<Advert> getAllAdvert(){
         return advertService.getAllAdvert();

@@ -4,11 +4,12 @@ import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
-import javax.persistence.Id;
+
 import javax.validation.constraints.NotBlank;
 
 import static jakarta.persistence.GenerationType.IDENTITY;
 
+@Table(name = "fuel")
 @Data
 @AllArgsConstructor
 @NoArgsConstructor
@@ -22,7 +23,6 @@ public class Fuel {
 
 
     @Column(name="fuel_type")
-    @NotBlank(message = "Fuel type may not be blank ")
     private String fuel_type;
 
 }

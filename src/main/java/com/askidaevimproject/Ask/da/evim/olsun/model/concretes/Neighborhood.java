@@ -24,10 +24,9 @@ public class Neighborhood {
 
 
     @Column(name = "neighborhood_name")
-    @NotBlank(message = "Neighborhood is required field ")
     private String neighborhood_name;
 
     @Column(name="zip_code")
-    @NotBlank(message = "Zip-Code is required field ")
+
     private String zip_code;
 }

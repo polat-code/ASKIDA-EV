@@ -31,6 +31,5 @@ public class District {
     private City city;
 
     @Column(name="district_name")
-    @NotBlank(message = "The district name may not be blank ")
     private String district_name;
 }
