@@ -1,16 +1,16 @@
 package com.askidaevimproject.Ask.da.evim.olsun.webApi.controllers;
 
-import com.askidaevimproject.Ask.da.evim.olsun.exception.RoomContainedException;
 import com.askidaevimproject.Ask.da.evim.olsun.exception.RoomNotFoundException;
-import com.askidaevimproject.Ask.da.evim.olsun.model.concretes.Room;
+
 import com.askidaevimproject.Ask.da.evim.olsun.service.abstracts.RoomService;
-import com.askidaevimproject.Ask.da.evim.olsun.service.concretes.RoomServiceImpl;
+
 import com.askidaevimproject.Ask.da.evim.olsun.service.requests.CreateRoomRequest;
 import com.askidaevimproject.Ask.da.evim.olsun.service.requests.UpdateRoomRequest;
 import com.askidaevimproject.Ask.da.evim.olsun.service.responses.GetAllRoomResponse;
 import com.askidaevimproject.Ask.da.evim.olsun.service.responses.GetByRoomIdResponse;
 import com.askidaevimproject.Ask.da.evim.olsun.service.responses.GetByRoomTypeResponse;
 import lombok.AllArgsConstructor;
+import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
@@ -30,6 +30,7 @@ public class RoomController {
 
     }
     @PostMapping("")
+    @ResponseStatus(HttpStatus.CREATED)
     public void addRoom(@RequestBody CreateRoomRequest createRoomRequest){
         roomService.addRoom(createRoomRequest);
     }
@@ -49,8 +50,7 @@ public class RoomController {
     }
 
     @GetMapping("/{room_type}")
-
-    public GetByRoomTypeResponse findByRoom_type(@PathVariable String room_type){
+    public GetByRoomTypeResponse findByRoom_type(@PathVariable String room_type) throws RoomNotFoundException {
         return roomService.findByRoom_type(room_type);
     }
 
