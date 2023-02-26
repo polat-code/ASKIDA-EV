@@ -2,6 +2,7 @@ package com.askidaevimproject.Ask.da.evim.olsun.webApi.controllers;
 import com.askidaevimproject.Ask.da.evim.olsun.exception.FuelIsAlreadyExıstException;
 import com.askidaevimproject.Ask.da.evim.olsun.exception.FuelIsNotFoundException;
 ;
+import com.askidaevimproject.Ask.da.evim.olsun.service.abstracts.FuelService;
 import com.askidaevimproject.Ask.da.evim.olsun.service.concretes.FuelServiceImpl;
 
 import com.askidaevimproject.Ask.da.evim.olsun.service.requests.CreateFuelRequest;
@@ -21,7 +22,7 @@ import static org.springframework.http.HttpStatus.*;
 @AllArgsConstructor
 public class FuelController {
 
-    private FuelServiceImpl fuelService;
+    private FuelService fuelService;
 
     @GetMapping("")
     public List<GetAllFuelResponse> getAllFuels(){

@@ -1,47 +1,56 @@
 package com.askidaevimproject.Ask.da.evim.olsun.webApi.controllers;
 
-import com.askidaevimproject.Ask.da.evim.olsun.exception.MemberIsAlreadyTakenException;
 import com.askidaevimproject.Ask.da.evim.olsun.exception.MemberMailException;
 import com.askidaevimproject.Ask.da.evim.olsun.exception.MemberNotFoundException;
-import com.askidaevimproject.Ask.da.evim.olsun.model.concretes.Member;
-import com.askidaevimproject.Ask.da.evim.olsun.service.concretes.MemberService;
+import com.askidaevimproject.Ask.da.evim.olsun.service.abstracts.MemberService;
+import com.askidaevimproject.Ask.da.evim.olsun.service.requests.CreateMemberRequest;
+import com.askidaevimproject.Ask.da.evim.olsun.service.requests.UpdateMemberRequest;
+import com.askidaevimproject.Ask.da.evim.olsun.service.responses.GetAllMemberResponse;
+import com.askidaevimproject.Ask.da.evim.olsun.service.responses.GetByMemberIdResponse;
+import com.askidaevimproject.Ask.da.evim.olsun.service.responses.GetByMemberMailResponse;
+import lombok.AllArgsConstructor;
+import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
 @RestController
 @RequestMapping("/api/member")
-
+@AllArgsConstructor
 public class MemberController {
 
-    private  MemberService memberService;
-
-    public MemberController(){}
-    public MemberController(MemberService memberService) {
-        this.memberService = memberService;
-    }
+    private MemberService memberService;
 
 
     @GetMapping("/")
-    public List<Member> getAllMembers(){
+    public List<GetAllMemberResponse> getAllMembers(){
         return memberService.getAllMembers();
     }
+
+    @GetMapping("/{id}")
+    public GetByMemberIdResponse getByMemberId(@PathVariable Long member_id) throws MemberNotFoundException {
+        return memberService.getByMemberId(member_id);
+
+    }
+
     @GetMapping("/{member_mail}")
-    public Member findByMember_mail(@PathVariable String member_mail) throws MemberNotFoundException {
-        return memberService.findByMember_mail(member_mail);
+    public GetByMemberMailResponse findByEmail(@PathVariable String member_mail) throws MemberMailException {
+        return memberService.findByEmail(member_mail);
     }
 
     @PostMapping("/")
-    public Member addMember(@RequestBody Member member) throws MemberIsAlreadyTakenException, MemberMailException {
-        return memberService.addMember(member);
+    @ResponseStatus(HttpStatus.CREATED)
+    public void addMember(@RequestBody CreateMemberRequest createMemberRequest){
+         memberService.addMember(createMemberRequest);
     }
 
-    @DeleteMapping("/deleteMember/{member_id}")
+    @DeleteMapping("/{member_id}")
     public void deleteMember(@PathVariable Long member_id){
         memberService.deleteMember(member_id);
     }
-    @PutMapping("/updateMember/{member_id}")
-    public Member updateMember(@RequestBody Member member,@PathVariable(name = "member_id") Long member_id){
-        return memberService.updateMember(member,member_id);
+
+    @PutMapping("/")
+    public void updateMember(@RequestBody UpdateMemberRequest  updateMemberRequest){
+        memberService.updateMember(updateMemberRequest);
     }
 }
