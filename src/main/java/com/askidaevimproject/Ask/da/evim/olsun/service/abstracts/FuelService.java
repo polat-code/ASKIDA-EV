@@ -1,0 +1,20 @@
+package com.askidaevimproject.Ask.da.evim.olsun.service.abstracts;
+
+import com.askidaevimproject.Ask.da.evim.olsun.exception.FuelIsNotFoundException;
+import com.askidaevimproject.Ask.da.evim.olsun.service.requests.CreateFuelRequest;
+import com.askidaevimproject.Ask.da.evim.olsun.service.requests.UpdateFuelRequest;
+import com.askidaevimproject.Ask.da.evim.olsun.service.responses.GetAllFuelResponse;
+import com.askidaevimproject.Ask.da.evim.olsun.service.responses.GetByFuelIdResponse;
+
+import java.util.List;
+
+public interface FuelService {
+
+    List<GetAllFuelResponse> getAllFuels();
+    GetByFuelIdResponse getByFuelIdResponse(Long fuel_id) throws FuelIsNotFoundException;
+    void updateFuel(Long fuel_id, UpdateFuelRequest updateFuelRequest);
+    void addFuel(CreateFuelRequest createFuelRequest);
+    void deleteFuel(Long fuel_id);
+
+
+}

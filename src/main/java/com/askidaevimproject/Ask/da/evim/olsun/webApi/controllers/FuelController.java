@@ -1,36 +1,52 @@
 package com.askidaevimproject.Ask.da.evim.olsun.webApi.controllers;
 import com.askidaevimproject.Ask.da.evim.olsun.exception.FuelIsAlreadyExıstException;
 import com.askidaevimproject.Ask.da.evim.olsun.exception.FuelIsNotFoundException;
-import com.askidaevimproject.Ask.da.evim.olsun.model.concretes.Fuel;
-import com.askidaevimproject.Ask.da.evim.olsun.service.concretes.FuelService;
+;
+import com.askidaevimproject.Ask.da.evim.olsun.service.concretes.FuelServiceImpl;
+
+import com.askidaevimproject.Ask.da.evim.olsun.service.requests.CreateFuelRequest;
+import com.askidaevimproject.Ask.da.evim.olsun.service.requests.UpdateFuelRequest;
+import com.askidaevimproject.Ask.da.evim.olsun.service.responses.GetAllFuelResponse;
+import com.askidaevimproject.Ask.da.evim.olsun.service.responses.GetByFuelIdResponse;
+import lombok.AllArgsConstructor;
 
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
+import static org.springframework.http.HttpStatus.*;
+
 @RestController
-@RequestMapping("/fuel")
+@RequestMapping("/api/fuel")
+@AllArgsConstructor
 public class FuelController {
 
-    private FuelService fuelService;
+    private FuelServiceImpl fuelService;
 
-    public FuelController(FuelService fuelService) {
-        this.fuelService = fuelService;
-    }
-    public FuelController(){}
-
-    @GetMapping("/")
-    public List<Fuel> getAllFuels(){
+    @GetMapping("")
+    public List<GetAllFuelResponse> getAllFuels(){
         return fuelService.getAllFuels();
 
     }
-    @PostMapping("/")
-    public Fuel addFuel(@RequestBody Fuel fuel) throws FuelIsAlreadyExıstException {
-        return fuelService.addFuel(fuel);
+    @GetMapping("/{id}")
+    public GetByFuelIdResponse getByFuelIdResponse(@PathVariable Long fuel_id) throws FuelIsNotFoundException {
+        return fuelService.getByFuelIdResponse(fuel_id);
+
     }
-    @DeleteMapping
-    public void deleteFuel(@PathVariable Long fuel_id) throws FuelIsNotFoundException {
+    @PostMapping("/")
+    @ResponseStatus(CREATED)
+    public void addFuel(@RequestBody CreateFuelRequest createFuelRequest) {
+        fuelService.addFuel(createFuelRequest);
+    }
+
+    @DeleteMapping("/{id}")
+    public void deleteFuel(@PathVariable Long fuel_id){
         fuelService.deleteFuel(fuel_id);
+    }
+
+    @PutMapping("/{id}")
+    public void updateFuel(@PathVariable Long fuel_id, @RequestBody UpdateFuelRequest updateFuelRequest){
+        this.fuelService.updateFuel(fuel_id,updateFuelRequest);
     }
 
 }

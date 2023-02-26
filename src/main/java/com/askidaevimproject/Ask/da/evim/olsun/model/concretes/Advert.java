@@ -1,6 +1,5 @@
 package com.askidaevimproject.Ask.da.evim.olsun.model.concretes;
 
-import com.askidaevimproject.Ask.da.evim.olsun.model.Dwelling;
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Data;

@@ -4,28 +4,26 @@ import com.askidaevimproject.Ask.da.evim.olsun.exception.RoomContainedException;
 import com.askidaevimproject.Ask.da.evim.olsun.exception.RoomNotFoundException;
 import com.askidaevimproject.Ask.da.evim.olsun.model.concretes.Room;
 import com.askidaevimproject.Ask.da.evim.olsun.service.concretes.RoomService;
+import lombok.AllArgsConstructor;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
-@RequestMapping("/rooms")
+@RequestMapping("/api/rooms")
 @RestController
+@AllArgsConstructor
 public class RoomController {
 
     private  RoomService roomService;
-    public RoomController(){}
 
-    public RoomController(RoomService roomService) {
-        this.roomService = roomService;
-    }
 
-    @GetMapping("/")
+    @GetMapping("")
     public List<Room> getAllRoom(){
 
         return roomService.getAllRoom();
 
     }
-    @PostMapping("/")
+    @PostMapping("")
     public Room addRoom(@RequestBody Room room) throws RoomContainedException {
         return roomService.addRoom(room);
     }
