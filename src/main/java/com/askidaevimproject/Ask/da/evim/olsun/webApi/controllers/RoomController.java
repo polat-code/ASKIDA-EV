@@ -3,7 +3,12 @@ package com.askidaevimproject.Ask.da.evim.olsun.webApi.controllers;
 import com.askidaevimproject.Ask.da.evim.olsun.exception.RoomContainedException;
 import com.askidaevimproject.Ask.da.evim.olsun.exception.RoomNotFoundException;
 import com.askidaevimproject.Ask.da.evim.olsun.model.concretes.Room;
-import com.askidaevimproject.Ask.da.evim.olsun.service.concretes.RoomService;
+import com.askidaevimproject.Ask.da.evim.olsun.service.abstracts.RoomService;
+import com.askidaevimproject.Ask.da.evim.olsun.service.concretes.RoomServiceImpl;
+import com.askidaevimproject.Ask.da.evim.olsun.service.requests.CreateRoomRequest;
+import com.askidaevimproject.Ask.da.evim.olsun.service.requests.UpdateRoomRequest;
+import com.askidaevimproject.Ask.da.evim.olsun.service.responses.GetAllRoomResponse;
+import com.askidaevimproject.Ask.da.evim.olsun.service.responses.GetByRoomIdResponse;
 import lombok.AllArgsConstructor;
 import org.springframework.web.bind.annotation.*;
 
@@ -14,26 +19,32 @@ import java.util.List;
 @AllArgsConstructor
 public class RoomController {
 
-    private  RoomService roomService;
+    private RoomService roomService;
 
 
     @GetMapping("")
-    public List<Room> getAllRoom(){
+    public List<GetAllRoomResponse> getAllRoom(){
 
         return roomService.getAllRoom();
 
     }
     @PostMapping("")
-    public Room addRoom(@RequestBody Room room) throws RoomContainedException {
-        return roomService.addRoom(room);
+    public void addRoom(@RequestBody CreateRoomRequest createRoomRequest){
+        roomService.addRoom(createRoomRequest);
     }
-    @DeleteMapping("/deleteRoom/{room_id}")
+    @DeleteMapping("/{room_id}")
     public void deleteRoom(@PathVariable Long room_id){
         roomService.deleteRoom(room_id);
     }
-    @PutMapping("/updateRoom/{room_id}")
-    public Room updateRoom(@RequestBody Room room,@PathVariable Long room_id) throws RoomNotFoundException {
-        return roomService.updateRoom(room,room_id);
+
+    @PutMapping("/{room_id}")
+    public void updateRoom(@RequestBody UpdateRoomRequest updateRoomRequest) {
+         roomService.updateRoom(updateRoomRequest);
+    }
+
+    @GetMapping("/{room_id}")
+    public GetByRoomIdResponse findByRoom_id(@PathVariable Long room_id) throws RoomNotFoundException {
+        return roomService.findByRoom_id(room_id);
     }
 
 }
