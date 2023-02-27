@@ -8,6 +8,7 @@ import com.askidaevimproject.Ask.da.evim.olsun.service.requests.CreateNeighborho
 import com.askidaevimproject.Ask.da.evim.olsun.service.requests.UpdateNeighborhoodRequest;
 import com.askidaevimproject.Ask.da.evim.olsun.service.responses.GetAllNeighBorHoodResponse;
 import com.askidaevimproject.Ask.da.evim.olsun.service.responses.GetByNeighborHoodZipCodeResponse;
+import com.askidaevimproject.Ask.da.evim.olsun.service.responses.GetByNeighborhoodIdResponse;
 import com.askidaevimproject.Ask.da.evim.olsun.service.responses.GetByNeighborhoodName;
 import jakarta.transaction.Transactional;
 import lombok.AllArgsConstructor;
@@ -63,6 +64,12 @@ public class NeighborhoodServiceImpl implements NeighborhoodService {
 
         return this.modelMapperService.forResponse().map(neighborhood,GetByNeighborhoodName.class);
 
+    }
+
+    @Override
+    public GetByNeighborhoodIdResponse getById(Long neighborhood_id) {
+        Neighborhood neighborhood = this.neighborhoodRepository.findById(neighborhood_id).orElseThrow();
+        return this.modelMapperService.forResponse().map(neighborhood,GetByNeighborhoodIdResponse.class);
     }
 
 
