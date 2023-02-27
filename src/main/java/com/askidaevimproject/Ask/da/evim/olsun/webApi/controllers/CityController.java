@@ -1,10 +1,11 @@
 package com.askidaevimproject.Ask.da.evim.olsun.webApi.controllers;
 
-import com.askidaevimproject.Ask.da.evim.olsun.exception.CityNameNotFoundException;
+
 import com.askidaevimproject.Ask.da.evim.olsun.service.abstracts.CityService;
 import com.askidaevimproject.Ask.da.evim.olsun.service.requests.CreateCityRequest;
 import com.askidaevimproject.Ask.da.evim.olsun.service.requests.UpdateCityRequest;
 import com.askidaevimproject.Ask.da.evim.olsun.service.responses.GetAllCityResponse;
+import com.askidaevimproject.Ask.da.evim.olsun.service.responses.GetByCityNameResponse;
 import lombok.AllArgsConstructor;
 import org.springframework.web.bind.annotation.*;
 
@@ -34,6 +35,10 @@ public class CityController {
         cityService.deleteCityById(city_id);
     }
 
+    @GetMapping("/{cityName}")
+    public GetByCityNameResponse getByCityNameResponse(@PathVariable String cityName){
+        return cityService.getByCityName(cityName);
+    }
     @PutMapping("")
     public void updateCity(@RequestBody UpdateCityRequest updateCityRequest){
         this.cityService.updateCity(updateCityRequest);

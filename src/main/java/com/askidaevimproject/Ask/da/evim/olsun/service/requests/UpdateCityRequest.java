@@ -10,6 +10,6 @@ import lombok.NoArgsConstructor;
 public class UpdateCityRequest {
 
     private Long city_id;
-    private String city_name;
+    private String cityName;
 
 }

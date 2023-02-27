@@ -5,7 +5,7 @@ import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
-import javax.validation.constraints.NotBlank;
+
 
 import static jakarta.persistence.GenerationType.*;
 
@@ -22,7 +22,7 @@ public class City {
     private Long city_id;
 
     @Column(name = "city_name")
-    private String city_name;
+    private String cityName;
 
 
 }

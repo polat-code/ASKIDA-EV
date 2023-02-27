@@ -6,6 +6,7 @@ import com.askidaevimproject.Ask.da.evim.olsun.service.abstracts.CityService;
 import com.askidaevimproject.Ask.da.evim.olsun.service.requests.CreateCityRequest;
 import com.askidaevimproject.Ask.da.evim.olsun.service.requests.UpdateCityRequest;
 import com.askidaevimproject.Ask.da.evim.olsun.service.responses.GetAllCityResponse;
+import com.askidaevimproject.Ask.da.evim.olsun.service.responses.GetByCityNameResponse;
 import lombok.AllArgsConstructor;
 import org.springframework.stereotype.Service;
 import java.util.List;
@@ -54,6 +55,12 @@ public class CityServiceImpl implements CityService {
 
 
 
+    }
+
+    @Override
+    public GetByCityNameResponse getByCityName(String cityName) {
+        City city = this.cityRepository.findByCityName(cityName);
+        return this.modelMapperService.forResponse().map(city,GetByCityNameResponse.class);
     }
 
 
