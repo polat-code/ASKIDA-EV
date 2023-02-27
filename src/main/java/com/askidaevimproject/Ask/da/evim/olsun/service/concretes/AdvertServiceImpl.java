@@ -1,0 +1,59 @@
+package com.askidaevimproject.Ask.da.evim.olsun.service.concretes;
+
+import com.askidaevimproject.Ask.da.evim.olsun.core.mappers.abstracts.ModelMapperService;
+import com.askidaevimproject.Ask.da.evim.olsun.exception.AdvertNotFoundException;
+import com.askidaevimproject.Ask.da.evim.olsun.model.concretes.Advert;
+import com.askidaevimproject.Ask.da.evim.olsun.repository.abstracts.AdvertRepository;
+import com.askidaevimproject.Ask.da.evim.olsun.repository.abstracts.DwellingRepository;
+import com.askidaevimproject.Ask.da.evim.olsun.repository.abstracts.MemberRepository;
+import com.askidaevimproject.Ask.da.evim.olsun.service.abstracts.AdvertService;
+import com.askidaevimproject.Ask.da.evim.olsun.service.requests.CreateAdvertRequest;
+import com.askidaevimproject.Ask.da.evim.olsun.service.requests.UpdateAdvertRequest;
+import com.askidaevimproject.Ask.da.evim.olsun.service.responses.GetAllAdvertResponse;
+import lombok.AllArgsConstructor;
+import org.springframework.stereotype.Service;
+
+import java.util.List;
+
+@Service
+@AllArgsConstructor
+public class AdvertServiceImpl implements AdvertService {
+
+    private  AdvertRepository advertRepository;
+    private  MemberRepository memberRepository;
+    private  DwellingRepository dwellingRepository;
+    private  ModelMapperService modelMapperService;
+
+
+
+    public List<GetAllAdvertResponse> getAllAdvert() {
+        List<Advert> adverts = this.advertRepository.findAll();
+
+        return adverts
+                .stream()
+                .map(advert -> this.modelMapperService.forResponse().map(advert,GetAllAdvertResponse.class)).toList();
+    }
+
+
+    public void deleteAdvert(Long advert_id) {
+        if(advertRepository.existsById(advert_id))
+            if(memberRepository.existsById(advertRepository.findById(advert_id).get().getMember().getMember_id()))
+                if(dwellingRepository.existsById(advertRepository.findById(advert_id).get().getAdvert_id()))
+                    advertRepository.deleteById(advert_id);
+
+    }
+
+    @Override
+    public void updateAdvert(UpdateAdvertRequest updateAdvertRequest) {
+
+    }
+
+    public void addAdvert(CreateAdvertRequest createAdvertRequest) {
+
+        Advert advert = this.modelMapperService.forRequest().map(createAdvertRequest,Advert.class);
+        this.advertRepository.save(advert);
+
+
+
+    }
+}
