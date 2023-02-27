@@ -4,6 +4,7 @@ import com.askidaevimproject.Ask.da.evim.olsun.model.concretes.Advert;
 import com.askidaevimproject.Ask.da.evim.olsun.service.requests.CreateAdvertRequest;
 import com.askidaevimproject.Ask.da.evim.olsun.service.requests.UpdateAdvertRequest;
 import com.askidaevimproject.Ask.da.evim.olsun.service.responses.GetAllAdvertResponse;
+import com.askidaevimproject.Ask.da.evim.olsun.service.responses.GetByAdvertTitle;
 
 import java.util.List;
 
@@ -16,4 +17,6 @@ public interface AdvertService {
     void deleteAdvert(Long advert_id);
 
     void updateAdvert(UpdateAdvertRequest updateAdvertRequest);
+
+    GetByAdvertTitle getByAdvertTitle(String advert_title);
 }

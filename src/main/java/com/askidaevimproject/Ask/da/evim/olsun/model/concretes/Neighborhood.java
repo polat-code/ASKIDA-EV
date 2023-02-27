@@ -6,7 +6,7 @@ import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
-import javax.validation.constraints.NotBlank;
+import static jakarta.persistence.GenerationType.*;
 
 
 @Entity
@@ -17,7 +17,7 @@ import javax.validation.constraints.NotBlank;
 public class Neighborhood {
 
     @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @GeneratedValue(strategy = IDENTITY)
     @Column(name="neighborhood_id")
     private Long neighborhood_id;
 

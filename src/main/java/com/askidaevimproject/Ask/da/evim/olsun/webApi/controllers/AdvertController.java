@@ -4,6 +4,7 @@ import com.askidaevimproject.Ask.da.evim.olsun.service.abstracts.AdvertService;
 import com.askidaevimproject.Ask.da.evim.olsun.service.requests.CreateAdvertRequest;
 import com.askidaevimproject.Ask.da.evim.olsun.service.requests.UpdateAdvertRequest;
 import com.askidaevimproject.Ask.da.evim.olsun.service.responses.GetAllAdvertResponse;
+import com.askidaevimproject.Ask.da.evim.olsun.service.responses.GetByAdvertTitle;
 import lombok.AllArgsConstructor;
 import org.springframework.web.bind.annotation.*;
 
@@ -39,5 +40,9 @@ public class AdvertController {
         advertService.updateAdvert(updateAdvertRequest);
     }
 
+    @GetMapping("/{advert_title}")
+    public GetByAdvertTitle getByAdvertTitle(@PathVariable String advert_title){
+        return advertService.getByAdvertTitle(advert_title);
+    }
 
 }

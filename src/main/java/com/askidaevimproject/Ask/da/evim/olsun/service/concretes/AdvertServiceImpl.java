@@ -10,6 +10,7 @@ import com.askidaevimproject.Ask.da.evim.olsun.service.abstracts.AdvertService;
 import com.askidaevimproject.Ask.da.evim.olsun.service.requests.CreateAdvertRequest;
 import com.askidaevimproject.Ask.da.evim.olsun.service.requests.UpdateAdvertRequest;
 import com.askidaevimproject.Ask.da.evim.olsun.service.responses.GetAllAdvertResponse;
+import com.askidaevimproject.Ask.da.evim.olsun.service.responses.GetByAdvertTitle;
 import lombok.AllArgsConstructor;
 import org.springframework.stereotype.Service;
 
@@ -46,6 +47,15 @@ public class AdvertServiceImpl implements AdvertService {
     @Override
     public void updateAdvert(UpdateAdvertRequest updateAdvertRequest) {
 
+        Advert advert=this.modelMapperService.forRequest().map(updateAdvertRequest,Advert.class);
+
+        this.advertRepository.save(advert);
+    }
+
+    @Override
+    public GetByAdvertTitle getByAdvertTitle(String advert_title) {
+        Advert advert= this.advertRepository.findByAdvertTitle(advert_title);
+        return this.modelMapperService.forResponse().map(advert,GetByAdvertTitle.class);
     }
 
     public void addAdvert(CreateAdvertRequest createAdvertRequest) {
