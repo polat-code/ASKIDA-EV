@@ -27,7 +27,7 @@ public class MemberController {
         return memberService.getAllMembers();
     }
 
-    @GetMapping("/{id}")
+    @GetMapping(value = "/{member_id}")
     public GetByMemberIdResponse getByMemberId(@PathVariable Long member_id) throws MemberNotFoundException {
         return memberService.getByMemberId(member_id);
 

@@ -26,7 +26,7 @@ public class NeighborhoodController {
     }
 
     @GetMapping("/{zip_code}")
-    public GetByNeighborHoodZipCodeResponse getByZipcode(String zip_code){
+    public GetByNeighborHoodZipCodeResponse getByZipcode(@PathVariable String zip_code){
         return neighborhoodService.getByZipcode(zip_code);
 
     }

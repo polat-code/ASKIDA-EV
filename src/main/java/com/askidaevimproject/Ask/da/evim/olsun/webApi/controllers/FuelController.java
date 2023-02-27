@@ -29,7 +29,7 @@ public class FuelController {
         return fuelService.getAllFuels();
 
     }
-    @GetMapping("/{id}")
+    @GetMapping(value="/{fuel_id}")
     public GetByFuelIdResponse getByFuelIdResponse(@PathVariable Long fuel_id) throws FuelIsNotFoundException {
         return fuelService.getByFuelIdResponse(fuel_id);
 
@@ -40,12 +40,12 @@ public class FuelController {
         fuelService.addFuel(createFuelRequest);
     }
 
-    @DeleteMapping("/{id}")
+    @DeleteMapping("/{fuel_id}")
     public void deleteFuel(@PathVariable Long fuel_id){
         fuelService.deleteFuel(fuel_id);
     }
 
-    @PutMapping("/{id}")
+    @PutMapping("/{fuel_id}")
     public void updateFuel(@PathVariable Long fuel_id, @RequestBody UpdateFuelRequest updateFuelRequest){
         this.fuelService.updateFuel(fuel_id,updateFuelRequest);
     }

@@ -44,7 +44,7 @@ public class RoomController {
          roomService.updateRoom(updateRoomRequest);
     }
 
-    @GetMapping("/{room_type}")
+    @GetMapping(value="/{roomType}")
     public GetByRoomTypeResponse findByRoomType(@PathVariable String roomType){
         return this.roomService.findByRoomType(roomType);
     }
