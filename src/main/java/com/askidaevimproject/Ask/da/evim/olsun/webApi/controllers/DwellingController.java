@@ -18,8 +18,6 @@ public class DwellingController {
 
     private DwellingService dwellingService;
 
-
-
     @GetMapping("")
     public List<GetAllDwellingResponse> getAllDwelling(){
         return dwellingService.getAllDwelling();
