@@ -7,6 +7,7 @@ import com.askidaevimproject.Ask.da.evim.olsun.service.requests.UpdateMemberRequ
 import com.askidaevimproject.Ask.da.evim.olsun.service.responses.GetAllMemberResponse;
 import com.askidaevimproject.Ask.da.evim.olsun.service.responses.GetByMemberIdResponse;
 import com.askidaevimproject.Ask.da.evim.olsun.service.responses.GetByMemberMailResponse;
+import com.askidaevimproject.Ask.da.evim.olsun.service.responses.GetByMemberNameResponse;
 import lombok.AllArgsConstructor;
 import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.*;
@@ -30,6 +31,11 @@ public class MemberController {
     public GetByMemberIdResponse getByMemberId(@PathVariable Long member_id) throws MemberNotFoundException {
         return memberService.getByMemberId(member_id);
 
+    }
+
+    @GetMapping("/{member_name}")
+    public GetByMemberNameResponse getByMemberName(@PathVariable String member_name){
+        return this.memberService.getByMemberName(member_name);
     }
 
     @GetMapping("/{member_mail}")

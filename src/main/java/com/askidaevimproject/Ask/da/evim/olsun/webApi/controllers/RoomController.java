@@ -45,7 +45,7 @@ public class RoomController {
     }
 
     @GetMapping("/{room_type}")
-    public GetByRoomTypeResponse findByRoomType(String roomType){
+    public GetByRoomTypeResponse findByRoomType(@PathVariable String roomType){
         return this.roomService.findByRoomType(roomType);
     }
 

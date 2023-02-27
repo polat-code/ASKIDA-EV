@@ -10,6 +10,7 @@ import com.askidaevimproject.Ask.da.evim.olsun.service.requests.UpdateMemberRequ
 import com.askidaevimproject.Ask.da.evim.olsun.service.responses.GetAllMemberResponse;
 import com.askidaevimproject.Ask.da.evim.olsun.service.responses.GetByMemberIdResponse;
 import com.askidaevimproject.Ask.da.evim.olsun.service.responses.GetByMemberMailResponse;
+import com.askidaevimproject.Ask.da.evim.olsun.service.responses.GetByMemberNameResponse;
 import lombok.AllArgsConstructor;
 import org.springframework.stereotype.Service;
 
@@ -72,5 +73,11 @@ public class MemberServiceImpl implements MemberService {
     public GetByMemberMailResponse getByMemberMail(String member_mail) {
         Member member = this.memberRepository.findByMemberMail(member_mail);
         return this.modelMapperService.forResponse().map(member,GetByMemberMailResponse.class);
+    }
+
+    @Override
+    public GetByMemberNameResponse getByMemberName(String member_name) {
+        Member member = this.memberRepository.findByMemberName(member_name);
+        return this.modelMapperService.forResponse().map(member,GetByMemberNameResponse.class);
     }
 }
