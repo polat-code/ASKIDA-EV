@@ -2,8 +2,10 @@ package com.askidaevimproject.Ask.da.evim.olsun.webApi.controllers;
 
 import com.askidaevimproject.Ask.da.evim.olsun.service.abstracts.NeighborhoodService;
 import com.askidaevimproject.Ask.da.evim.olsun.service.requests.CreateNeighborhoodRequest;
+import com.askidaevimproject.Ask.da.evim.olsun.service.requests.UpdateNeighborhoodRequest;
 import com.askidaevimproject.Ask.da.evim.olsun.service.responses.GetAllNeighBorHoodResponse;
 import com.askidaevimproject.Ask.da.evim.olsun.service.responses.GetByNeighborHoodZipCodeResponse;
+import com.askidaevimproject.Ask.da.evim.olsun.service.responses.GetByNeighborhoodName;
 import lombok.AllArgsConstructor;
 import org.springframework.web.bind.annotation.*;
 
@@ -33,6 +35,15 @@ public class NeighborhoodController {
         this.neighborhoodService.addNeighborhood(createNeighborhoodRequest);
     }
 
+    @PutMapping("")
+    public void updateNeighborhood(@RequestBody UpdateNeighborhoodRequest updateNeighborhoodRequest){
+        this.neighborhoodService.updateNeighborhood(updateNeighborhoodRequest);
+    }
+
+    @GetMapping("/{neighborhood_name}")
+    public GetByNeighborhoodName getByNeighborhoodName(@PathVariable String neighborhood_name){
+        return this.neighborhoodService.getByNeighborhoodName(neighborhood_name);
+    }
 
 
 

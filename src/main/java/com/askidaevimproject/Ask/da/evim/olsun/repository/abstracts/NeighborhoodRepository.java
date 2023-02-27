@@ -6,4 +6,6 @@ import org.springframework.data.jpa.repository.JpaRepository;
 public interface NeighborhoodRepository extends JpaRepository<Neighborhood,Long> {
 
     Neighborhood findByZipCode(String zip_code);
+
+    Neighborhood findByNeighborhoodName(String neighborhood_name);
 }

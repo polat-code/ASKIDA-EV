@@ -5,8 +5,10 @@ import com.askidaevimproject.Ask.da.evim.olsun.model.concretes.Neighborhood;
 import com.askidaevimproject.Ask.da.evim.olsun.repository.abstracts.NeighborhoodRepository;
 import com.askidaevimproject.Ask.da.evim.olsun.service.abstracts.NeighborhoodService;
 import com.askidaevimproject.Ask.da.evim.olsun.service.requests.CreateNeighborhoodRequest;
+import com.askidaevimproject.Ask.da.evim.olsun.service.requests.UpdateNeighborhoodRequest;
 import com.askidaevimproject.Ask.da.evim.olsun.service.responses.GetAllNeighBorHoodResponse;
 import com.askidaevimproject.Ask.da.evim.olsun.service.responses.GetByNeighborHoodZipCodeResponse;
+import com.askidaevimproject.Ask.da.evim.olsun.service.responses.GetByNeighborhoodName;
 import jakarta.transaction.Transactional;
 import lombok.AllArgsConstructor;
 import org.springframework.stereotype.Service;
@@ -47,6 +49,20 @@ public class NeighborhoodServiceImpl implements NeighborhoodService {
     public void addNeighborhood(CreateNeighborhoodRequest createNeighborhoodRequest) {
         Neighborhood neighborhood = this.modelMapperService.forRequest().map(createNeighborhoodRequest,Neighborhood.class);
         this.neighborhoodRepository.save(neighborhood);
+    }
+
+    @Override
+    public void updateNeighborhood(UpdateNeighborhoodRequest updateNeighborhoodRequest) {
+        Neighborhood neighborhood = this.modelMapperService.forRequest().map(updateNeighborhoodRequest,Neighborhood.class);
+        this.neighborhoodRepository.save(neighborhood);
+    }
+
+    @Override
+    public GetByNeighborhoodName getByNeighborhoodName(String neighborhood_name) {
+        Neighborhood neighborhood = this.neighborhoodRepository.findByNeighborhoodName(neighborhood_name);
+
+        return this.modelMapperService.forResponse().map(neighborhood,GetByNeighborhoodName.class);
+
     }
 
 
