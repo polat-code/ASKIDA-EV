@@ -31,5 +31,5 @@ public class District {
     private City city;
 
     @Column(name="district_name")
-    private String district_name;
+    private String districtName;
 }

@@ -44,6 +44,11 @@ public class RoomController {
          roomService.updateRoom(updateRoomRequest);
     }
 
+    @GetMapping("/{room_type}")
+    public GetByRoomTypeResponse findByRoomType(String roomType){
+        return this.roomService.findByRoomType(roomType);
+    }
+
     @GetMapping("/{room_id}")
     public GetByRoomIdResponse findByRoom_id(@PathVariable Long room_id) throws RoomNotFoundException {
         return roomService.findByRoom_id(room_id);

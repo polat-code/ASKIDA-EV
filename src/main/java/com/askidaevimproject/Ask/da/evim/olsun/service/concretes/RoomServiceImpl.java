@@ -70,6 +70,11 @@ public class RoomServiceImpl implements RoomService {
         return this.modelMapperService.forResponse().map(room,GetByRoomIdResponse.class);
     }
 
+    @Override
+    public GetByRoomTypeResponse findByRoomType(String roomType) {
+        Room room=this.roomRepository.findByRoomType(roomType);
+        return this.modelMapperService.forResponse().map(room,GetByRoomTypeResponse.class);
+    }
 
 
 }

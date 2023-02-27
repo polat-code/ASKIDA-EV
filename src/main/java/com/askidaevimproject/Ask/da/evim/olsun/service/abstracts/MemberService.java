@@ -6,6 +6,7 @@ import com.askidaevimproject.Ask.da.evim.olsun.service.requests.CreateMemberRequ
 import com.askidaevimproject.Ask.da.evim.olsun.service.requests.UpdateMemberRequest;
 import com.askidaevimproject.Ask.da.evim.olsun.service.responses.GetAllMemberResponse;
 import com.askidaevimproject.Ask.da.evim.olsun.service.responses.GetByMemberIdResponse;
+import com.askidaevimproject.Ask.da.evim.olsun.service.responses.GetByMemberMailResponse;
 import org.springframework.stereotype.Repository;
 
 import java.util.List;
@@ -23,5 +24,7 @@ public interface MemberService {
 
 
     GetByMemberIdResponse getByMemberId(Long member_id) throws MemberNotFoundException;
+
+    GetByMemberMailResponse getByMemberMail(String member_mail);
 
 }

@@ -57,13 +57,13 @@ public class Dwelling {
     @Column(name="description")
     private String description;
     @Column(name = "age_of_dwelling")
-    private String age_of_dwelling;
+    private String ageOfDwelling;
 
     @Column(name="meter_square")
-    private String meter_square;
+    private String meterSquare;
 
     @Column(name="is_activate")
-    private int is_activate;
+    private int isActivate;
 
 
 

@@ -34,7 +34,7 @@ public class Advert {
 
 
     @Column(name = "advert_title")
-    private String advert_title;
+    private String advertTitle;
 
 
 }

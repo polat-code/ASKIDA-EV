@@ -4,7 +4,6 @@ import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
-import javax.validation.constraints.NotBlank;
 
 import static jakarta.persistence.GenerationType.IDENTITY;
 
@@ -23,17 +22,17 @@ public class Member {
 
     @Column(name="member_name")
 
-    private String member_name;
+    private String memberName;
 
 
     @Column(name="member_surname")
 
-    private String member_surname;
+    private String memberSurname;
 
 
     @Column(name="member_phone")
 
-    private String member_phone;
+    private String memberPhone;
 
 
     /**  mail should be check contains
@@ -41,21 +40,22 @@ public class Member {
      * **/
 
     @Column(name="member_mail")
-    private String member_mail;
+    private String memberMail;
 
 
     @Column(name="member_password")
 
-    private String member_password;
+    private String memberPassword;
 
 
     @Lob
-    @Column(name="member_photo")
-    private String member_photo;
+    @Column(name="member_photo",length = 512)
+    private String memberPhoto;
+
 
     @Lob
-    @Column(name = "member_address")
-    private String member_address;
+    @Column(name = "member_address",length = 512)
+    private String memberAddress;
 
 
 
@@ -64,7 +64,7 @@ public class Member {
      * After verify it activate will be changed.When the user is registered is_Activate default 0
      * **/
     @Column(name="is_activate")
-    private int is_activate;
+    private int isActivate;
 
 
 }

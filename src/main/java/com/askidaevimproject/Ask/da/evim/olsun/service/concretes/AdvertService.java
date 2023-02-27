@@ -42,7 +42,7 @@ public class AdvertService {
 
         Advert updatedAdvert = advertRepository.findById(advert_id).get();
         if(advertRepository.existsById(updatedAdvert.getAdvert_id())){
-            updatedAdvert.setAdvert_title(advert.getAdvert_title());
+            updatedAdvert.setAdvertTitle(advert.getAdvertTitle());
         }
         else
             throw new AdvertNotFoundException("The Advert is not Found Exception ");

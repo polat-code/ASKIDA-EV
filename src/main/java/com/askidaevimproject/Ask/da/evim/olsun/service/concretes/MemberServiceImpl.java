@@ -9,6 +9,7 @@ import com.askidaevimproject.Ask.da.evim.olsun.service.requests.CreateMemberRequ
 import com.askidaevimproject.Ask.da.evim.olsun.service.requests.UpdateMemberRequest;
 import com.askidaevimproject.Ask.da.evim.olsun.service.responses.GetAllMemberResponse;
 import com.askidaevimproject.Ask.da.evim.olsun.service.responses.GetByMemberIdResponse;
+import com.askidaevimproject.Ask.da.evim.olsun.service.responses.GetByMemberMailResponse;
 import lombok.AllArgsConstructor;
 import org.springframework.stereotype.Service;
 
@@ -65,5 +66,11 @@ public class MemberServiceImpl implements MemberService {
     public GetByMemberIdResponse getByMemberId(Long member_id) throws MemberNotFoundException {
         Member member = this.memberRepository.findById(member_id).orElseThrow(()-> new MemberNotFoundException("The member is not found "));
         return this.modelMapperService.forResponse().map(member,GetByMemberIdResponse.class);
+    }
+
+    @Override
+    public GetByMemberMailResponse getByMemberMail(String member_mail) {
+        Member member = this.memberRepository.findByMemberMail(member_mail);
+        return this.modelMapperService.forResponse().map(member,GetByMemberMailResponse.class);
     }
 }

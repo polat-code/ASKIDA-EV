@@ -24,9 +24,9 @@ public class Neighborhood {
 
 
     @Column(name = "neighborhood_name")
-    private String neighborhood_name;
+    private String neighborhoodName;
 
     @Column(name="zip_code")
 
-    private String zip_code;
+    private String zipCode;
 }

@@ -23,6 +23,6 @@ public class Fuel {
 
 
     @Column(name="fuel_type")
-    private String fuel_type;
+    private String fuelType;
 
 }

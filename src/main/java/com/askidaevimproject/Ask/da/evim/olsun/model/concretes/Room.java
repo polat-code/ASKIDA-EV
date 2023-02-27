@@ -21,7 +21,7 @@ public class Room {
 
 
     @Column(name="room_type")
-    private String room_type;
+    private String roomType;
 
 
 }
