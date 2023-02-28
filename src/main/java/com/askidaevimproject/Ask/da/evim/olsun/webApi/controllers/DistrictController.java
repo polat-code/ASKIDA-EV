@@ -2,8 +2,12 @@ package com.askidaevimproject.Ask.da.evim.olsun.webApi.controllers;
 
 import com.askidaevimproject.Ask.da.evim.olsun.service.abstracts.DistrictService;
 import com.askidaevimproject.Ask.da.evim.olsun.service.requests.CreateDistrictRequest;
+import com.askidaevimproject.Ask.da.evim.olsun.service.requests.UpdateDistrictRequest;
 import com.askidaevimproject.Ask.da.evim.olsun.service.responses.GetAllDistrictResponse;
+import com.askidaevimproject.Ask.da.evim.olsun.service.responses.GetByDistrictIdResponse;
+import com.askidaevimproject.Ask.da.evim.olsun.service.responses.GetByDistrictName;
 import lombok.AllArgsConstructor;
+import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
@@ -24,8 +28,28 @@ public class DistrictController {
     }
 
     @PostMapping("")
+    @ResponseStatus(HttpStatus.CREATED)
     public void addDistrict(@RequestBody CreateDistrictRequest createDistrictRequest){
         districtService.addDistrict(createDistrictRequest);
+    }
+
+    @GetMapping("/{district_name}")
+    public GetByDistrictName getByDistrictName(@PathVariable String district_name){
+        return districtService.getByDistrictName(district_name);
+    }
+    @DeleteMapping("/{district_id}")
+    public void deleteDistrict(@PathVariable Long district_id){
+        districtService.deleteDistrict(district_id);
+    }
+
+    @PutMapping("")
+    public void updateDistrict(@RequestBody UpdateDistrictRequest updateDistrictRequest){
+        districtService.updateDistrict(updateDistrictRequest);
+    }
+
+    @GetMapping("/{district_id}")
+    public GetByDistrictIdResponse getById(@PathVariable Long district_id){
+        return this.districtService.getById(district_id);
     }
 
 

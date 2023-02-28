@@ -1,6 +1,5 @@
 package com.askidaevimproject.Ask.da.evim.olsun.service.requests;
 
-import jakarta.persistence.Column;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
@@ -8,14 +7,9 @@ import lombok.NoArgsConstructor;
 @Data
 @AllArgsConstructor
 @NoArgsConstructor
-public class CreateDistrictRequest {
+public class UpdateDistrictRequest {
 
-    @Column(name="district_name")
-    private String districtName;
-
+    private Long district_id;
     private CreateCityRequest createCityRequest;
-
-
-
-
+    private String district_name;
 }
