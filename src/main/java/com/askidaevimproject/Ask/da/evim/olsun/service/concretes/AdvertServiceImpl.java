@@ -61,8 +61,5 @@ public class AdvertServiceImpl implements AdvertService {
 
         Advert advert = this.modelMapperService.forRequest().map(createAdvertRequest,Advert.class);
         this.advertRepository.save(advert);
-
-
-
     }
 }

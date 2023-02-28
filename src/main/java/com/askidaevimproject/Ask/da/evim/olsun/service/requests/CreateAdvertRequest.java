@@ -1,5 +1,4 @@
 package com.askidaevimproject.Ask.da.evim.olsun.service.requests;
-
 import com.askidaevimproject.Ask.da.evim.olsun.model.concretes.Dwelling;
 import com.askidaevimproject.Ask.da.evim.olsun.model.concretes.Member;
 import jakarta.persistence.Column;

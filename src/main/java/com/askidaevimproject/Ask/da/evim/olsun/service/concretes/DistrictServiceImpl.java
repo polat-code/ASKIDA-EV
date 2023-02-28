@@ -52,6 +52,7 @@ public class DistrictServiceImpl implements DistrictService {
     @Override
     public void deleteDistrict(Long district_id) {
         if(this.districtRepository.existsById(district_id))
+
             this.districtRepository.deleteById(district_id);
     }
 
