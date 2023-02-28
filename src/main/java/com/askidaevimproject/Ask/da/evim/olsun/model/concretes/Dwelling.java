@@ -9,8 +9,6 @@ import lombok.Data;
 import lombok.NoArgsConstructor;
 
 
-import javax.validation.constraints.NotBlank;
-
 import static jakarta.persistence.GenerationType.*;
 
 @Table(name="dwelling")
