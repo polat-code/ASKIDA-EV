@@ -45,7 +45,7 @@ public class FuelServiceImpl implements FuelService {
     }
 
     @Override
-    public void updateFuel(Long fuel_id, UpdateFuelRequest updateFuelRequest)
+    public void updateFuel(UpdateFuelRequest updateFuelRequest)
     {
 
         Fuel fuel = this.modelMapperService.forResponse().map(updateFuelRequest,Fuel.class);

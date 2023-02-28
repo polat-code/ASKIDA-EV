@@ -1,7 +1,6 @@
 package com.askidaevimproject.Ask.da.evim.olsun.service.concretes;
 
 import com.askidaevimproject.Ask.da.evim.olsun.core.mappers.abstracts.ModelMapperService;
-import com.askidaevimproject.Ask.da.evim.olsun.exception.RoomContainedException;
 import com.askidaevimproject.Ask.da.evim.olsun.exception.RoomNotFoundException;
 import com.askidaevimproject.Ask.da.evim.olsun.model.concretes.Room;
 import com.askidaevimproject.Ask.da.evim.olsun.repository.abstracts.RoomRepository;
@@ -51,10 +50,6 @@ public class RoomServiceImpl implements RoomService {
 
         if(roomRepository.existsById(room_id)){
             roomRepository.deleteById(room_id);
-            /**
-             * Silinen Id'ye ait dwelling'te ki room_id'yi NULL'A çevir.
-             *
-             * */
         }
     }
 

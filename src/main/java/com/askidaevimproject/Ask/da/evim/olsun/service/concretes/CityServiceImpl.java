@@ -48,7 +48,7 @@ public class CityServiceImpl implements CityService {
         City city = this.modelMapperService.forRequest().map(updateCityRequest,City.class);
         /*
         * City_id is primary key , so city _ id cannot be the same.Therefore,
-        * we do not need to check data is already.Otherwise we have to check whether city or not.
+        * we do not need to check data is already.Otherwise, we have to check whether city or not.
         *
         * */
         this.cityRepository.save(city);
