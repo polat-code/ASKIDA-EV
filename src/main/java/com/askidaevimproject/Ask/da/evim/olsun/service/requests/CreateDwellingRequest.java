@@ -1,13 +1,14 @@
 package com.askidaevimproject.Ask.da.evim.olsun.service.requests;
 
 
-import jakarta.persistence.Column;
-import jakarta.persistence.JoinColumn;
-import jakarta.persistence.ManyToOne;
-import jakarta.persistence.OneToOne;
+
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
+
+import javax.validation.constraints.NotBlank;
+import javax.validation.constraints.NotNull;
+import javax.validation.constraints.Size;
 
 @Data
 @AllArgsConstructor
@@ -15,45 +16,41 @@ import lombok.NoArgsConstructor;
 public class CreateDwellingRequest {
 
 
-    @ManyToOne
-    @JoinColumn(
-            name = "f_city_id",
-            referencedColumnName = "city_id"
-    )
-    private CreateCityRequest city;
 
-    @OneToOne
-    @JoinColumn(
-            name = "f_district_id",
-            referencedColumnName = "district_id"
-    )
-    private CreateDistrictRequest district;
+    @NotBlank
+    @NotNull
+    private Long cityId;
 
-    @OneToOne
-    @JoinColumn(
-            name = "fk_neighborhood_id",
-            referencedColumnName = "neighborhood_id"
-    )
-    private CreateNeighborhoodRequest neighborhood;
+    @NotBlank
+    @NotNull
+    private Long districtId;
 
-    @OneToOne
-    @JoinColumn(
-            name = "fk_fuel_id",
-            referencedColumnName = "fuel_id"
-    )
-    private CreateFuelRequest fuel;
+    @NotBlank
+    @NotNull
+    private Long neighborhoodId;
+
+    @NotBlank
+    @NotNull
+    private Long fuelId;
 
 
-
-    @Column(name="description")
+    @NotBlank
+    @NotNull
+    @Size(min = 5)
     private String description;
-    @Column(name = "age_of_dwelling")
+
+    @NotBlank
+    @NotNull
+    @Size(min = 2)
     private String ageOfDwelling;
 
-    @Column(name="meter_square")
+    @NotBlank
+    @NotNull
+    @Size(min = 2)
     private String meterSquare;
 
-    @Column(name="is_activate")
+    @NotBlank
+    @NotNull
     private int isActivate;
 
 
