@@ -9,6 +9,7 @@ import com.askidaevimproject.Ask.da.evim.olsun.service.requests.CreateFuelReques
 import com.askidaevimproject.Ask.da.evim.olsun.service.requests.UpdateFuelRequest;
 import com.askidaevimproject.Ask.da.evim.olsun.service.responses.GetAllFuelResponse;
 import com.askidaevimproject.Ask.da.evim.olsun.service.responses.GetByFuelIdResponse;
+import com.askidaevimproject.Ask.da.evim.olsun.service.rules.FuelBusinessRules;
 import lombok.AllArgsConstructor;
 import org.springframework.stereotype.Service;
 
@@ -22,6 +23,8 @@ public class FuelServiceImpl implements FuelService {
 
     private ModelMapperService modelMapperService;
 
+
+    private FuelBusinessRules fuelBusinessRules;
 
     public List<GetAllFuelResponse> getAllFuels(){
 
@@ -54,6 +57,8 @@ public class FuelServiceImpl implements FuelService {
 
     @Override
     public void addFuel(CreateFuelRequest createFuelRequest) {
+
+        this.fuelBusinessRules.checkIfFuelTypeExists(createFuelRequest.getFuelType());
         Fuel fuel = this.modelMapperService.forRequest().map(createFuelRequest,Fuel.class);
 
         this.fuelRepository.save(fuel);

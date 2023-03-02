@@ -30,7 +30,7 @@ public class Member {
     private String memberSurname;
 
 
-    @Column(name="member_phone")
+    @Column(name="member_phone",unique = true)
 
     private String memberPhone;
 
@@ -39,7 +39,7 @@ public class Member {
      * ( @ )
      * **/
 
-    @Column(name="member_mail")
+    @Column(name="member_mail",unique = true)
     private String memberMail;
 
 

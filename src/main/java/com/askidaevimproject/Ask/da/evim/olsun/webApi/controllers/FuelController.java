@@ -33,7 +33,7 @@ public class FuelController {
 
     }
     @PostMapping("/")
-    @ResponseStatus(CREATED)
+    @ResponseStatus(code=CREATED)
     public void addFuel(@RequestBody CreateFuelRequest createFuelRequest) {
         fuelService.addFuel(createFuelRequest);
     }

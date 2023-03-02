@@ -11,6 +11,7 @@ import com.askidaevimproject.Ask.da.evim.olsun.service.responses.GetAllMemberRes
 import com.askidaevimproject.Ask.da.evim.olsun.service.responses.GetByMemberIdResponse;
 import com.askidaevimproject.Ask.da.evim.olsun.service.responses.GetByMemberMailResponse;
 import com.askidaevimproject.Ask.da.evim.olsun.service.responses.GetByMemberNameResponse;
+import com.askidaevimproject.Ask.da.evim.olsun.service.rules.MemberBusinessRules;
 import lombok.AllArgsConstructor;
 import org.springframework.stereotype.Service;
 
@@ -22,6 +23,8 @@ public class MemberServiceImpl implements MemberService {
 
     private  MemberRepository memberRepository;
     private ModelMapperService modelMapperService;
+
+    private MemberBusinessRules memberBusinessRules;
 
 
     public List<GetAllMemberResponse> getAllMembers()
@@ -37,6 +40,10 @@ public class MemberServiceImpl implements MemberService {
 
     @Override
     public void addMember(CreateMemberRequest createMemberRequest) {
+
+        this.memberBusinessRules.checkIfMemberMailExists(createMemberRequest.getMemberMail());
+        this.memberBusinessRules.checkIfMemberPhoneExists(createMemberRequest.getMemberPhone());
+
        Member member=this.modelMapperService.forRequest().map(createMemberRequest,Member.class);
 
        this.memberRepository.save(member);

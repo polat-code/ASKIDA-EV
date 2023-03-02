@@ -31,7 +31,12 @@ public class AdvertServiceImpl implements AdvertService {
 
         return adverts
                 .stream()
-                .map(advert -> this.modelMapperService.forResponse().map(advert,GetAllAdvertResponse.class)).toList();
+                .map(advert ->
+                        this.
+                                modelMapperService.
+                                forResponse().
+                                map(advert,GetAllAdvertResponse.class)).
+                toList();
     }
 
 
@@ -54,6 +59,7 @@ public class AdvertServiceImpl implements AdvertService {
 
     @Override
     public GetByAdvertTitle getByAdvertTitle(String advert_title) {
+
         Advert advert= this.advertRepository.findByAdvertTitle(advert_title);
         return this.modelMapperService.forResponse().map(advert,GetByAdvertTitle.class);
     }
