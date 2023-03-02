@@ -1,7 +1,7 @@
 package com.askidaevimproject.Ask.da.evim.olsun.service.concretes;
 
-import com.askidaevimproject.Ask.da.evim.olsun.core.mappers.abstracts.ModelMapperService;
-import com.askidaevimproject.Ask.da.evim.olsun.exception.FuelIsNotFoundException;
+import com.askidaevimproject.Ask.da.evim.olsun.core.utilities.mappers.abstracts.ModelMapperService;
+import com.askidaevimproject.Ask.da.evim.olsun.core.utilities.exception.FuelIsNotFoundException;
 import com.askidaevimproject.Ask.da.evim.olsun.model.concretes.Fuel;
 import com.askidaevimproject.Ask.da.evim.olsun.repository.abstracts.FuelRepository;
 import com.askidaevimproject.Ask.da.evim.olsun.service.abstracts.FuelService;

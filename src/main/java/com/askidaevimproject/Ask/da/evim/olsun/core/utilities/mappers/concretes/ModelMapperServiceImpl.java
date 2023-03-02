@@ -1,6 +1,6 @@
-package com.askidaevimproject.Ask.da.evim.olsun.core.mappers.concretes;
+package com.askidaevimproject.Ask.da.evim.olsun.core.utilities.mappers.concretes;
 
-import com.askidaevimproject.Ask.da.evim.olsun.core.mappers.abstracts.ModelMapperService;
+import com.askidaevimproject.Ask.da.evim.olsun.core.utilities.mappers.abstracts.ModelMapperService;
 import lombok.AllArgsConstructor;
 import org.modelmapper.ModelMapper;
 import org.modelmapper.convention.MatchingStrategies;

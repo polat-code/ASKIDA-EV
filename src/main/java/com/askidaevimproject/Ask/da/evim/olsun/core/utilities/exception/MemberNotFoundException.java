@@ -1,4 +1,4 @@
-package com.askidaevimproject.Ask.da.evim.olsun.exception;
+package com.askidaevimproject.Ask.da.evim.olsun.core.utilities.exception;
 
 public class MemberNotFoundException extends Exception{
     public MemberNotFoundException(String message) {

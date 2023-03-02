@@ -1,6 +1,6 @@
 package com.askidaevimproject.Ask.da.evim.olsun.service.concretes;
 
-import com.askidaevimproject.Ask.da.evim.olsun.core.mappers.abstracts.ModelMapperService;
+import com.askidaevimproject.Ask.da.evim.olsun.core.utilities.mappers.abstracts.ModelMapperService;
 import com.askidaevimproject.Ask.da.evim.olsun.model.concretes.Dwelling;
 import com.askidaevimproject.Ask.da.evim.olsun.repository.abstracts.*;
 import com.askidaevimproject.Ask.da.evim.olsun.service.abstracts.DwellingService;

@@ -1,7 +1,7 @@
 package com.askidaevimproject.Ask.da.evim.olsun.service.concretes;
 
-import com.askidaevimproject.Ask.da.evim.olsun.core.mappers.abstracts.ModelMapperService;
-import com.askidaevimproject.Ask.da.evim.olsun.exception.MemberNotFoundException;
+import com.askidaevimproject.Ask.da.evim.olsun.core.utilities.mappers.abstracts.ModelMapperService;
+import com.askidaevimproject.Ask.da.evim.olsun.core.utilities.exception.MemberNotFoundException;
 import com.askidaevimproject.Ask.da.evim.olsun.model.concretes.Member;
 import com.askidaevimproject.Ask.da.evim.olsun.repository.abstracts.MemberRepository;
 import com.askidaevimproject.Ask.da.evim.olsun.service.abstracts.MemberService;

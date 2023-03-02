@@ -1,6 +1,6 @@
 package com.askidaevimproject.Ask.da.evim.olsun.webApi.controllers;
 
-import com.askidaevimproject.Ask.da.evim.olsun.exception.MemberNotFoundException;
+import com.askidaevimproject.Ask.da.evim.olsun.core.utilities.exception.MemberNotFoundException;
 import com.askidaevimproject.Ask.da.evim.olsun.service.abstracts.MemberService;
 import com.askidaevimproject.Ask.da.evim.olsun.service.requests.CreateMemberRequest;
 import com.askidaevimproject.Ask.da.evim.olsun.service.requests.UpdateMemberRequest;
