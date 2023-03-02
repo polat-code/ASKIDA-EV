@@ -14,7 +14,6 @@ import javax.validation.constraints.Size;
 public class CreateCityRequest {
 
 
-
     @NotNull
     @NotBlank
     @Size(min = 3,max = 25)

@@ -27,6 +27,7 @@ public class AdvertController {
     @PostMapping("")
     public void addAdvert(@RequestBody CreateAdvertRequest createAdvertRequest) {
 
+
         advertService.addAdvert(createAdvertRequest);
     }
 

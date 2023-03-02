@@ -1,4 +1,4 @@
-package com.askidaevimproject.Ask.da.evim.olsun.core.utilities.exception;
+package com.askidaevimproject.Ask.da.evim.olsun.core.utilities.exceptions;
 
 public class RoomContainedException extends Exception {
 

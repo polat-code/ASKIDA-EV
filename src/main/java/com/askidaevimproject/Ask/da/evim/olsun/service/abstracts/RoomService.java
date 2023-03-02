@@ -1,5 +1,5 @@
 package com.askidaevimproject.Ask.da.evim.olsun.service.abstracts;
-import com.askidaevimproject.Ask.da.evim.olsun.core.utilities.exception.RoomNotFoundException;
+import com.askidaevimproject.Ask.da.evim.olsun.core.utilities.exceptions.RoomNotFoundException;
 import com.askidaevimproject.Ask.da.evim.olsun.service.requests.CreateRoomRequest;
 import com.askidaevimproject.Ask.da.evim.olsun.service.requests.UpdateRoomRequest;
 import com.askidaevimproject.Ask.da.evim.olsun.service.responses.GetAllRoomResponse;

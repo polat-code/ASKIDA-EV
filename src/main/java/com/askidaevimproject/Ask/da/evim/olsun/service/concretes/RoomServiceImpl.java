@@ -1,7 +1,7 @@
 package com.askidaevimproject.Ask.da.evim.olsun.service.concretes;
 
 import com.askidaevimproject.Ask.da.evim.olsun.core.utilities.mappers.abstracts.ModelMapperService;
-import com.askidaevimproject.Ask.da.evim.olsun.core.utilities.exception.RoomNotFoundException;
+import com.askidaevimproject.Ask.da.evim.olsun.core.utilities.exceptions.RoomNotFoundException;
 import com.askidaevimproject.Ask.da.evim.olsun.model.concretes.Room;
 import com.askidaevimproject.Ask.da.evim.olsun.repository.abstracts.RoomRepository;
 import com.askidaevimproject.Ask.da.evim.olsun.service.abstracts.RoomService;

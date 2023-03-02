@@ -16,7 +16,7 @@ public class CreateDistrictRequest {
 
     @NotNull
     @NotBlank
-    @Size(min = 3,max = 100)
+    @Size(min = 3,max = 255)
     private String districtName;
 
     @NotBlank

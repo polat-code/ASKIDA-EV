@@ -1,5 +1,5 @@
 package com.askidaevimproject.Ask.da.evim.olsun.webApi.controllers;
-import com.askidaevimproject.Ask.da.evim.olsun.core.utilities.exception.FuelIsNotFoundException;
+import com.askidaevimproject.Ask.da.evim.olsun.core.utilities.exceptions.FuelIsNotFoundException;
 
 import com.askidaevimproject.Ask.da.evim.olsun.service.abstracts.FuelService;
 

@@ -1,26 +1,30 @@
 package com.askidaevimproject.Ask.da.evim.olsun.service.requests;
-import com.askidaevimproject.Ask.da.evim.olsun.model.concretes.Dwelling;
-import com.askidaevimproject.Ask.da.evim.olsun.model.concretes.Member;
-import jakarta.persistence.Column;
-import jakarta.persistence.JoinColumn;
+
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
+
+import javax.validation.constraints.NotBlank;
+import javax.validation.constraints.NotNull;
+import javax.validation.constraints.Size;
 
 @Data
 @AllArgsConstructor
 @NoArgsConstructor
 public class CreateAdvertRequest {
 
-    @Column(name = "advert_title")
+
+    @NotNull
+    @NotBlank
+    @Size(min = 6)
     private String advertTitle;
 
-    @Column(name="dwelling_id")
-    @JoinColumn(name = "dwelling_id")
-    private Dwelling dwelling;
+    @NotNull
+    @NotBlank
+    private Long dwellingId;
 
-    @Column(name="member_id")
-    @JoinColumn(name="member_id")
-    private Member member;
+    @NotNull
+    @NotBlank
+    private Long memberId;
 
 }

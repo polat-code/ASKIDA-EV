@@ -1,6 +1,6 @@
 package com.askidaevimproject.Ask.da.evim.olsun.service.abstracts;
 
-import com.askidaevimproject.Ask.da.evim.olsun.core.utilities.exception.MemberNotFoundException;
+import com.askidaevimproject.Ask.da.evim.olsun.core.utilities.exceptions.MemberNotFoundException;
 import com.askidaevimproject.Ask.da.evim.olsun.service.requests.CreateMemberRequest;
 import com.askidaevimproject.Ask.da.evim.olsun.service.requests.UpdateMemberRequest;
 import com.askidaevimproject.Ask.da.evim.olsun.service.responses.GetAllMemberResponse;

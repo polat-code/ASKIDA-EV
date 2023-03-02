@@ -1,6 +1,6 @@
 package com.askidaevimproject.Ask.da.evim.olsun.webApi.controllers;
 
-import com.askidaevimproject.Ask.da.evim.olsun.core.utilities.exception.RoomNotFoundException;
+import com.askidaevimproject.Ask.da.evim.olsun.core.utilities.exceptions.RoomNotFoundException;
 
 import com.askidaevimproject.Ask.da.evim.olsun.service.abstracts.RoomService;
 
