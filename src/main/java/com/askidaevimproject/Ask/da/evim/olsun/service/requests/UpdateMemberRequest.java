@@ -4,21 +4,53 @@ import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
+import javax.validation.constraints.NotBlank;
+import javax.validation.constraints.NotNull;
+import javax.validation.constraints.Size;
+
 @NoArgsConstructor
 @AllArgsConstructor
 @Data
 public class UpdateMemberRequest {
 
 
+    @NotNull
+    @NotBlank
     private Long member_id;
-    private String member_name;
-    private String member_surname;
-    private String member_phone;
-    private String member_mail;
-    private String member_password;
-    private String member_photo;
-    private String member_address;
-    private int is_activate;
+
+    @NotNull
+    @NotBlank
+    @Size(min = 3,max = 25)
+    private String memberName;
+
+    @NotNull
+    @NotBlank
+    @Size(min = 3,max = 25)
+    private String memberSurname;
+
+    @NotNull
+    @NotBlank
+    @Size(min = 10,max = 50)
+    private String memberPhone;
+
+    @NotNull
+    @NotBlank
+    @Size(min = 3,max = 25)
+    private String memberMail;
+
+    @NotNull
+    @NotBlank
+    private String memberPassword;
+
+    @NotNull
+    @NotBlank
+    private String memberPhoto;
+    @NotNull
+    @NotBlank
+    private String memberAddress;
+    @NotNull
+    @NotBlank
+    private int isActivate;
 
 
 }

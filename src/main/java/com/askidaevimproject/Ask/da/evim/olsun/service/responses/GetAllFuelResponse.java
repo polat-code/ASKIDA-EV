@@ -9,6 +9,8 @@ import lombok.NoArgsConstructor;
 @NoArgsConstructor
 
 public class GetAllFuelResponse {
+
+
     private Long fuel_id;
     private String fuel_type;
 }

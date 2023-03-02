@@ -9,6 +9,7 @@ import lombok.NoArgsConstructor;
 @NoArgsConstructor
 public class GetByRoomIdResponse {
 
+
     private String room_type;
 
 }

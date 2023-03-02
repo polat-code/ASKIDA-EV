@@ -10,7 +10,8 @@ import lombok.NoArgsConstructor;
 @NoArgsConstructor
 public class GetByNeighborHoodZipCodeResponse {
 
-    @Column(name="zip_code")
+
+    private String neighborhoodName;
     private String zipCode;
 
 }

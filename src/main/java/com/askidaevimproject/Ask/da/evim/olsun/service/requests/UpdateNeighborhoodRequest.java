@@ -6,15 +6,29 @@ import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
+import javax.validation.constraints.NotBlank;
+import javax.validation.constraints.NotNull;
+import javax.validation.constraints.Size;
+
 @Data
 @AllArgsConstructor
 @NoArgsConstructor
 public class UpdateNeighborhoodRequest {
 
+    @NotNull
+    @NotBlank
     private Long neighborhood_id;
+
+    @NotNull
+    @NotBlank
+    @Size(min = 5, max = 10)
     private String zip_code;
-    @Column(name="f_district_id")
-    @JoinColumn(name="f_district_id")
-    private CreateDistrictRequest createDistrictRequest;
+
+    @NotNull
+    @NotBlank
+    private Long districtId;
+
+    @NotNull
+    @NotBlank
     private String neighborhood_name;
 }

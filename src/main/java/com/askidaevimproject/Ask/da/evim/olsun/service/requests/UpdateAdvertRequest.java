@@ -14,6 +14,8 @@ import javax.validation.constraints.Size;
 public class UpdateAdvertRequest {
 
 
+    @NotNull
+    @NotBlank
     private Long advert_id;
 
     @NotBlank

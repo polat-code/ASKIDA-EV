@@ -10,6 +10,6 @@ import lombok.NoArgsConstructor;
 @NoArgsConstructor
 public class GetByAdvertTitle {
 
-    @Column(name="advert_title")
+
     private String advertTitle;
 }

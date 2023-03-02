@@ -36,6 +36,7 @@ public class AdvertServiceImpl implements AdvertService {
 
 
     public void deleteAdvert(Long advert_id) {
+
         if(advertRepository.existsById(advert_id))
             if(memberRepository.existsById(advertRepository.findById(advert_id).get().getMember().getMember_id()))
                 if(dwellingRepository.existsById(advertRepository.findById(advert_id).get().getAdvert_id()))
@@ -58,6 +59,7 @@ public class AdvertServiceImpl implements AdvertService {
     }
 
     public void addAdvert(CreateAdvertRequest createAdvertRequest) {
+
 
         Advert advert = this.modelMapperService.forRequest().map(createAdvertRequest,Advert.class);
         this.advertRepository.save(advert);
