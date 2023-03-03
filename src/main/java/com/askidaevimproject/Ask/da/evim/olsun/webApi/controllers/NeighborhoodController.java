@@ -15,7 +15,7 @@ import javax.validation.Valid;
 import java.util.List;
 
 @RestController
-@RequestMapping("/api/neighborhood")
+@RequestMapping("/api/neighborhoods")
 @AllArgsConstructor
 public class NeighborhoodController {
 

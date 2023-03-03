@@ -16,7 +16,7 @@ import javax.validation.Valid;
 import java.util.List;
 
 @RestController
-@RequestMapping("/api/district")
+@RequestMapping("/api/districts")
 @AllArgsConstructor
 public class DistrictController {
 

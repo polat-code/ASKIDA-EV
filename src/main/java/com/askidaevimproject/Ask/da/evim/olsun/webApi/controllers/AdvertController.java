@@ -12,7 +12,7 @@ import javax.validation.Valid;
 import java.util.List;
 
 @RestController
-@RequestMapping("/api/advert")
+@RequestMapping("/api/adverts")
 @AllArgsConstructor
 public class AdvertController {
 

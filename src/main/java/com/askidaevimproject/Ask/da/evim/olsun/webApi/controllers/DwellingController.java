@@ -12,7 +12,7 @@ import javax.validation.Valid;
 import java.util.List;
 
 @RestController
-@RequestMapping("/api/dwelling")
+@RequestMapping("/api/dwellings")
 @AllArgsConstructor
 public class DwellingController {
 
