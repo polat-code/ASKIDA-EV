@@ -25,10 +25,6 @@ public class MemberBusinessRules {
             throw new MemberPhoneException("The phone number is using ");
     }
 
-    public void checkMemberMailValid(String mail){
-
-
-    }
 
 
 

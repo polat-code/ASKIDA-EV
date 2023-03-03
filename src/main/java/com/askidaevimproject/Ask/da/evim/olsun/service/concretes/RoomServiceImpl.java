@@ -30,6 +30,8 @@ public class RoomServiceImpl implements RoomService {
 
     @Override
     public List<GetAllRoomResponse> getAllRoom() {
+
+
         List<Room> rooms = roomRepository.findAll();
 
         return rooms.
@@ -66,6 +68,7 @@ public class RoomServiceImpl implements RoomService {
     @Override
     public void updateRoom(UpdateRoomRequest updateRoomRequest){
 
+
         Room room = this.modelMapperService.forRequest().map(updateRoomRequest,Room.class);
         this.roomRepository.save(room);
     }
@@ -74,6 +77,8 @@ public class RoomServiceImpl implements RoomService {
 
     @Override
     public GetByRoomTypeResponse findByRoomType(String roomType) {
+
+        this.roomBusinessRules.checkIfRoomTypeIsNotFound(roomType);
         Room room=this.roomRepository.findByRoomType(roomType);
         return this.modelMapperService.forResponse().map(room,GetByRoomTypeResponse.class);
     }
