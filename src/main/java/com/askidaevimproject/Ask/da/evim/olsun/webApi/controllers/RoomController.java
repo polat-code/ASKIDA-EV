@@ -28,8 +28,8 @@ public class RoomController {
     }
     @PostMapping("")
     @ResponseStatus(HttpStatus.CREATED)
-    public void addRoom(@RequestBody()  CreateRoomRequest createRoomRequest){
-        roomService.addRoom(createRoomRequest);
+    public void addRoom(@RequestBody() @Valid() CreateRoomRequest createRoomRequest){
+        this.roomService.addRoom(createRoomRequest);
     }
     @DeleteMapping("/{room_id}")
     public void deleteRoom(@PathVariable Long room_id){
@@ -37,7 +37,7 @@ public class RoomController {
     }
 
     @PutMapping("/{room_id}")
-    public void updateRoom(@RequestBody @Valid UpdateRoomRequest updateRoomRequest) {
+    public void updateRoom(@RequestBody @Valid() UpdateRoomRequest updateRoomRequest) {
          roomService.updateRoom(updateRoomRequest);
     }
 

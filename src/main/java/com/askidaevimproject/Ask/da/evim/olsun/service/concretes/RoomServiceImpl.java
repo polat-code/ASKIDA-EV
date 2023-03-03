@@ -24,8 +24,9 @@ public class RoomServiceImpl implements RoomService {
     private RoomRepository roomRepository;
     private ModelMapperService modelMapperService;
 
-    private RoomBusinessRules roomBusinessRules;
 
+
+    @Override
     public List<GetAllRoomResponse> getAllRoom() {
         List<Room> rooms = roomRepository.findAll();
 
@@ -39,6 +40,7 @@ public class RoomServiceImpl implements RoomService {
 
     }
 
+    @Override
     public void addRoom(CreateRoomRequest createRoomRequest){
 
 
@@ -50,6 +52,7 @@ public class RoomServiceImpl implements RoomService {
 
     }
 
+    @Override
     public void deleteRoom(Long room_id){
 
         if(this.roomRepository.existsById(room_id))
@@ -57,6 +60,7 @@ public class RoomServiceImpl implements RoomService {
 
     }
 
+    @Override
     public void updateRoom(UpdateRoomRequest updateRoomRequest){
 
         Room room = this.modelMapperService.forRequest().map(updateRoomRequest,Room.class);
