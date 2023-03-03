@@ -9,9 +9,9 @@ import lombok.NoArgsConstructor;
 @NoArgsConstructor
 public class GetByMemberIdResponse {
 
-    private String member_name;
-    private String member_surname;
-    private String member_phone;
-    private String member_mail;
-    private String member_address;
+    private String memberName;
+    private String memberSurname;
+    private String memberPhone;
+    private String memberMail;
+    private String memberAddress;
 }

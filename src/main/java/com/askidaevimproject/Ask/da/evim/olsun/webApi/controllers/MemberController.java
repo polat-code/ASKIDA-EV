@@ -28,21 +28,23 @@ public class MemberController {
         return memberService.getAllMembers();
     }
 
-    @GetMapping(value = "/{member_id}")
+    @GetMapping(value = "/memberId/{member_id}")
     public GetByMemberIdResponse getByMemberId(@PathVariable Long member_id) throws MemberNotFoundException {
         return memberService.getByMemberId(member_id);
 
     }
 
-    @GetMapping("/{member_name}")
+    @GetMapping("/memberName/{member_name}")
     public GetByMemberNameResponse getByMemberName(@PathVariable String member_name){
         return this.memberService.getByMemberName(member_name);
     }
 
-    @GetMapping("/{member_mail}")
+    @GetMapping("/memberMail/{member_mail}")
     public GetByMemberMailResponse getByMemberMail(@PathVariable String member_mail){
         return memberService.getByMemberMail(member_mail);
     }
+
+
 
 
 
