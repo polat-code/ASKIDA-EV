@@ -1,6 +1,7 @@
 package com.askidaevimproject.Ask.da.evim.olsun;
 
 import com.askidaevimproject.Ask.da.evim.olsun.core.utilities.exceptions.ProblemDetails;
+import com.askidaevimproject.Ask.da.evim.olsun.core.utilities.exceptions.RoomTypeExistsException;
 import com.askidaevimproject.Ask.da.evim.olsun.core.utilities.exceptions.ValidationProblemDetails;
 import org.modelmapper.ModelMapper;
 import org.springframework.boot.SpringApplication;
@@ -52,6 +53,15 @@ public class Application {
 	 * business exception handle it here.
 	 * */
 
+
+	@ExceptionHandler
+	@ResponseStatus(HttpStatus.BAD_REQUEST)
+	public ProblemDetails handleRoomTypeExistsException(RoomTypeExistsException roomTypeExistsException){
+
+		ProblemDetails problemDetails = new ProblemDetails();
+		problemDetails.setMessage(roomTypeExistsException.getMessage());
+		return problemDetails;
+	}
 
 
 

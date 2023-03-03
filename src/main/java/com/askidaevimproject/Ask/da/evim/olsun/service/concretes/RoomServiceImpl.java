@@ -1,5 +1,6 @@
 package com.askidaevimproject.Ask.da.evim.olsun.service.concretes;
 
+import com.askidaevimproject.Ask.da.evim.olsun.core.utilities.exceptions.RoomTypeExistsException;
 import com.askidaevimproject.Ask.da.evim.olsun.core.utilities.mappers.abstracts.ModelMapperService;
 
 import com.askidaevimproject.Ask.da.evim.olsun.model.concretes.Room;
@@ -10,6 +11,7 @@ import com.askidaevimproject.Ask.da.evim.olsun.service.requests.UpdateRoomReques
 import com.askidaevimproject.Ask.da.evim.olsun.service.responses.GetAllRoomResponse;
 import com.askidaevimproject.Ask.da.evim.olsun.service.responses.GetByRoomTypeResponse;
 
+import com.askidaevimproject.Ask.da.evim.olsun.service.rules.RoomBusinessRules;
 import lombok.AllArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Service;
@@ -23,6 +25,7 @@ public class RoomServiceImpl implements RoomService {
     private RoomRepository roomRepository;
     private ModelMapperService modelMapperService;
 
+    private RoomBusinessRules roomBusinessRules;
 
 
     @Override
@@ -40,9 +43,10 @@ public class RoomServiceImpl implements RoomService {
     }
 
     @Override
-    public void addRoom(CreateRoomRequest createRoomRequest){
+    public void addRoom(CreateRoomRequest createRoomRequest) {
 
 
+        this.roomBusinessRules.checkIfRoomTypeExists(createRoomRequest.getRoomType());
 
         Room room = this.modelMapperService.forRequest().map(createRoomRequest,Room.class);
         this.roomRepository.save(room);

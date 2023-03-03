@@ -1,4 +1,5 @@
 package com.askidaevimproject.Ask.da.evim.olsun.webApi.controllers;
+import com.askidaevimproject.Ask.da.evim.olsun.core.utilities.exceptions.RoomTypeExistsException;
 import com.askidaevimproject.Ask.da.evim.olsun.service.abstracts.RoomService;
 import com.askidaevimproject.Ask.da.evim.olsun.service.requests.CreateRoomRequest;
 import com.askidaevimproject.Ask.da.evim.olsun.service.requests.UpdateRoomRequest;
@@ -27,7 +28,7 @@ public class RoomController {
     }
     @PostMapping("")
     @ResponseStatus(HttpStatus.CREATED)
-    public void addRoom(@RequestBody() @Valid() CreateRoomRequest createRoomRequest){
+    public void addRoom(@RequestBody() @Valid() CreateRoomRequest createRoomRequest)  {
         this.roomService.addRoom(createRoomRequest);
     }
     @DeleteMapping("/{room_id}")
