@@ -36,7 +36,7 @@ public class DistrictController {
         districtService.addDistrict(createDistrictRequest);
     }
 
-    @GetMapping("/{district_name}")
+    @GetMapping("/findByDistrictName/{district_name}")
     public GetByDistrictName getByDistrictName(@PathVariable String district_name){
         return districtService.getByDistrictName(district_name);
     }
