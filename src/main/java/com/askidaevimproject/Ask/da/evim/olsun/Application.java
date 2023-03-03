@@ -1,9 +1,6 @@
 package com.askidaevimproject.Ask.da.evim.olsun;
 
-import com.askidaevimproject.Ask.da.evim.olsun.core.utilities.exceptions.ProblemDetails;
-import com.askidaevimproject.Ask.da.evim.olsun.core.utilities.exceptions.RoomTypeExistsException;
-import com.askidaevimproject.Ask.da.evim.olsun.core.utilities.exceptions.RoomTypeNotFoundException;
-import com.askidaevimproject.Ask.da.evim.olsun.core.utilities.exceptions.ValidationProblemDetails;
+import com.askidaevimproject.Ask.da.evim.olsun.core.utilities.exceptions.*;
 import org.modelmapper.ModelMapper;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
@@ -65,6 +62,15 @@ public class Application {
 	}
 
 	@ExceptionHandler
+	@ResponseStatus(HttpStatus.BAD_REQUEST)
+	public ProblemDetails handleFuelIsExistsException(FuelIsExistsException fuelIsExistsException){
+
+		ProblemDetails problemDetails = new ProblemDetails();
+		problemDetails.setMessage(fuelIsExistsException.getMessage());
+		return problemDetails;
+	}
+
+	@ExceptionHandler
 	@ResponseStatus(HttpStatus.INTERNAL_SERVER_ERROR)
 	public ProblemDetails handleRoomTypeIsNotFound(RoomTypeNotFoundException roomTypeNotFoundException){
 
@@ -72,6 +78,16 @@ public class Application {
 		problemDetails.setMessage(roomTypeNotFoundException.getMessage());
 		return problemDetails;
 	}
+
+	@ExceptionHandler
+	@ResponseStatus(HttpStatus.INTERNAL_SERVER_ERROR)
+	public ProblemDetails handleFuelIdIsNotFound(FuelIdIsNotFoundException fuelIdIsNotFoundException){
+
+		ProblemDetails problemDetails = new ProblemDetails();
+		problemDetails.setMessage(fuelIdIsNotFoundException.getMessage());
+		return problemDetails;
+	}
+
 
 
 

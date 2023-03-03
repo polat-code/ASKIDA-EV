@@ -1,6 +1,5 @@
 package com.askidaevimproject.Ask.da.evim.olsun.service.concretes;
 
-import com.askidaevimproject.Ask.da.evim.olsun.core.utilities.exceptions.RoomTypeExistsException;
 import com.askidaevimproject.Ask.da.evim.olsun.core.utilities.mappers.abstracts.ModelMapperService;
 
 import com.askidaevimproject.Ask.da.evim.olsun.model.concretes.Room;
@@ -68,6 +67,8 @@ public class RoomServiceImpl implements RoomService {
     @Override
     public void updateRoom(UpdateRoomRequest updateRoomRequest){
 
+
+        this.roomBusinessRules.checkIfRoomTypeExists(updateRoomRequest.getRoomType());
 
         Room room = this.modelMapperService.forRequest().map(updateRoomRequest,Room.class);
         this.roomRepository.save(room);

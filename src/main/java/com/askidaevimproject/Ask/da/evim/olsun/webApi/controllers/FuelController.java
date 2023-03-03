@@ -33,7 +33,7 @@ public class FuelController {
         return fuelService.getByFuelIdResponse(fuel_id);
 
     }
-    @PostMapping("/")
+    @PostMapping("")
     @ResponseStatus(code=CREATED)
     public void addFuel(@RequestBody @Valid CreateFuelRequest createFuelRequest) {
         fuelService.addFuel(createFuelRequest);
@@ -44,7 +44,7 @@ public class FuelController {
         fuelService.deleteFuel(fuel_id);
     }
 
-    @PutMapping("/")
+    @PutMapping("")
     public void updateFuel(@RequestBody  @Valid UpdateFuelRequest updateFuelRequest){
         this.fuelService.updateFuel(updateFuelRequest);
     }
