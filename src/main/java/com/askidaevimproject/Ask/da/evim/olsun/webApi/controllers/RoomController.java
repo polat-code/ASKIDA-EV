@@ -28,7 +28,7 @@ public class RoomController {
     }
     @PostMapping("")
     @ResponseStatus(HttpStatus.CREATED)
-    public void addRoom(@RequestBody() @Valid CreateRoomRequest createRoomRequest){
+    public void addRoom(@RequestBody()  CreateRoomRequest createRoomRequest){
         roomService.addRoom(createRoomRequest);
     }
     @DeleteMapping("/{room_id}")

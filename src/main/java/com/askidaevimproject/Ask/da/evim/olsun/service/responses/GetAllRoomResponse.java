@@ -10,6 +10,7 @@ import lombok.NoArgsConstructor;
 public class GetAllRoomResponse {
 
 
+    private Long room_id;
     private String room_type;
     
 }
