@@ -8,6 +8,7 @@ import com.askidaevimproject.Ask.da.evim.olsun.service.responses.GetByAdvertTitl
 import lombok.AllArgsConstructor;
 import org.springframework.web.bind.annotation.*;
 
+import javax.validation.Valid;
 import java.util.List;
 
 @RestController
@@ -25,7 +26,7 @@ public class AdvertController {
     }
 
     @PostMapping("")
-    public void addAdvert(@RequestBody CreateAdvertRequest createAdvertRequest) {
+    public void addAdvert(@RequestBody @Valid CreateAdvertRequest createAdvertRequest) {
 
 
         advertService.addAdvert(createAdvertRequest);
@@ -37,7 +38,7 @@ public class AdvertController {
         advertService.deleteAdvert(advert_id);
     }
     @PutMapping("")
-    public void updateAdvert(@RequestBody UpdateAdvertRequest updateAdvertRequest) {
+    public void updateAdvert(@RequestBody @Valid UpdateAdvertRequest updateAdvertRequest) {
         advertService.updateAdvert(updateAdvertRequest);
     }
 

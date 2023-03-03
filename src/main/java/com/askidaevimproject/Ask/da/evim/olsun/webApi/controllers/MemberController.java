@@ -12,6 +12,7 @@ import lombok.AllArgsConstructor;
 import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.*;
 
+import javax.validation.Valid;
 import java.util.List;
 
 @RestController
@@ -47,7 +48,7 @@ public class MemberController {
 
     @PostMapping("")
     @ResponseStatus(HttpStatus.CREATED)
-    public void addMember(@RequestBody CreateMemberRequest createMemberRequest){
+    public void addMember(@RequestBody @Valid CreateMemberRequest createMemberRequest){
          memberService.addMember(createMemberRequest);
     }
 
@@ -57,7 +58,7 @@ public class MemberController {
     }
 
     @PutMapping("")
-    public void updateMember(@RequestBody UpdateMemberRequest  updateMemberRequest){
+    public void updateMember(@RequestBody @Valid UpdateMemberRequest  updateMemberRequest){
         memberService.updateMember(updateMemberRequest);
     }
 }

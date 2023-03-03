@@ -23,7 +23,6 @@ public class FuelServiceImpl implements FuelService {
 
     private ModelMapperService modelMapperService;
 
-
     private FuelBusinessRules fuelBusinessRules;
 
     public List<GetAllFuelResponse> getAllFuels(){
@@ -43,6 +42,7 @@ public class FuelServiceImpl implements FuelService {
 
     @Override
     public GetByFuelIdResponse getByFuelIdResponse(Long fuel_id) throws FuelIsNotFoundException {
+
         Fuel fuel = this.fuelRepository.findById(fuel_id).orElseThrow(()->new FuelIsNotFoundException("fuel is not found"));
         return this.modelMapperService.forResponse().map(fuel,GetByFuelIdResponse.class);
     }
@@ -51,10 +51,11 @@ public class FuelServiceImpl implements FuelService {
     public void updateFuel(UpdateFuelRequest updateFuelRequest)
     {
 
+        this.fuelBusinessRules.checkIfFuelTypeExists(updateFuelRequest.getFuel_type());
+
         Fuel fuel = this.modelMapperService.forResponse().map(updateFuelRequest,Fuel.class);
         this.fuelRepository.save(fuel);
     }
-
     @Override
     public void addFuel(CreateFuelRequest createFuelRequest) {
 
@@ -64,10 +65,11 @@ public class FuelServiceImpl implements FuelService {
         this.fuelRepository.save(fuel);
     }
 
-
     public void deleteFuel(Long fuel_id) {
 
+        if(this.fuelRepository.existsById(fuel_id)) {
+            this.fuelRepository.deleteById(fuel_id);
 
-        this.fuelRepository.deleteById(fuel_id);
+        }
     }
 }

@@ -12,6 +12,7 @@ import lombok.AllArgsConstructor;
 import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.*;
 
+import javax.validation.Valid;
 import java.util.List;
 
 @RestController
@@ -31,7 +32,7 @@ public class DistrictController {
 
     @PostMapping("")
     @ResponseStatus(HttpStatus.CREATED)
-    public void addDistrict(@RequestBody CreateDistrictRequest createDistrictRequest){
+    public void addDistrict(@RequestBody @Valid CreateDistrictRequest createDistrictRequest){
         districtService.addDistrict(createDistrictRequest);
     }
 
@@ -45,7 +46,7 @@ public class DistrictController {
     }
 
     @PutMapping("")
-    public void updateDistrict(@RequestBody UpdateDistrictRequest updateDistrictRequest){
+    public void updateDistrict(@RequestBody @Valid UpdateDistrictRequest updateDistrictRequest){
         districtService.updateDistrict(updateDistrictRequest);
     }
 

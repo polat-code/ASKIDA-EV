@@ -8,6 +8,7 @@ import com.askidaevimproject.Ask.da.evim.olsun.service.responses.GetAllDwellingR
 import lombok.AllArgsConstructor;
 import org.springframework.web.bind.annotation.*;
 
+import javax.validation.Valid;
 import java.util.List;
 
 @RestController
@@ -24,7 +25,7 @@ public class DwellingController {
     }
 
     @PostMapping("")
-    public void addDistrict(@RequestBody CreateDwellingRequest createDwellingRequest){
+    public void addDistrict(@RequestBody @Valid CreateDwellingRequest createDwellingRequest){
         this.dwellingService.addDistrict(createDwellingRequest);
     }
 

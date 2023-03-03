@@ -1,9 +1,5 @@
 package com.askidaevimproject.Ask.da.evim.olsun.webApi.controllers;
-
-import com.askidaevimproject.Ask.da.evim.olsun.core.utilities.exceptions.RoomNotFoundException;
-
 import com.askidaevimproject.Ask.da.evim.olsun.service.abstracts.RoomService;
-
 import com.askidaevimproject.Ask.da.evim.olsun.service.requests.CreateRoomRequest;
 import com.askidaevimproject.Ask.da.evim.olsun.service.requests.UpdateRoomRequest;
 import com.askidaevimproject.Ask.da.evim.olsun.service.responses.GetAllRoomResponse;
@@ -12,12 +8,13 @@ import com.askidaevimproject.Ask.da.evim.olsun.service.responses.GetByRoomTypeRe
 import lombok.AllArgsConstructor;
 import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.*;
-
+import javax.validation.Valid;
 import java.util.List;
 
 @RequestMapping("/api/rooms")
 @RestController
 @AllArgsConstructor
+
 public class RoomController {
 
     private RoomService roomService;
@@ -31,7 +28,7 @@ public class RoomController {
     }
     @PostMapping("")
     @ResponseStatus(HttpStatus.CREATED)
-    public void addRoom(@RequestBody() CreateRoomRequest createRoomRequest){
+    public void addRoom(@RequestBody() @Valid CreateRoomRequest createRoomRequest){
         roomService.addRoom(createRoomRequest);
     }
     @DeleteMapping("/{room_id}")
@@ -40,7 +37,7 @@ public class RoomController {
     }
 
     @PutMapping("/{room_id}")
-    public void updateRoom(@RequestBody UpdateRoomRequest updateRoomRequest) {
+    public void updateRoom(@RequestBody @Valid UpdateRoomRequest updateRoomRequest) {
          roomService.updateRoom(updateRoomRequest);
     }
 
@@ -50,7 +47,7 @@ public class RoomController {
     }
 
     @GetMapping("/{room_id}")
-    public GetByRoomIdResponse findByRoom_id(@PathVariable Long room_id) throws RoomNotFoundException {
+    public GetByRoomIdResponse findByRoom_id(@PathVariable Long room_id)  {
         return roomService.findByRoom_id(room_id);
     }
 

@@ -11,6 +11,7 @@ import lombok.AllArgsConstructor;
 import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.*;
 
+import javax.validation.Valid;
 import java.util.List;
 
 @RestController
@@ -33,12 +34,12 @@ public class NeighborhoodController {
 
     @PostMapping("")
     @ResponseStatus(HttpStatus.CREATED)
-    public void addNeighborhood(@RequestBody CreateNeighborhoodRequest createNeighborhoodRequest){
+    public void addNeighborhood(@RequestBody @Valid CreateNeighborhoodRequest createNeighborhoodRequest){
         this.neighborhoodService.addNeighborhood(createNeighborhoodRequest);
     }
 
     @PutMapping("")
-    public void updateNeighborhood(@RequestBody UpdateNeighborhoodRequest updateNeighborhoodRequest){
+    public void updateNeighborhood(@RequestBody @Valid UpdateNeighborhoodRequest updateNeighborhoodRequest){
         this.neighborhoodService.updateNeighborhood(updateNeighborhoodRequest);
     }
 

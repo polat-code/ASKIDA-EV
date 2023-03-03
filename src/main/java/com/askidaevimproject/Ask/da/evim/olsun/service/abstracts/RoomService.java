@@ -20,7 +20,7 @@ public interface RoomService {
 
     void updateRoom (UpdateRoomRequest updateRoom);
 
-    GetByRoomIdResponse findByRoom_id(Long room_id) throws RoomNotFoundException;
+    GetByRoomIdResponse findByRoom_id(Long room_id) ;
 
     GetByRoomTypeResponse findByRoomType(String roomType);
 

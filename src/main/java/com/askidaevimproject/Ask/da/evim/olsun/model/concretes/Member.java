@@ -5,6 +5,7 @@ import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
+
 import static jakarta.persistence.GenerationType.IDENTITY;
 
 @Data
@@ -39,6 +40,8 @@ public class Member {
      * ( @ )
      * **/
 
+    //@Email(regexp = )
+
     @Column(name="member_mail",unique = true)
     private String memberMail;
 
@@ -48,13 +51,13 @@ public class Member {
     private String memberPassword;
 
 
-    @Lob
-    @Column(name="member_photo",length = 512)
+
+    @Column(name="member_photo")
     private String memberPhoto;
 
 
-    @Lob
-    @Column(name = "member_address",length = 512)
+
+    @Column(name = "member_address")
     private String memberAddress;
 
 

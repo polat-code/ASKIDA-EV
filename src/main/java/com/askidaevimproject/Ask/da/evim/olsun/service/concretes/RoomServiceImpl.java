@@ -1,7 +1,7 @@
 package com.askidaevimproject.Ask.da.evim.olsun.service.concretes;
 
 import com.askidaevimproject.Ask.da.evim.olsun.core.utilities.mappers.abstracts.ModelMapperService;
-import com.askidaevimproject.Ask.da.evim.olsun.core.utilities.exceptions.RoomNotFoundException;
+
 import com.askidaevimproject.Ask.da.evim.olsun.model.concretes.Room;
 import com.askidaevimproject.Ask.da.evim.olsun.repository.abstracts.RoomRepository;
 import com.askidaevimproject.Ask.da.evim.olsun.service.abstracts.RoomService;
@@ -10,6 +10,7 @@ import com.askidaevimproject.Ask.da.evim.olsun.service.requests.UpdateRoomReques
 import com.askidaevimproject.Ask.da.evim.olsun.service.responses.GetAllRoomResponse;
 import com.askidaevimproject.Ask.da.evim.olsun.service.responses.GetByRoomIdResponse;
 import com.askidaevimproject.Ask.da.evim.olsun.service.responses.GetByRoomTypeResponse;
+import com.askidaevimproject.Ask.da.evim.olsun.service.rules.RoomBusinessRules;
 import lombok.AllArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Service;
@@ -23,6 +24,7 @@ public class RoomServiceImpl implements RoomService {
     private RoomRepository roomRepository;
     private ModelMapperService modelMapperService;
 
+    private RoomBusinessRules roomBusinessRules;
 
     public List<GetAllRoomResponse> getAllRoom() {
         List<Room> rooms = roomRepository.findAll();
@@ -39,6 +41,8 @@ public class RoomServiceImpl implements RoomService {
 
     public void addRoom(CreateRoomRequest createRoomRequest){
 
+
+
         Room room = this.modelMapperService.forRequest().map(createRoomRequest,Room.class);
         this.roomRepository.save(room);
 
@@ -48,9 +52,9 @@ public class RoomServiceImpl implements RoomService {
 
     public void deleteRoom(Long room_id){
 
-        if(roomRepository.existsById(room_id)){
-            roomRepository.deleteById(room_id);
-        }
+        if(this.roomRepository.existsById(room_id))
+            this.roomRepository.deleteById(room_id);
+
     }
 
     public void updateRoom(UpdateRoomRequest updateRoomRequest){
@@ -60,8 +64,8 @@ public class RoomServiceImpl implements RoomService {
     }
 
     @Override
-    public GetByRoomIdResponse findByRoom_id(Long room_id) throws RoomNotFoundException {
-        Room room = this.roomRepository.findById(room_id).orElseThrow(()-> new RoomNotFoundException("The Room is not found exception"));
+    public GetByRoomIdResponse findByRoom_id(Long room_id)  {
+        Room room = this.roomRepository.findById(room_id).orElseThrow();
         return this.modelMapperService.forResponse().map(room,GetByRoomIdResponse.class);
     }
 

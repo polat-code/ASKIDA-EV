@@ -11,6 +11,7 @@ import lombok.AllArgsConstructor;
 
 import org.springframework.web.bind.annotation.*;
 
+import javax.validation.Valid;
 import java.util.List;
 
 import static org.springframework.http.HttpStatus.*;
@@ -34,7 +35,7 @@ public class FuelController {
     }
     @PostMapping("/")
     @ResponseStatus(code=CREATED)
-    public void addFuel(@RequestBody CreateFuelRequest createFuelRequest) {
+    public void addFuel(@RequestBody @Valid CreateFuelRequest createFuelRequest) {
         fuelService.addFuel(createFuelRequest);
     }
 
@@ -44,7 +45,7 @@ public class FuelController {
     }
 
     @PutMapping("/")
-    public void updateFuel(@RequestBody UpdateFuelRequest updateFuelRequest){
+    public void updateFuel(@RequestBody  @Valid UpdateFuelRequest updateFuelRequest){
         this.fuelService.updateFuel(updateFuelRequest);
     }
 

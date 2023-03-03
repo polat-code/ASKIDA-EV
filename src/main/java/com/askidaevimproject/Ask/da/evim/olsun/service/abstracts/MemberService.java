@@ -23,6 +23,8 @@ public interface MemberService {
     void updateMember(UpdateMemberRequest updateMemberRequest);
 
 
+    // GetByMemberPhone getByMemberPhone(String member_phone);
+
     GetByMemberIdResponse getByMemberId(Long member_id) throws MemberNotFoundException;
 
     GetByMemberMailResponse getByMemberMail(String member_mail);

@@ -9,6 +9,7 @@ import com.askidaevimproject.Ask.da.evim.olsun.service.responses.GetByCityNameRe
 import lombok.AllArgsConstructor;
 import org.springframework.web.bind.annotation.*;
 
+import javax.validation.Valid;
 import java.util.List;
 
 import static org.springframework.http.HttpStatus.CREATED;
@@ -27,7 +28,7 @@ public class CityController {
     }
     @PostMapping("")
     @ResponseStatus(CREATED)
-    public void addCity(@RequestBody CreateCityRequest cityRequest){
+    public void addCity(@RequestBody @Valid CreateCityRequest cityRequest){
         cityService.addCity(cityRequest);
     }
     @DeleteMapping("/{city_id}")
@@ -40,7 +41,7 @@ public class CityController {
         return cityService.getByCityName(cityName);
     }
     @PutMapping("")
-    public void updateCity(@RequestBody UpdateCityRequest updateCityRequest){
+    public void updateCity(@RequestBody @Valid UpdateCityRequest updateCityRequest){
         this.cityService.updateCity(updateCityRequest);
     }
 
