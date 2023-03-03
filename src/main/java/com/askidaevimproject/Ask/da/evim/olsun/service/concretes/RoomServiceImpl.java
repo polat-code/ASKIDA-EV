@@ -8,9 +8,8 @@ import com.askidaevimproject.Ask.da.evim.olsun.service.abstracts.RoomService;
 import com.askidaevimproject.Ask.da.evim.olsun.service.requests.CreateRoomRequest;
 import com.askidaevimproject.Ask.da.evim.olsun.service.requests.UpdateRoomRequest;
 import com.askidaevimproject.Ask.da.evim.olsun.service.responses.GetAllRoomResponse;
-import com.askidaevimproject.Ask.da.evim.olsun.service.responses.GetByRoomIdResponse;
 import com.askidaevimproject.Ask.da.evim.olsun.service.responses.GetByRoomTypeResponse;
-import com.askidaevimproject.Ask.da.evim.olsun.service.rules.RoomBusinessRules;
+
 import lombok.AllArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Service;
@@ -67,11 +66,7 @@ public class RoomServiceImpl implements RoomService {
         this.roomRepository.save(room);
     }
 
-    @Override
-    public GetByRoomIdResponse findByRoom_id(Long room_id)  {
-        Room room = this.roomRepository.findById(room_id).orElseThrow();
-        return this.modelMapperService.forResponse().map(room,GetByRoomIdResponse.class);
-    }
+
 
     @Override
     public GetByRoomTypeResponse findByRoomType(String roomType) {

@@ -3,7 +3,6 @@ import com.askidaevimproject.Ask.da.evim.olsun.service.abstracts.RoomService;
 import com.askidaevimproject.Ask.da.evim.olsun.service.requests.CreateRoomRequest;
 import com.askidaevimproject.Ask.da.evim.olsun.service.requests.UpdateRoomRequest;
 import com.askidaevimproject.Ask.da.evim.olsun.service.responses.GetAllRoomResponse;
-import com.askidaevimproject.Ask.da.evim.olsun.service.responses.GetByRoomIdResponse;
 import com.askidaevimproject.Ask.da.evim.olsun.service.responses.GetByRoomTypeResponse;
 import lombok.AllArgsConstructor;
 import org.springframework.http.HttpStatus;
@@ -36,7 +35,7 @@ public class RoomController {
         roomService.deleteRoom(room_id);
     }
 
-    @PutMapping("/{room_id}")
+    @PutMapping("")
     public void updateRoom(@RequestBody @Valid() UpdateRoomRequest updateRoomRequest) {
          roomService.updateRoom(updateRoomRequest);
     }
@@ -46,10 +45,7 @@ public class RoomController {
         return this.roomService.findByRoomType(roomType);
     }
 
-    @GetMapping("/{room_id}")
-    public GetByRoomIdResponse findByRoom_id(@PathVariable Long room_id)  {
-        return roomService.findByRoom_id(room_id);
-    }
+
 
 
 

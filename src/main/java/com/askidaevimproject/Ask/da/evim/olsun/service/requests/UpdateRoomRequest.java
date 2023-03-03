@@ -20,5 +20,5 @@ public class UpdateRoomRequest {
     @NotNull
     @NotBlank
     @Size(min = 3,max = 5)
-    private String room_type;
+    private String roomType;
 }

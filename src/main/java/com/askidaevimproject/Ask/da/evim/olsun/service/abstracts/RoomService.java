@@ -2,7 +2,6 @@ package com.askidaevimproject.Ask.da.evim.olsun.service.abstracts;
 import com.askidaevimproject.Ask.da.evim.olsun.service.requests.CreateRoomRequest;
 import com.askidaevimproject.Ask.da.evim.olsun.service.requests.UpdateRoomRequest;
 import com.askidaevimproject.Ask.da.evim.olsun.service.responses.GetAllRoomResponse;
-import com.askidaevimproject.Ask.da.evim.olsun.service.responses.GetByRoomIdResponse;
 import com.askidaevimproject.Ask.da.evim.olsun.service.responses.GetByRoomTypeResponse;
 
 
@@ -17,9 +16,8 @@ public interface RoomService {
 
     void addRoom(CreateRoomRequest createRoomRequest);
 
-    void updateRoom (UpdateRoomRequest updateRoom);
+    void updateRoom(UpdateRoomRequest updateRoom);
 
-    GetByRoomIdResponse findByRoom_id(Long room_id) ;
 
     GetByRoomTypeResponse findByRoomType(String roomType);
 

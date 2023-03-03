@@ -11,7 +11,7 @@ import static jakarta.persistence.GenerationType.IDENTITY;
 @AllArgsConstructor
 @NoArgsConstructor
 @Entity
-@Table(name="room")
+@Table(name="rooms")
 public class Room {
 
     @Id
