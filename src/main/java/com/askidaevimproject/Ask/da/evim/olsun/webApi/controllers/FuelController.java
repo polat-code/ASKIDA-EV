@@ -36,7 +36,7 @@ public class FuelController {
     @PostMapping("")
     @ResponseStatus(code=CREATED)
     public void addFuel(@RequestBody @Valid CreateFuelRequest createFuelRequest) {
-        fuelService.addFuel(createFuelRequest);
+        this.fuelService.addFuel(createFuelRequest);
     }
 
     @DeleteMapping(value="/{fuel_id}")
