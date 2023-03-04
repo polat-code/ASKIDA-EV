@@ -1,8 +1,6 @@
 package com.askidaevimproject.Ask.da.evim.olsun.service.rules;
 
-import com.askidaevimproject.Ask.da.evim.olsun.core.utilities.exceptions.MemberMailException;
-import com.askidaevimproject.Ask.da.evim.olsun.core.utilities.exceptions.MemberNameNotFoundException;
-import com.askidaevimproject.Ask.da.evim.olsun.core.utilities.exceptions.MemberPhoneException;
+import com.askidaevimproject.Ask.da.evim.olsun.core.utilities.exceptions.*;
 import com.askidaevimproject.Ask.da.evim.olsun.repository.abstracts.MemberRepository;
 import lombok.AllArgsConstructor;
 
@@ -30,6 +28,13 @@ public class MemberBusinessRules {
             throw new MemberNameNotFoundException("The member name is not matched any member please check entered member name ");
         }
     }
+
+    public void checkIfMemberIdExists(Long member_id){
+        if(!(this.memberRepository.existsById(member_id))){
+            throw new MemberIdNotFoundException("The member ıd is not mathched any member please check the entered value ");
+        }
+    }
+
 
 
 

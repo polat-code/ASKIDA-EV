@@ -1,7 +1,8 @@
 package com.askidaevimproject.Ask.da.evim.olsun.service.concretes;
 
+
 import com.askidaevimproject.Ask.da.evim.olsun.core.utilities.mappers.abstracts.ModelMapperService;
-import com.askidaevimproject.Ask.da.evim.olsun.core.utilities.exceptions.MemberNotFoundException;
+
 import com.askidaevimproject.Ask.da.evim.olsun.model.concretes.Member;
 import com.askidaevimproject.Ask.da.evim.olsun.repository.abstracts.MemberRepository;
 import com.askidaevimproject.Ask.da.evim.olsun.service.abstracts.MemberService;
@@ -16,6 +17,7 @@ import lombok.AllArgsConstructor;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
+
 
 @Service
 @AllArgsConstructor
@@ -71,14 +73,17 @@ public class MemberServiceImpl implements MemberService {
     }
 
     @Override
-    public GetByMemberIdResponse getByMemberId(Long member_id) throws MemberNotFoundException {
+    public GetByMemberIdResponse getByMemberId(Long member_id)  {
 
-        Member member = this.memberRepository.findById(member_id).orElseThrow(()-> new MemberNotFoundException("The member is not found "));
+
+        this.memberBusinessRules.checkIfMemberIdExists(member_id);
+        Member member = this.memberRepository.findById(member_id).orElseThrow();
         return this.modelMapperService.forResponse().map(member,GetByMemberIdResponse.class);
     }
 
     @Override
     public GetByMemberMailResponse getByMemberMail(String member_mail) {
+
 
         Member member = this.memberRepository.findByMemberMail(member_mail);
         return this.modelMapperService.forResponse().map(member,GetByMemberMailResponse.class);

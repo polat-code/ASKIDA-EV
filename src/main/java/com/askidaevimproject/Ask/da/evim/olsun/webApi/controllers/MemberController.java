@@ -1,6 +1,5 @@
 package com.askidaevimproject.Ask.da.evim.olsun.webApi.controllers;
 
-import com.askidaevimproject.Ask.da.evim.olsun.core.utilities.exceptions.MemberNotFoundException;
 import com.askidaevimproject.Ask.da.evim.olsun.service.abstracts.MemberService;
 import com.askidaevimproject.Ask.da.evim.olsun.service.requests.CreateMemberRequest;
 import com.askidaevimproject.Ask.da.evim.olsun.service.requests.UpdateMemberRequest;
@@ -29,7 +28,8 @@ public class MemberController {
     }
 
     @GetMapping(value = "/memberId/{member_id}")
-    public GetByMemberIdResponse getByMemberId(@PathVariable Long member_id) throws MemberNotFoundException {
+    public GetByMemberIdResponse getByMemberId(@PathVariable Long member_id) {
+
         return memberService.getByMemberId(member_id);
 
     }

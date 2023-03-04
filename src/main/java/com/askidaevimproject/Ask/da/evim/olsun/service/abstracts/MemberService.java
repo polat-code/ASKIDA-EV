@@ -1,6 +1,5 @@
 package com.askidaevimproject.Ask.da.evim.olsun.service.abstracts;
 
-import com.askidaevimproject.Ask.da.evim.olsun.core.utilities.exceptions.MemberNotFoundException;
 import com.askidaevimproject.Ask.da.evim.olsun.service.requests.CreateMemberRequest;
 import com.askidaevimproject.Ask.da.evim.olsun.service.requests.UpdateMemberRequest;
 import com.askidaevimproject.Ask.da.evim.olsun.service.responses.GetAllMemberResponse;
@@ -23,9 +22,8 @@ public interface MemberService {
     void updateMember(UpdateMemberRequest updateMemberRequest);
 
 
-    // GetByMemberPhone getByMemberPhone(String member_phone);
 
-    GetByMemberIdResponse getByMemberId(Long member_id) throws MemberNotFoundException;
+    GetByMemberIdResponse getByMemberId(Long member_id) ;
 
     GetByMemberMailResponse getByMemberMail(String member_mail);
 

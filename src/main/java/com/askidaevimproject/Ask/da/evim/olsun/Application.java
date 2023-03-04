@@ -14,7 +14,9 @@ import org.springframework.web.bind.annotation.ResponseStatus;
 import org.springframework.web.bind.annotation.RestControllerAdvice;
 import org.springframework.web.client.RestTemplate;
 
+
 import java.util.HashMap;
+import java.util.NoSuchElementException;
 
 /**
  *
@@ -50,6 +52,18 @@ public class Application {
 	 * @ExceptionHandler
 	 * business exception handle it here.
 	 * */
+
+
+	@ExceptionHandler
+	@ResponseStatus(HttpStatus.INTERNAL_SERVER_ERROR)
+	public MemberIdNotFoundException handleMemberIdNotFoundException(NoSuchElementException noSuchElementException){
+		MemberIdNotFoundException memberIdNotFoundException = new MemberIdNotFoundException();
+		memberIdNotFoundException.setMessage(noSuchElementException.getMessage());
+
+		return memberIdNotFoundException;
+
+
+	}
 
 
 	@ExceptionHandler
