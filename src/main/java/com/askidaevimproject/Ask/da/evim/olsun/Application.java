@@ -15,6 +15,8 @@ import org.springframework.web.bind.annotation.RestControllerAdvice;
 import org.springframework.web.client.RestTemplate;
 
 
+import java.util.ArrayList;
+import java.util.Collections;
 import java.util.HashMap;
 import java.util.NoSuchElementException;
 
@@ -60,8 +62,15 @@ public class Application {
 		MemberIdNotFoundException memberIdNotFoundException = new MemberIdNotFoundException();
 		memberIdNotFoundException.setMessage(noSuchElementException.getMessage());
 
-		return memberIdNotFoundException;
+		memberIdNotFoundException.setErrors(new HashMap<>());
+		for (StackTraceElement fieldError:noSuchElementException.getStackTrace()){
 
+			for (int i = 0 ; i < fieldError.getLineNumber();i++){
+				memberIdNotFoundException.getErrors().put(fieldError.getMethodName(),fieldError.getFileName());
+			}
+		}
+
+		return memberIdNotFoundException;
 
 	}
 
