@@ -36,6 +36,7 @@ public class MemberController {
 
     @GetMapping("/memberName/{member_name}")
     public GetByMemberNameResponse getByMemberName(@PathVariable String member_name){
+
         return this.memberService.getByMemberName(member_name);
     }
 

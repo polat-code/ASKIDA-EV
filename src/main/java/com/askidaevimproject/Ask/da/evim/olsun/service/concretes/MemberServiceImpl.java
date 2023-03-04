@@ -72,18 +72,21 @@ public class MemberServiceImpl implements MemberService {
 
     @Override
     public GetByMemberIdResponse getByMemberId(Long member_id) throws MemberNotFoundException {
+
         Member member = this.memberRepository.findById(member_id).orElseThrow(()-> new MemberNotFoundException("The member is not found "));
         return this.modelMapperService.forResponse().map(member,GetByMemberIdResponse.class);
     }
 
     @Override
     public GetByMemberMailResponse getByMemberMail(String member_mail) {
+
         Member member = this.memberRepository.findByMemberMail(member_mail);
         return this.modelMapperService.forResponse().map(member,GetByMemberMailResponse.class);
     }
 
     @Override
     public GetByMemberNameResponse getByMemberName(String member_name) {
+        this.memberBusinessRules.checkIfMemberNameExists(member_name);
         Member member = this.memberRepository.findByMemberName(member_name);
         return this.modelMapperService.forResponse().map(member,GetByMemberNameResponse.class);
     }
