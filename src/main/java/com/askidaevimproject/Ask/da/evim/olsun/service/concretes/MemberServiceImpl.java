@@ -14,6 +14,7 @@ import com.askidaevimproject.Ask.da.evim.olsun.service.responses.GetByMemberMail
 import com.askidaevimproject.Ask.da.evim.olsun.service.responses.GetByMemberNameResponse;
 import com.askidaevimproject.Ask.da.evim.olsun.service.rules.MemberBusinessRules;
 import lombok.AllArgsConstructor;
+import org.jetbrains.annotations.NotNull;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
@@ -29,6 +30,7 @@ public class MemberServiceImpl implements MemberService {
     private MemberBusinessRules memberBusinessRules;
 
 
+    @Override
     public List<GetAllMemberResponse> getAllMembers()
     {
         List<Member> members = memberRepository.findAll();
@@ -41,7 +43,7 @@ public class MemberServiceImpl implements MemberService {
     }
 
     @Override
-    public void addMember(CreateMemberRequest createMemberRequest) {
+    public void addMember(@NotNull CreateMemberRequest createMemberRequest) {
 
         this.memberBusinessRules.checkIfMemberMailExists(createMemberRequest.getMemberMail());
         this.memberBusinessRules.checkIfMemberPhoneExists(createMemberRequest.getMemberPhone());
@@ -66,6 +68,8 @@ public class MemberServiceImpl implements MemberService {
 
     public void updateMember(UpdateMemberRequest updateMemberRequest) {
 
+        this.memberBusinessRules.checkIfMemberMailExists(updateMemberRequest.getMemberMail());
+        this.memberBusinessRules.checkIfMemberPhoneExists(updateMemberRequest.getMemberPhone());
         Member member = this.modelMapperService.forRequest().map(updateMemberRequest,Member.class);
         this.memberRepository.save(member);
 
@@ -83,6 +87,7 @@ public class MemberServiceImpl implements MemberService {
 
     @Override
     public GetByMemberMailResponse getByMemberMail(String member_mail) {
+
 
 
         Member member = this.memberRepository.findByMemberMail(member_mail);
