@@ -19,6 +19,7 @@ public class JwtService {
     private static final String TOKEN_ISSUER = "askidaEv";
     private static final int EXPIRE_HOURS = 10; // token expires in 10 hours
 
+
     public Key getSigningKey() {
         byte[] keyBytes = Decoders.BASE64.decode(SECRET_KEY);
         return Keys.hmacShaKeyFor(keyBytes);
