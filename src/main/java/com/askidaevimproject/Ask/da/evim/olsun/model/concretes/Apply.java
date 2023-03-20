@@ -17,6 +17,18 @@ public class Apply {
     @Column(name="application_id")
     private Long applicationId;
 
+    @ManyToOne(fetch = FetchType.LAZY)
+    @JoinColumn(
+            name = "applicant_id",
+            referencedColumnName = "applicant_id")
+    private Applicant applicant;
+
+    @ManyToOne(fetch = FetchType.LAZY)
+    @JoinColumn(
+            name = "advert_id",
+            referencedColumnName = "advert_id"
+    )
+    private Advert advert;
 
     /*
     *
