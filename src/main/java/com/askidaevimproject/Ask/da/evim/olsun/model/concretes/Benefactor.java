@@ -16,6 +16,7 @@ public class Benefactor implements Member {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Column(name = "benefactor_id")
     private Long benefactorId;
 
     @Column(name="benefactor_name")

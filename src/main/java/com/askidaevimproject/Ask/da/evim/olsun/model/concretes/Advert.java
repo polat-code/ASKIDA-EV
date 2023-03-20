@@ -23,14 +23,17 @@ public class Advert {
     @Column(name = "advert_id")
     private Long advert_id;
 
-    @ManyToOne(fetch = LAZY)
-    @JoinColumn(name="member_id")
-    private Applicant member;
 
     @OneToOne(fetch = LAZY)
     @JoinColumn(name = "dwelling_id")
     private Dwelling dwelling;
 
+
+    @ManyToOne(fetch = LAZY)
+    @JoinColumn(name = "benefactor_id",
+                referencedColumnName = "benefactor_id"
+                )
+    private Benefactor benefactor;
 
     @Column(name = "advert_title")
     private String advertTitle;
