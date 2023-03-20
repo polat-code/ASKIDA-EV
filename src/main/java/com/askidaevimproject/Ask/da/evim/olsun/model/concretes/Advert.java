@@ -31,10 +31,10 @@ public class Advert {
 
 
     @ManyToOne(fetch = EAGER)
-    @JoinColumn(name = "benefactor_id",
-                referencedColumnName = "benefactor_id"
+    @JoinColumn(name = "member_id",
+                referencedColumnName = "member_id"
                 )
-    private Benefactor benefactor;
+    private Member member;
 
     @Column(name = "advert_title")
     private String advertTitle;

@@ -19,9 +19,9 @@ public class Apply {
 
     @ManyToOne(fetch = FetchType.EAGER)
     @JoinColumn(
-            name = "applicant_id",
-            referencedColumnName = "applicant_id")
-    private Applicant applicant;
+            name = "member_id",
+            referencedColumnName = "member_id")
+    private Member applicant;
 
     @ManyToOne(fetch = FetchType.EAGER)
     @JoinColumn(

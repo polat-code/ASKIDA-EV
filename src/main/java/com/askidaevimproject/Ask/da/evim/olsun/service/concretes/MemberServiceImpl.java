@@ -3,7 +3,7 @@ package com.askidaevimproject.Ask.da.evim.olsun.service.concretes;
 
 import com.askidaevimproject.Ask.da.evim.olsun.core.utilities.mappers.abstracts.ModelMapperService;
 
-import com.askidaevimproject.Ask.da.evim.olsun.model.concretes.Applicant;
+import com.askidaevimproject.Ask.da.evim.olsun.model.concretes.Member;
 import com.askidaevimproject.Ask.da.evim.olsun.repository.abstracts.MemberRepository;
 import com.askidaevimproject.Ask.da.evim.olsun.service.abstracts.MemberService;
 import com.askidaevimproject.Ask.da.evim.olsun.service.requests.CreateMemberRequest;
@@ -33,7 +33,7 @@ public class MemberServiceImpl implements MemberService {
     @Override
     public List<GetAllMemberResponse> getAllMembers()
     {
-        List<Applicant> members = memberRepository.findAll();
+        List<Member> members = this.memberRepository.findAll();
         return members.
                 stream()
                 .map(member ->
@@ -48,7 +48,7 @@ public class MemberServiceImpl implements MemberService {
         this.memberBusinessRules.checkIfMemberMailExists(createMemberRequest.getMemberMail());
         this.memberBusinessRules.checkIfMemberPhoneExists(createMemberRequest.getMemberPhone());
 
-       Applicant member=this.modelMapperService.forRequest().map(createMemberRequest, Applicant.class);
+       Member member=this.modelMapperService.forRequest().map(createMemberRequest, Member.class);
 
        this.memberRepository.save(member);
 
@@ -70,7 +70,7 @@ public class MemberServiceImpl implements MemberService {
 
         this.memberBusinessRules.checkIfMemberMailExists(updateMemberRequest.getMemberMail());
         this.memberBusinessRules.checkIfMemberPhoneExists(updateMemberRequest.getMemberPhone());
-        Applicant member = this.modelMapperService.forRequest().map(updateMemberRequest, Applicant.class);
+        Member member = this.modelMapperService.forRequest().map(updateMemberRequest, Member.class);
         this.memberRepository.save(member);
 
 
@@ -81,7 +81,7 @@ public class MemberServiceImpl implements MemberService {
 
 
         this.memberBusinessRules.checkIfMemberIdExists(member_id);
-        Applicant member = this.memberRepository.findById(member_id).orElseThrow();
+        Member member = this.memberRepository.findById(member_id).orElseThrow();
         return this.modelMapperService.forResponse().map(member,GetByMemberIdResponse.class);
     }
 
@@ -89,14 +89,14 @@ public class MemberServiceImpl implements MemberService {
     public GetByMemberMailResponse getByMemberMail(String member_mail) {
 
 
-        Applicant member = this.memberRepository.findByMemberMail(member_mail);
+        Member member = this.memberRepository.findByMemberMail(member_mail);
         return this.modelMapperService.forResponse().map(member,GetByMemberMailResponse.class);
     }
 
     @Override
     public GetByMemberNameResponse getByMemberName(String member_name) {
         this.memberBusinessRules.checkIfMemberNameExists(member_name);
-        Applicant member = this.memberRepository.findByMemberName(member_name);
+        Member member = this.memberRepository.findByMemberName(member_name);
         return this.modelMapperService.forResponse().map(member,GetByMemberNameResponse.class);
     }
 }

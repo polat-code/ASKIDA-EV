@@ -8,6 +8,6 @@ public interface ApplyService {
 
     List<GetAllApplyResponse> getAllApply();
 
-    //void addApply(CreateApplyRequest createApplyRequest);
+
 
 }
