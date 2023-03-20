@@ -31,7 +31,6 @@ public class Member implements UserDetails {
     private Long member_id;
 
     @Column(name="member_name")
-
     private String memberName;
 
     @Enumerated(EnumType.STRING)
@@ -65,8 +64,6 @@ public class Member implements UserDetails {
 
 
 
-    @Column(name="member_photo")
-    private String memberPhoto;
 
 
 
