@@ -63,7 +63,6 @@ public class FuelServiceImpl implements FuelService {
 
         this.fuelBusinessRules.checkIfFuelTypeExists(createFuelRequest.getFuelType());
         Fuel fuel = this.modelMapperService.forRequest().map(createFuelRequest,Fuel.class);
-
         this.fuelRepository.save(fuel);
     }
 

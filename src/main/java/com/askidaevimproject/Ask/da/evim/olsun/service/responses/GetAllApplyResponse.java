@@ -4,13 +4,14 @@ import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
-@Data
 @AllArgsConstructor
 @NoArgsConstructor
-public class GetByMemberNameResponse {
+@Data
+public class GetAllApplyResponse {
 
-    private String memberName;
-    private String memberSurname;
-    private String memberPhone;
-    private String memberMail;
+    private Long apply_id;
+    private String member_name;
+    private String member_surname;
+    private String member_phone;
+
 }

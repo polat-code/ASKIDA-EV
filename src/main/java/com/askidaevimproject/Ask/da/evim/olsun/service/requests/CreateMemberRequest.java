@@ -37,9 +37,7 @@ public class CreateMemberRequest {
     @Size(min = 8)
     private String memberPassword;
 
-    @NotNull
-    @NotBlank
-    private String memberPhoto;
+
     @NotNull
     @NotBlank
     private String memberAddress;

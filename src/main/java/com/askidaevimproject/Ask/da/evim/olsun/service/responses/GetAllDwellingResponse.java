@@ -11,6 +11,7 @@ import lombok.NoArgsConstructor;
 public class GetAllDwellingResponse {
 
 
+
     private Long dwelling_id;
     private String cityName;
     private String districtName;
