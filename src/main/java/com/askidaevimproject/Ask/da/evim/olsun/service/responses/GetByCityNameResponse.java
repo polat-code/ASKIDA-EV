@@ -9,7 +9,7 @@ import lombok.NoArgsConstructor;
 @NoArgsConstructor
 public class GetByCityNameResponse {
 
-    private Long city_id;
+    private Long cityId;
     private String cityName;
 
 }

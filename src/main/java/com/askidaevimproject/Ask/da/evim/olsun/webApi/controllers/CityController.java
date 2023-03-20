@@ -1,7 +1,7 @@
 package com.askidaevimproject.Ask.da.evim.olsun.webApi.controllers;
 
 
-import com.askidaevimproject.Ask.da.evim.olsun.core.utilities.exceptions.CityNameNotFoundException;
+import com.askidaevimproject.Ask.da.evim.olsun.core.utilities.exceptions.CityNameFoundException;
 import com.askidaevimproject.Ask.da.evim.olsun.service.abstracts.CityService;
 import com.askidaevimproject.Ask.da.evim.olsun.service.requests.CreateCityRequest;
 import com.askidaevimproject.Ask.da.evim.olsun.service.requests.UpdateCityRequest;
@@ -31,11 +31,14 @@ public class CityController {
 
     @PostMapping("")
     @ResponseStatus(CREATED)
-    public void addCity(@RequestBody() @Valid() CreateCityRequest createCityRequest) throws CityNameNotFoundException {
+    public void addCity(@RequestBody() @Valid() CreateCityRequest createCityRequest){
 
         this.cityService.addCity(createCityRequest);
 
     }
+
+    //InvalidDataAccessApiUsageException
+
     @DeleteMapping("/{city_id}")
     public void deleteCity(@PathVariable Long city_id){
         cityService.deleteCityById(city_id);
@@ -43,6 +46,8 @@ public class CityController {
 
     @GetMapping("/cityName/{cityName}")
     public GetByCityNameResponse getByCityNameResponse(@PathVariable String cityName){
+
+
         return cityService.getByCityName(cityName);
     }
 

@@ -15,8 +15,6 @@ import org.springframework.web.bind.annotation.RestControllerAdvice;
 import org.springframework.web.client.RestTemplate;
 
 
-import java.util.ArrayList;
-import java.util.Collections;
 import java.util.HashMap;
 import java.util.NoSuchElementException;
 
@@ -71,6 +69,15 @@ public class Application {
 		}
 
 		return memberIdNotFoundException;
+
+	}
+
+	@ExceptionHandler
+	@ResponseStatus(HttpStatus.INTERNAL_SERVER_ERROR)
+	public ProblemDetails handleCityNameException(CityNameFoundException cityNameFoundException){
+		ProblemDetails problemDetails = new ProblemDetails();
+		problemDetails.setMessage(cityNameFoundException.getMessage());
+		return problemDetails;
 
 	}
 

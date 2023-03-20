@@ -24,7 +24,7 @@ public class District {
 
     @ManyToOne(fetch = LAZY)
     @JoinColumn(
-               name = "f_city_id", // add f_ tag to show
+                name = "f_city_id", // add f_ tag to show
               referencedColumnName = "city_id"
     )
     private City city;

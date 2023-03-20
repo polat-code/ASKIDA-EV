@@ -89,7 +89,6 @@ public class MemberServiceImpl implements MemberService {
     public GetByMemberMailResponse getByMemberMail(String member_mail) {
 
 
-
         Member member = this.memberRepository.findByMemberMail(member_mail);
         return this.modelMapperService.forResponse().map(member,GetByMemberMailResponse.class);
     }

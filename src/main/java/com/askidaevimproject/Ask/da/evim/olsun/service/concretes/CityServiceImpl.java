@@ -1,8 +1,6 @@
 package com.askidaevimproject.Ask.da.evim.olsun.service.concretes;
-import com.askidaevimproject.Ask.da.evim.olsun.core.utilities.exceptions.CityNameNotFoundException;
 import com.askidaevimproject.Ask.da.evim.olsun.core.utilities.mappers.abstracts.ModelMapperService;
 import com.askidaevimproject.Ask.da.evim.olsun.model.concretes.City;
-import com.askidaevimproject.Ask.da.evim.olsun.model.concretes.Room;
 import com.askidaevimproject.Ask.da.evim.olsun.repository.abstracts.CityRepository;
 import com.askidaevimproject.Ask.da.evim.olsun.service.abstracts.CityService;
 import com.askidaevimproject.Ask.da.evim.olsun.service.requests.CreateCityRequest;
@@ -35,10 +33,10 @@ public class CityServiceImpl implements CityService {
     }
 
     @Override
-    public void addCity(@NotNull CreateCityRequest createCityRequest) throws CityNameNotFoundException {
+    public void addCity(@NotNull CreateCityRequest createCityRequest) {
 
+        this.cityBusinessRules.checkIfCityNameExists(createCityRequest.getCityName());
         City city = this.modelMapperService.forRequest().map(createCityRequest,City.class);
-        System.out.println("that is your city id  : "+city.getCityId());
         this.cityRepository.save(city);
     }
 
@@ -68,8 +66,13 @@ public class CityServiceImpl implements CityService {
 
     @Override
     public GetByCityNameResponse getByCityName(String cityName) {
+
         City city = this.cityRepository.findByCityName(cityName);
+
         return this.modelMapperService.forResponse().map(city,GetByCityNameResponse.class);
+
+
+
     }
 
 
