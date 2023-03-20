@@ -43,7 +43,7 @@ public class AdvertServiceImpl implements AdvertService {
     public void deleteAdvert(Long advert_id) {
 
         if(advertRepository.existsById(advert_id))
-            if(memberRepository.existsById(advertRepository.findById(advert_id).get().getMember().getMemberId()))
+            if(memberRepository.existsById(advertRepository.findById(advert_id).get().getBenefactor().getBenefactorId()))
                 if(dwellingRepository.existsById(advertRepository.findById(advert_id).get().getAdvert_id()))
                     advertRepository.deleteById(advert_id);
 

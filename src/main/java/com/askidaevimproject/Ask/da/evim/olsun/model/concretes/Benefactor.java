@@ -12,6 +12,7 @@ import lombok.NoArgsConstructor;
 @NoArgsConstructor
 @AllArgsConstructor
 @Table(name = "benefactor")
+@Builder
 public class Benefactor implements Member {
 
     @Id
