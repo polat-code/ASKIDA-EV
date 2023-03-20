@@ -44,16 +44,13 @@ public class Dwelling {
     )
     private Fuel fuel;
 
-    @ManyToOne(fetch = FetchType.LAZY)
+    @ManyToOne(fetch = FetchType.EAGER)
     @JoinColumn(
             name = "room_id",
             referencedColumnName = "room_id"
               )
     private Room room;
-    /*
-    * ROOM EKLENECEK RELATİONLAR DÜZENLENECEK
-    *
-    * */
+
 
     @Column(name="description")
     private String description;

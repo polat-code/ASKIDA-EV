@@ -43,7 +43,7 @@ public class Applicant implements Member {
      * ( @ )
      * **/
 
-    //@Email(regexp = )
+
 
     @Column(name="applicant_mail",unique = true)
     private String applicantMail;

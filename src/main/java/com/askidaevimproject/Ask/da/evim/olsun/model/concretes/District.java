@@ -6,7 +6,8 @@ import lombok.Data;
 import lombok.NoArgsConstructor;
 
 
-import static jakarta.persistence.FetchType.LAZY;
+import static jakarta.persistence.FetchType.EAGER;
+
 import static jakarta.persistence.GenerationType.*;
 
 
@@ -22,7 +23,7 @@ public class District {
     @Column(name="district_id")
     private Long district_id;
 
-    @ManyToOne(fetch = LAZY)
+    @ManyToOne(fetch = EAGER)
     @JoinColumn(
                 name = "f_city_id", // add f_ tag to show
               referencedColumnName = "city_id"

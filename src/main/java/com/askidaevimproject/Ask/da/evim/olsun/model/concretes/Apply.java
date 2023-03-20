@@ -17,24 +17,20 @@ public class Apply {
     @Column(name="application_id")
     private Long applicationId;
 
-    @ManyToOne(fetch = FetchType.LAZY)
+    @ManyToOne(fetch = FetchType.EAGER)
     @JoinColumn(
             name = "applicant_id",
             referencedColumnName = "applicant_id")
     private Applicant applicant;
 
-    @ManyToOne(fetch = FetchType.LAZY)
+    @ManyToOne(fetch = FetchType.EAGER)
     @JoinColumn(
             name = "advert_id",
             referencedColumnName = "advert_id"
     )
     private Advert advert;
 
-    /*
-    *
-    * eksik kısımları özgürhan poalt
-    *
-    * */
+
 
     @Column(name="status")
     private int status;
