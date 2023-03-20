@@ -45,6 +45,10 @@ public class Dwelling {
     private Fuel fuel;
 
 
+    /*
+    * ROOM EKLENECEK RELATİONLAR DÜZENLENECEK
+    *
+    * */
 
     @Column(name="description")
     private String description;
