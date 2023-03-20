@@ -1,5 +1,6 @@
 package com.askidaevimproject.Ask.da.evim.olsun.model.concretes;
 
+import com.askidaevimproject.Ask.da.evim.olsun.model.abstracts.Member;
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
@@ -7,28 +8,22 @@ import lombok.Data;
 import lombok.NoArgsConstructor;
 
 
-
-
-import java.util.Collection;
-import java.util.List;
-
 import static jakarta.persistence.GenerationType.IDENTITY;
 
 @Data
 @AllArgsConstructor
 @NoArgsConstructor
 @Entity
-@Table(name="member")
+@Table(name="Applicant")
 @Builder
-public class Member {
-
+public class Applicant implements Member {
     @Id
     @GeneratedValue(strategy = IDENTITY)
-    @Column(name="member_id")
-    private Long memberId;
+    @Column(name="applicant_id")
+    private Long applicantId;
 
-    @Column(name="member_name")
-    private String memberName;
+    @Column(name="applicant_name")
+    private String applicantName;
 
     @Enumerated(EnumType.STRING)
     @Builder.Default
@@ -36,12 +31,12 @@ public class Member {
 
     private Role role = Role.USER;
 
-    @Column(name="member_surname")
-    private String memberSurname;
+    @Column(name="applicant_surname")
+    private String applicantSurname;
 
 
-    @Column(name="member_phone",unique = true)
-    private String memberPhone;
+    @Column(name="applicant_phone",unique = true)
+    private String applicantPhone;
 
 
     /**  mail should be check contains
@@ -50,20 +45,20 @@ public class Member {
 
     //@Email(regexp = )
 
-    @Column(name="member_mail",unique = true)
-    private String memberMail;
+    @Column(name="applicant_mail",unique = true)
+    private String applicantMail;
 
 
-    @Column(name="member_password")
-    private String memberPassword;
-
-
-
+    @Column(name="applicant_password")
+    private String applicantPassword;
 
 
 
-    @Column(name = "member_address")
-    private String memberAddress;
+
+
+
+    @Column(name = "applicant_address")
+    private String applicantAddress;
 
 
 

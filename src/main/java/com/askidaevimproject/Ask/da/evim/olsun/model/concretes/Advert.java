@@ -25,7 +25,7 @@ public class Advert {
 
     @ManyToOne(fetch = LAZY)
     @JoinColumn(name="member_id")
-    private Member member;
+    private Applicant member;
 
     @OneToOne(fetch = LAZY)
     @JoinColumn(name = "dwelling_id")
