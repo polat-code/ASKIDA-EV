@@ -18,33 +18,38 @@ public class Dwelling {
 
    @ManyToOne
     @JoinColumn(
-           name = "f_city_id",
+           name = "city_id",
            referencedColumnName = "city_id"
    )
     private City city;
 
-    @OneToOne
+    @ManyToOne
     @JoinColumn(
-            name = "f_district_id",
+            name = "district_id",
             referencedColumnName = "district_id"
     )
     private District district;
 
-    @OneToOne
+    @ManyToOne
     @JoinColumn(
-            name = "fk_neighborhood_id",
+            name = "neighborhood_id",
             referencedColumnName = "neighborhood_id"
     )
     private Neighborhood neighborhood;
 
-    @OneToOne
+    @ManyToOne
     @JoinColumn(
-            name = "fk_fuel_id",
+            name = "fuel_id",
             referencedColumnName = "fuel_id"
     )
     private Fuel fuel;
 
-
+    @ManyToOne(fetch = FetchType.LAZY)
+    @JoinColumn(
+            name = "room_id",
+            referencedColumnName = "room_id"
+              )
+    private Room room;
     /*
     * ROOM EKLENECEK RELATİONLAR DÜZENLENECEK
     *
@@ -61,7 +66,8 @@ public class Dwelling {
     @Column(name="is_activate")
     private int isActivate;
 
-
+    @Column(name = "street")
+    private String street;
 
 
 
