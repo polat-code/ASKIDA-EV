@@ -38,6 +38,7 @@ public class RoomController {
     }
 
     @PutMapping("")
+    @ResponseStatus(HttpStatus.OK)
     public void updateRoom(@RequestBody @Valid() UpdateRoomRequest updateRoomRequest) {
          roomService.updateRoom(updateRoomRequest);
     }
