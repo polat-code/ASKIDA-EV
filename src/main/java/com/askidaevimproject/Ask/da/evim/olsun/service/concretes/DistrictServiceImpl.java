@@ -31,7 +31,10 @@ public class DistrictServiceImpl implements DistrictService {
     public List<GetAllDistrictResponse> getAllDistrict() {
         List<District> districts = districtRepository.findAll();
 
-        return districts.stream().map(district -> this.modelMapperService.forResponse().map(district,GetAllDistrictResponse.class)).toList();
+        return districts.stream().map(district -> this.
+                modelMapperService.forResponse().
+                map(district,GetAllDistrictResponse.class)).
+                toList();
     }
 
 

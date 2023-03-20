@@ -15,7 +15,7 @@ public class UpdateRoomRequest {
 
     @NotNull
     @NotBlank
-    private Long room_id;
+    private Long roomId;
 
     @NotNull
     @NotBlank

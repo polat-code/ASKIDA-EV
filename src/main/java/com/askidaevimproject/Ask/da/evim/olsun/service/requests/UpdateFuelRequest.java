@@ -15,7 +15,7 @@ public class UpdateFuelRequest {
 
     @NotNull
     @NotBlank
-    private Long fuel_id;
+    private Long fuelId;
 
     @NotBlank
     @NotNull

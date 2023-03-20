@@ -1,5 +1,5 @@
 package com.askidaevimproject.Ask.da.evim.olsun.webApi.controllers;
-import com.askidaevimproject.Ask.da.evim.olsun.core.utilities.exceptions.RoomTypeExistsException;
+
 import com.askidaevimproject.Ask.da.evim.olsun.service.abstracts.RoomService;
 import com.askidaevimproject.Ask.da.evim.olsun.service.requests.CreateRoomRequest;
 import com.askidaevimproject.Ask.da.evim.olsun.service.requests.UpdateRoomRequest;
@@ -32,6 +32,7 @@ public class RoomController {
         this.roomService.addRoom(createRoomRequest);
     }
     @DeleteMapping("/{room_id}")
+    @ResponseStatus(HttpStatus.OK)
     public void deleteRoom(@PathVariable Long room_id){
         roomService.deleteRoom(room_id);
     }
@@ -41,7 +42,7 @@ public class RoomController {
          roomService.updateRoom(updateRoomRequest);
     }
 
-    @GetMapping(value="/{roomType}")
+    @GetMapping(value="/roomType/{roomType}")
     public GetByRoomTypeResponse findByRoomType(@PathVariable String roomType){
         return this.roomService.findByRoomType(roomType);
     }

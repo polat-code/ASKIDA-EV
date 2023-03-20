@@ -17,7 +17,7 @@ public class UpdateNeighborhoodRequest {
 
     @NotNull
     @NotBlank
-    private Long neighborhood_id;
+    private Long neighborhoodId;
 
     @NotNull
     @NotBlank
@@ -30,5 +30,5 @@ public class UpdateNeighborhoodRequest {
 
     @NotNull
     @NotBlank
-    private String neighborhood_name;
+    private String neighborhoodName;
 }

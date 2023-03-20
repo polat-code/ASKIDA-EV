@@ -9,10 +9,13 @@ import lombok.NoArgsConstructor;
 @NoArgsConstructor
 public class GetAllMemberResponse {
 
+    private Long memberId;
     private String memberName;
     private String memberSurname;
     private String memberPhone;
     private String memberMail;
     private String memberAddress;
+    private String role;
+
 
 }

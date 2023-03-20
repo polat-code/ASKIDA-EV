@@ -6,9 +6,7 @@ import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
-import org.springframework.security.core.GrantedAuthority;
-import org.springframework.security.core.authority.SimpleGrantedAuthority;
-import org.springframework.security.core.userdetails.UserDetails;
+
 
 
 import java.util.Collection;
@@ -22,29 +20,27 @@ import static jakarta.persistence.GenerationType.IDENTITY;
 @Entity
 @Table(name="member")
 @Builder
-public class Member implements UserDetails {
+public class Member {
 
     @Id
     @GeneratedValue(strategy = IDENTITY)
     @Column(name="member_id")
-
-    private Long member_id;
+    private Long memberId;
 
     @Column(name="member_name")
     private String memberName;
 
     @Enumerated(EnumType.STRING)
     @Builder.Default
-    @Column(nullable = false)
+    @Column(nullable = false,name = "role")
+
     private Role role = Role.USER;
 
     @Column(name="member_surname")
-
     private String memberSurname;
 
 
     @Column(name="member_phone",unique = true)
-
     private String memberPhone;
 
 
@@ -59,7 +55,6 @@ public class Member implements UserDetails {
 
 
     @Column(name="member_password")
-
     private String memberPassword;
 
 
@@ -79,39 +74,4 @@ public class Member implements UserDetails {
     @Column(name="is_activate")
     private int isActivate;
 
-
-    @Override
-    public Collection<? extends GrantedAuthority> getAuthorities() {
-        return List.of(new SimpleGrantedAuthority(role.name()));
-    }
-
-    @Override
-    public String getPassword() {
-        return null;
-    }
-
-    @Override
-    public String getUsername() {
-        return this.memberMail;
-    }
-
-    @Override
-    public boolean isAccountNonExpired() {
-        return true;
-    }
-
-    @Override
-    public boolean isAccountNonLocked() {
-        return true;
-    }
-
-    @Override
-    public boolean isCredentialsNonExpired() {
-        return true;
-    }
-
-    @Override
-    public boolean isEnabled() {
-        return true;
-    }
 }

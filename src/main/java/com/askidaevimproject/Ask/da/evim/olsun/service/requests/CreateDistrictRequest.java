@@ -21,7 +21,7 @@ public class CreateDistrictRequest {
 
     @NotBlank
     @NotNull
-    private Long city_id;
+    private Long cityId;
 
 
 

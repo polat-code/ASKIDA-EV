@@ -19,7 +19,8 @@ public class City {
     @Id
     @GeneratedValue(strategy = IDENTITY)
     @Column(name="city_id")
-    private Long city_id;
+
+    private Long cityId;
 
     @Column(name = "city_name")
     private String cityName;

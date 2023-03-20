@@ -17,7 +17,7 @@ public class Room {
     @Id
     @GeneratedValue(strategy = IDENTITY)
     @Column(name = "room_id")
-    private Long room_id;
+    private Long roomId;
 
 
     @Column(name="room_type")

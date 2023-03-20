@@ -23,7 +23,6 @@ public class RoomServiceImpl implements RoomService {
 
     private RoomRepository roomRepository;
     private ModelMapperService modelMapperService;
-
     private RoomBusinessRules roomBusinessRules;
 
 

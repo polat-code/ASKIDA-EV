@@ -23,24 +23,32 @@ public class MemberController {
 
 
     @GetMapping("")
+    @ResponseStatus(HttpStatus.OK)
     public List<GetAllMemberResponse> getAllMembers(){
         return memberService.getAllMembers();
     }
 
+
+
     @GetMapping(value = "/memberId/{member_id}")
+    @ResponseStatus(HttpStatus.OK)
     public GetByMemberIdResponse getByMemberId(@PathVariable Long member_id) {
 
         return memberService.getByMemberId(member_id);
 
     }
 
+
+
     @GetMapping("/memberName/{member_name}")
+    @ResponseStatus(HttpStatus.OK)
     public GetByMemberNameResponse getByMemberName(@PathVariable String member_name){
 
         return this.memberService.getByMemberName(member_name);
     }
 
     @GetMapping("/memberMail/{member_mail}")
+    @ResponseStatus(HttpStatus.OK)
     public GetByMemberMailResponse getByMemberMail(@PathVariable String member_mail){
         return memberService.getByMemberMail(member_mail);
     }
@@ -56,11 +64,13 @@ public class MemberController {
     }
 
     @DeleteMapping("/{member_id}")
+    @ResponseStatus(HttpStatus.OK)
     public void deleteMember(@PathVariable Long member_id){
         memberService.deleteMember(member_id);
     }
 
     @PutMapping("")
+    @ResponseStatus(HttpStatus.OK)
     public void updateMember(@RequestBody @Valid UpdateMemberRequest  updateMemberRequest){
         memberService.updateMember(updateMemberRequest);
     }

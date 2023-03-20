@@ -35,7 +35,7 @@ public class DwellingServiceImpl implements DwellingService {
 
         Dwelling dwelling = this.modelMapperService.forRequest().map(createDwellingRequest,Dwelling.class);
         if(
-                cityRepository.existsById(dwelling.getCity().getCity_id())
+                cityRepository.existsById(dwelling.getCity().getCityId())
                 && districtRepository.existsById(dwelling.getDistrict().getDistrict_id())
                 && neighborhoodRepository.existsById(dwelling.getNeighborhood().getNeighborhood_id())
                 && fuelRepository.existsById(dwelling.getFuel().getFuel_id())

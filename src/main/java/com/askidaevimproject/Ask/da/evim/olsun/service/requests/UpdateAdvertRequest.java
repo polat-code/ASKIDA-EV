@@ -16,7 +16,7 @@ public class UpdateAdvertRequest {
 
     @NotNull
     @NotBlank
-    private Long advert_id;
+    private Long advertId;
 
     @NotBlank
     @NotNull

@@ -1,14 +1,21 @@
 package com.askidaevimproject.Ask.da.evim.olsun.service.requests;
 
+import com.askidaevimproject.Ask.da.evim.olsun.model.concretes.Role;
+import jakarta.persistence.Column;
+import jakarta.persistence.EnumType;
+import jakarta.persistence.Enumerated;
 import lombok.AllArgsConstructor;
+import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
 import javax.validation.constraints.*;
+import java.util.Set;
 
 @AllArgsConstructor
 @NoArgsConstructor
 @Data
+@Builder
 public class CreateMemberRequest {
 
     @NotNull
@@ -44,6 +51,11 @@ public class CreateMemberRequest {
     @NotNull
     @NotBlank
     private int isActivate;
+
+    @Enumerated(EnumType.STRING)
+    @Builder.Default
+    @Column(nullable = false)
+    private Role role = Role.USER;
 
 
 }

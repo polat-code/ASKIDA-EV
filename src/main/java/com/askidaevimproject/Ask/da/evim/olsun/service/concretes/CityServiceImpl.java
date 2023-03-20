@@ -1,14 +1,19 @@
 package com.askidaevimproject.Ask.da.evim.olsun.service.concretes;
+import com.askidaevimproject.Ask.da.evim.olsun.core.utilities.exceptions.CityNameNotFoundException;
 import com.askidaevimproject.Ask.da.evim.olsun.core.utilities.mappers.abstracts.ModelMapperService;
 import com.askidaevimproject.Ask.da.evim.olsun.model.concretes.City;
+import com.askidaevimproject.Ask.da.evim.olsun.model.concretes.Room;
 import com.askidaevimproject.Ask.da.evim.olsun.repository.abstracts.CityRepository;
 import com.askidaevimproject.Ask.da.evim.olsun.service.abstracts.CityService;
 import com.askidaevimproject.Ask.da.evim.olsun.service.requests.CreateCityRequest;
 import com.askidaevimproject.Ask.da.evim.olsun.service.requests.UpdateCityRequest;
 import com.askidaevimproject.Ask.da.evim.olsun.service.responses.GetAllCityResponse;
 import com.askidaevimproject.Ask.da.evim.olsun.service.responses.GetByCityNameResponse;
+import com.askidaevimproject.Ask.da.evim.olsun.service.rules.CityBusinessRules;
 import lombok.AllArgsConstructor;
 import org.springframework.stereotype.Service;
+
+import javax.validation.constraints.NotNull;
 import java.util.List;
 
 @Service
@@ -17,6 +22,8 @@ public class CityServiceImpl implements CityService {
 
     private CityRepository cityRepository;
     private ModelMapperService modelMapperService;
+    private CityBusinessRules cityBusinessRules;
+
 
     @Override
     public List<GetAllCityResponse> getAllCity() {
@@ -28,8 +35,10 @@ public class CityServiceImpl implements CityService {
     }
 
     @Override
-    public void addCity(CreateCityRequest cityRequest) {
-        City city = this.modelMapperService.forRequest().map(cityRequest,City.class);
+    public void addCity(@NotNull CreateCityRequest createCityRequest) throws CityNameNotFoundException {
+
+        City city = this.modelMapperService.forRequest().map(createCityRequest,City.class);
+        System.out.println("that is your city id  : "+city.getCityId());
         this.cityRepository.save(city);
     }
 

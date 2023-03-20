@@ -14,9 +14,9 @@ import javax.validation.constraints.Size;
 public class UpdateCityRequest {
 
 
-    @NotNull
+
     @NotBlank
-    private Long city_id;
+    private Long cityId;
 
     @NotNull
     @NotBlank
