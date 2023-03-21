@@ -67,5 +67,9 @@ public class Member {
     private String status="0";
 
 
+    @Column(name="verify_code")
+    private String verifyCode;
+
+
 
 }

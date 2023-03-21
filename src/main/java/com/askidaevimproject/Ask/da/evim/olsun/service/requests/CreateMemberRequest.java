@@ -63,5 +63,8 @@ public class CreateMemberRequest {
     private String status="0";
 
 
+    private String verifyCode;
+
+
 
 }
