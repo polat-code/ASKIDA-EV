@@ -48,12 +48,18 @@ public class MemberServiceImpl implements MemberService {
     @Override
     public void addMember(@NotNull CreateMemberRequest createMemberRequest) {
 
+
+
         this.memberBusinessRules.checkIfMemberMailExists(createMemberRequest.getMemberMail());
         this.memberBusinessRules.checkIfMemberPhoneExists(createMemberRequest.getMemberPhone());
+        int generatedVerifyCode;
+        generatedVerifyCode = this.memberBusinessRules.generateRandomNumberForVerifyCode();
 
-       Member member=this.modelMapperService.forRequest().map(createMemberRequest, Member.class);
+        Member member=this.modelMapperService.forRequest().map(createMemberRequest, Member.class);
+        member.setVerifyCode(generatedVerifyCode);
+        member.setIsActivate(0);
 
-       this.memberRepository.save(member);
+        this.memberRepository.save(member);
 
     }
 

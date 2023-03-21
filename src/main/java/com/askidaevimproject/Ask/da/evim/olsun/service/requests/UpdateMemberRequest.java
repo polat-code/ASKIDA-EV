@@ -47,9 +47,8 @@ public class UpdateMemberRequest {
     @NotNull
     @NotBlank
     private String memberAddress;
-    @NotNull
-    @NotBlank
-    private int isActivate;
+
+
 
     @NotNull
     @NotBlank

@@ -64,11 +64,11 @@ public class Member {
     *  */
 
     @Column(name="status")
-    private String status="0";
+    private String status;
 
 
     @Column(name="verify_code")
-    private String verifyCode;
+    private int verifyCode;
 
 
 

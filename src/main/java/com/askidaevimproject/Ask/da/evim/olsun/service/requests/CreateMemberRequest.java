@@ -48,9 +48,8 @@ public class CreateMemberRequest {
     @NotNull
     @NotBlank
     private String memberAddress;
-    @NotNull
-    @NotBlank
-    private int isActivate;
+
+
 
     @Enumerated(EnumType.STRING)
     @Builder.Default
@@ -60,10 +59,9 @@ public class CreateMemberRequest {
 
     @NotNull
     @NotBlank
-    private String status="0";
+    private String status;
 
 
-    private String verifyCode;
 
 
 

@@ -8,6 +8,7 @@ import lombok.AllArgsConstructor;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
+import java.util.Random;
 
 @AllArgsConstructor
 @Service
@@ -40,12 +41,18 @@ public class MemberBusinessRules {
 
     public void checkMemberStatus(List<Member> memberList){
 
-        for (int i=0; i <memberList.size();i++){
-            if(memberList.get(i).getStatus().equals("0"))
-                memberList.get(i).setStatus("Applicant");
+        for (Member member : memberList) {
+            if (member.getStatus().equals("0"))
+                member.setStatus("Applicant");
             else
-                memberList.get(i).setStatus("Benefactor");
+                member.setStatus("Benefactor");
         }
+    }
+
+    public int generateRandomNumberForVerifyCode()
+    {
+        Random rnd = new Random( System.currentTimeMillis() );
+        return ((1 + rnd.nextInt(2)) * 10000 + rnd.nextInt(10000));
     }
 
 
