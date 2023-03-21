@@ -1,6 +1,7 @@
 package com.askidaevimproject.Ask.da.evim.olsun.service.abstracts;
 
 import com.askidaevimproject.Ask.da.evim.olsun.service.requests.CreateMemberRequest;
+import com.askidaevimproject.Ask.da.evim.olsun.service.requests.UpdateMemberEmailVerifyRequest;
 import com.askidaevimproject.Ask.da.evim.olsun.service.requests.UpdateMemberRequest;
 import com.askidaevimproject.Ask.da.evim.olsun.service.responses.GetAllMemberResponse;
 import com.askidaevimproject.Ask.da.evim.olsun.service.responses.GetByMemberIdResponse;
@@ -30,4 +31,5 @@ public interface MemberService {
     GetByMemberNameResponse getByMemberName(String member_name);
 
 
+    void updateMemberWithVerifyCode(UpdateMemberEmailVerifyRequest updateMemberEmailVerifyRequest,int verifyCode);
 }

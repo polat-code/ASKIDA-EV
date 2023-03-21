@@ -7,6 +7,7 @@ import com.askidaevimproject.Ask.da.evim.olsun.model.concretes.Member;
 import com.askidaevimproject.Ask.da.evim.olsun.repository.abstracts.MemberRepository;
 import com.askidaevimproject.Ask.da.evim.olsun.service.abstracts.MemberService;
 import com.askidaevimproject.Ask.da.evim.olsun.service.requests.CreateMemberRequest;
+import com.askidaevimproject.Ask.da.evim.olsun.service.requests.UpdateMemberEmailVerifyRequest;
 import com.askidaevimproject.Ask.da.evim.olsun.service.requests.UpdateMemberRequest;
 import com.askidaevimproject.Ask.da.evim.olsun.service.responses.GetAllMemberResponse;
 import com.askidaevimproject.Ask.da.evim.olsun.service.responses.GetByMemberIdResponse;
@@ -107,5 +108,12 @@ public class MemberServiceImpl implements MemberService {
         this.memberBusinessRules.checkIfMemberNameExists(member_name);
         Member member = this.memberRepository.findByMemberName(member_name);
         return this.modelMapperService.forResponse().map(member,GetByMemberNameResponse.class);
+    }
+
+    @Override
+    public void updateMemberWithVerifyCode(UpdateMemberEmailVerifyRequest updateMemberEmailVerifyRequest,int verifyCode) {
+
+        this.memberBusinessRules.checkVerifyCodeAndUpdateMember(updateMemberEmailVerifyRequest,verifyCode);
+
     }
 }

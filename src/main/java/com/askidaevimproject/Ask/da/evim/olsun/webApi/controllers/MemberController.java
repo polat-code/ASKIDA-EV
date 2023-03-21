@@ -2,6 +2,7 @@ package com.askidaevimproject.Ask.da.evim.olsun.webApi.controllers;
 
 import com.askidaevimproject.Ask.da.evim.olsun.service.abstracts.MemberService;
 import com.askidaevimproject.Ask.da.evim.olsun.service.requests.CreateMemberRequest;
+import com.askidaevimproject.Ask.da.evim.olsun.service.requests.UpdateMemberEmailVerifyRequest;
 import com.askidaevimproject.Ask.da.evim.olsun.service.requests.UpdateMemberRequest;
 import com.askidaevimproject.Ask.da.evim.olsun.service.responses.GetAllMemberResponse;
 import com.askidaevimproject.Ask.da.evim.olsun.service.responses.GetByMemberIdResponse;
@@ -73,5 +74,16 @@ public class MemberController {
     @ResponseStatus(HttpStatus.OK)
     public void updateMember(@RequestBody @Valid UpdateMemberRequest  updateMemberRequest){
         memberService.updateMember(updateMemberRequest);
+    }
+
+    @PutMapping("/verifyCode/{verifyCode}")
+    public void updateMemberWithVerifyCode(
+                                           @RequestBody @Valid UpdateMemberEmailVerifyRequest updateMemberEmailVerifyRequest ,
+                                           @PathVariable int verifyCode){
+
+        memberService.updateMemberWithVerifyCode(updateMemberEmailVerifyRequest,verifyCode);
+
+
+
     }
 }

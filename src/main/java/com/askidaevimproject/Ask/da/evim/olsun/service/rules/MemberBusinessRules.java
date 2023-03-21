@@ -3,6 +3,7 @@ package com.askidaevimproject.Ask.da.evim.olsun.service.rules;
 import com.askidaevimproject.Ask.da.evim.olsun.core.utilities.exceptions.*;
 import com.askidaevimproject.Ask.da.evim.olsun.model.concretes.Member;
 import com.askidaevimproject.Ask.da.evim.olsun.repository.abstracts.MemberRepository;
+import com.askidaevimproject.Ask.da.evim.olsun.service.requests.UpdateMemberEmailVerifyRequest;
 import lombok.AllArgsConstructor;
 
 import org.springframework.stereotype.Service;
@@ -53,6 +54,25 @@ public class MemberBusinessRules {
     {
         Random rnd = new Random( System.currentTimeMillis() );
         return ((1 + rnd.nextInt(2)) * 10000 + rnd.nextInt(10000));
+    }
+
+    public void checkVerifyCodeAndUpdateMember(UpdateMemberEmailVerifyRequest updateMemberEmailVerifyRequest, int verifyCode){
+
+        Member member = memberRepository.findById(updateMemberEmailVerifyRequest.getMemberId()).get();
+
+        if(member.getVerifyCode()==verifyCode) {
+            member.setIsActivate(1);
+            memberRepository.save(member);
+
+        }
+        else {
+            member.setIsActivate(0);
+            memberRepository.save(member);
+        }
+
+
+
+
     }
 
 
