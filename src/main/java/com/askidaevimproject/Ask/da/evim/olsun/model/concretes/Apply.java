@@ -21,7 +21,7 @@ public class Apply {
     @JoinColumn(
             name = "member_id",
             referencedColumnName = "member_id")
-    private Member applicant;
+    private Member member;
 
     @ManyToOne(fetch = FetchType.EAGER)
     @JoinColumn(
