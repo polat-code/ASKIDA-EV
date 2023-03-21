@@ -1,10 +1,13 @@
 package com.askidaevimproject.Ask.da.evim.olsun.service.rules;
 
 import com.askidaevimproject.Ask.da.evim.olsun.core.utilities.exceptions.*;
+import com.askidaevimproject.Ask.da.evim.olsun.model.concretes.Member;
 import com.askidaevimproject.Ask.da.evim.olsun.repository.abstracts.MemberRepository;
 import lombok.AllArgsConstructor;
 
 import org.springframework.stereotype.Service;
+
+import java.util.List;
 
 @AllArgsConstructor
 @Service
@@ -32,6 +35,16 @@ public class MemberBusinessRules {
     public void checkIfMemberIdExists(Long member_id){
         if(!(this.memberRepository.existsById(member_id))){
             throw new MemberIdNotFoundException("The member ıd is not mathched any member please check the entered value ");
+        }
+    }
+
+    public void checkMemberStatus(List<Member> memberList){
+
+        for (int i=0; i <memberList.size();i++){
+            if(memberList.get(i).getStatus().equals("0"))
+                memberList.get(i).setStatus("Applicant");
+            else
+                memberList.get(i).setStatus("Benefactor");
         }
     }
 

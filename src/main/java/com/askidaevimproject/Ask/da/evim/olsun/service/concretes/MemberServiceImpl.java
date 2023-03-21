@@ -33,7 +33,10 @@ public class MemberServiceImpl implements MemberService {
     @Override
     public List<GetAllMemberResponse> getAllMembers()
     {
+
         List<Member> members = this.memberRepository.findAll();
+        this.memberBusinessRules.checkMemberStatus(members);
+
         return members.
                 stream()
                 .map(member ->

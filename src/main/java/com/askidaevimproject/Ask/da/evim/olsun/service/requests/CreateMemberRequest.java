@@ -58,4 +58,10 @@ public class CreateMemberRequest {
     private Role role = Role.USER;
 
 
+    @NotNull
+    @NotBlank
+    private String status="0";
+
+
+
 }

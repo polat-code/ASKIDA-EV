@@ -10,4 +10,6 @@ public interface AdvertRepository extends JpaRepository<Advert,Long> {
 
 
     Advert findByAdvertTitle(String advert_title);
+
+
 }

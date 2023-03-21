@@ -51,5 +51,10 @@ public class UpdateMemberRequest {
     @NotBlank
     private int isActivate;
 
+    @NotNull
+    @NotBlank
+    private String status;
+
+
 
 }

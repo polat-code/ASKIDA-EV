@@ -16,6 +16,8 @@ public class GetAllMemberResponse {
     private String memberMail;
     private String memberAddress;
     private String role;
+    private String status;
+
 
 
 }

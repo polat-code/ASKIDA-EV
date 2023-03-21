@@ -62,8 +62,9 @@ public class Member {
     * status 1 => applicant
     *
     *  */
+
     @Column(name="status")
-    private int status;
+    private String status="0";
 
 
 
