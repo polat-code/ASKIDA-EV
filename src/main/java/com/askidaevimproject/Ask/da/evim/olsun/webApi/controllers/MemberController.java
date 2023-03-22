@@ -54,10 +54,6 @@ public class MemberController {
         return memberService.getByMemberMail(member_mail);
     }
 
-
-
-
-
     @PostMapping("")
     @ResponseStatus(HttpStatus.CREATED)
     public void addMember(@RequestBody @Valid CreateMemberRequest createMemberRequest){
@@ -76,14 +72,5 @@ public class MemberController {
         memberService.updateMember(updateMemberRequest);
     }
 
-    @PutMapping("/verifyCode/{verifyCode}")
-    public void updateMemberWithVerifyCode(
-                                           @RequestBody @Valid UpdateMemberEmailVerifyRequest updateMemberEmailVerifyRequest ,
-                                           @PathVariable int verifyCode){
 
-        memberService.updateMemberWithVerifyCode(updateMemberEmailVerifyRequest,verifyCode);
-
-
-
-    }
 }

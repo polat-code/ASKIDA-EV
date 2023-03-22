@@ -1,13 +1,10 @@
 package com.askidaevimproject.Ask.da.evim.olsun.service.concretes;
-
-
 import com.askidaevimproject.Ask.da.evim.olsun.core.utilities.mappers.abstracts.ModelMapperService;
-
 import com.askidaevimproject.Ask.da.evim.olsun.model.concretes.Member;
 import com.askidaevimproject.Ask.da.evim.olsun.repository.abstracts.MemberRepository;
 import com.askidaevimproject.Ask.da.evim.olsun.service.abstracts.MemberService;
 import com.askidaevimproject.Ask.da.evim.olsun.service.requests.CreateMemberRequest;
-import com.askidaevimproject.Ask.da.evim.olsun.service.requests.UpdateMemberEmailVerifyRequest;
+
 import com.askidaevimproject.Ask.da.evim.olsun.service.requests.UpdateMemberRequest;
 import com.askidaevimproject.Ask.da.evim.olsun.service.responses.GetAllMemberResponse;
 import com.askidaevimproject.Ask.da.evim.olsun.service.responses.GetByMemberIdResponse;
@@ -17,9 +14,7 @@ import com.askidaevimproject.Ask.da.evim.olsun.service.rules.MemberBusinessRules
 import lombok.AllArgsConstructor;
 import org.jetbrains.annotations.NotNull;
 import org.springframework.stereotype.Service;
-
 import java.util.List;
-
 
 @Service
 @AllArgsConstructor
@@ -27,6 +22,8 @@ public class MemberServiceImpl implements MemberService {
 
     private  MemberRepository memberRepository;
     private ModelMapperService modelMapperService;
+
+
 
     private MemberBusinessRules memberBusinessRules;
 
@@ -49,23 +46,17 @@ public class MemberServiceImpl implements MemberService {
     @Override
     public void addMember(@NotNull CreateMemberRequest createMemberRequest) {
 
-
-
         this.memberBusinessRules.checkIfMemberMailExists(createMemberRequest.getMemberMail());
         this.memberBusinessRules.checkIfMemberPhoneExists(createMemberRequest.getMemberPhone());
-        int generatedVerifyCode;
-        generatedVerifyCode = this.memberBusinessRules.generateRandomNumberForVerifyCode();
+
 
         Member member=this.modelMapperService.forRequest().map(createMemberRequest, Member.class);
-        member.setVerifyCode(generatedVerifyCode);
         member.setIsActivate(0);
 
         this.memberRepository.save(member);
 
+
     }
-
-
-
 
 
     public void deleteMember(Long member_id) {
@@ -111,9 +102,9 @@ public class MemberServiceImpl implements MemberService {
     }
 
     @Override
-    public void updateMemberWithVerifyCode(UpdateMemberEmailVerifyRequest updateMemberEmailVerifyRequest,int verifyCode) {
-
-        this.memberBusinessRules.checkVerifyCodeAndUpdateMember(updateMemberEmailVerifyRequest,verifyCode);
-
+    public void confirmEmail(String confirmationToken) {
+        System.out.println("confirm email ");
     }
+
+
 }

@@ -26,7 +26,7 @@ public class NeighborhoodController {
         return neighborhoodService.getAllNeighBorHood();
     }
 
-    @GetMapping("/{zip_code}")
+    @GetMapping("/zip_code/{zip_code}")
     public GetByNeighborHoodZipCodeResponse getByZipcode(@PathVariable String zip_code){
         return neighborhoodService.getByZipcode(zip_code);
 
@@ -43,12 +43,12 @@ public class NeighborhoodController {
         this.neighborhoodService.updateNeighborhood(updateNeighborhoodRequest);
     }
 
-    @GetMapping("/{neighborhood_name}")
+    @GetMapping("/neighborhoodName/{neighborhood_name}")
     public GetByNeighborhoodName getByNeighborhoodName(@PathVariable String neighborhood_name){
         return this.neighborhoodService.getByNeighborhoodName(neighborhood_name);
     }
 
-    @GetMapping("/{neighborhood_id}")
+    @GetMapping("/neighborhoodId/{neighborhood_id}")
     public GetByNeighborhoodIdResponse getById(@PathVariable Long neighborhood_id){
         return this.neighborhoodService.getById(neighborhood_id);
     }

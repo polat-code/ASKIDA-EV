@@ -14,6 +14,7 @@ import lombok.NoArgsConstructor;
 @Builder
 public class Member {
 
+
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name="member_id")
@@ -22,7 +23,6 @@ public class Member {
 
     @Column(name="member_name")
     private String memberName;
-
 
 
     @Enumerated(EnumType.STRING)
@@ -60,15 +60,13 @@ public class Member {
     /*
     * status 0 = > benefactor
     * status 1 => applicant
-    *
-    *  */
+    * */
 
     @Column(name="status")
     private String status;
 
 
-    @Column(name="verify_code")
-    private int verifyCode;
+
 
 
 

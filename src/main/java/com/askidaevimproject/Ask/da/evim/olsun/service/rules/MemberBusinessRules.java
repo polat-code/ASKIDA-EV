@@ -50,30 +50,8 @@ public class MemberBusinessRules {
         }
     }
 
-    public int generateRandomNumberForVerifyCode()
-    {
-        Random rnd = new Random( System.currentTimeMillis() );
-        return ((1 + rnd.nextInt(2)) * 10000 + rnd.nextInt(10000));
-    }
-
-    public void checkVerifyCodeAndUpdateMember(UpdateMemberEmailVerifyRequest updateMemberEmailVerifyRequest, int verifyCode){
-
-        Member member = memberRepository.findById(updateMemberEmailVerifyRequest.getMemberId()).get();
-
-        if(member.getVerifyCode()==verifyCode) {
-            member.setIsActivate(1);
-            memberRepository.save(member);
-
-        }
-        else {
-            member.setIsActivate(0);
-            memberRepository.save(member);
-        }
 
 
-
-
-    }
 
 
 

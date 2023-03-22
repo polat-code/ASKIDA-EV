@@ -22,7 +22,7 @@ public class UpdateNeighborhoodRequest {
     @NotNull
     @NotBlank
     @Size(min = 5, max = 10)
-    private String zip_code;
+    private String zipCode;
 
     @NotNull
     @NotBlank

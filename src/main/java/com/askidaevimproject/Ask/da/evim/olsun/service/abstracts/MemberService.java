@@ -30,6 +30,6 @@ public interface MemberService {
 
     GetByMemberNameResponse getByMemberName(String member_name);
 
+    void confirmEmail(String confirmationToken);
 
-    void updateMemberWithVerifyCode(UpdateMemberEmailVerifyRequest updateMemberEmailVerifyRequest,int verifyCode);
 }
