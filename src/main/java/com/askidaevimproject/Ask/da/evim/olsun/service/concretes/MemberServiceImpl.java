@@ -24,6 +24,7 @@ public class MemberServiceImpl implements MemberService {
     private ModelMapperService modelMapperService;
 
 
+   // private BCryptPasswordEncoder bCryptPasswordEncoder;
 
     private MemberBusinessRules memberBusinessRules;
 
