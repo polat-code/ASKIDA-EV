@@ -1,12 +1,12 @@
 package com.askidaevimproject.Ask.da.evim.olsun.service.abstracts;
 
 import com.askidaevimproject.Ask.da.evim.olsun.service.requests.CreateMemberRequest;
-import com.askidaevimproject.Ask.da.evim.olsun.service.requests.UpdateMemberEmailVerifyRequest;
 import com.askidaevimproject.Ask.da.evim.olsun.service.requests.UpdateMemberRequest;
 import com.askidaevimproject.Ask.da.evim.olsun.service.responses.GetAllMemberResponse;
 import com.askidaevimproject.Ask.da.evim.olsun.service.responses.GetByMemberIdResponse;
 import com.askidaevimproject.Ask.da.evim.olsun.service.responses.GetByMemberMailResponse;
 import com.askidaevimproject.Ask.da.evim.olsun.service.responses.GetByMemberNameResponse;
+import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Repository;
 
 import java.util.List;
@@ -16,7 +16,7 @@ public interface MemberService {
 
     List<GetAllMemberResponse> getAllMembers();
 
-    void addMember(CreateMemberRequest createMemberRequest);
+    void registerMember(CreateMemberRequest createMemberRequest);
 
     void deleteMember(Long member_id);
 
@@ -30,6 +30,6 @@ public interface MemberService {
 
     GetByMemberNameResponse getByMemberName(String member_name);
 
-    void confirmEmail(String confirmationToken);
+    ResponseEntity<?> confirmEmail(String confirmationToken);
 
 }

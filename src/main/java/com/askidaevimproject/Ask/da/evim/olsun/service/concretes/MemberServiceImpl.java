@@ -1,7 +1,10 @@
 package com.askidaevimproject.Ask.da.evim.olsun.service.concretes;
 import com.askidaevimproject.Ask.da.evim.olsun.core.utilities.mappers.abstracts.ModelMapperService;
 import com.askidaevimproject.Ask.da.evim.olsun.model.concretes.Member;
+import com.askidaevimproject.Ask.da.evim.olsun.model.concretes.Verify;
 import com.askidaevimproject.Ask.da.evim.olsun.repository.abstracts.MemberRepository;
+import com.askidaevimproject.Ask.da.evim.olsun.repository.abstracts.VerifyRepository;
+import com.askidaevimproject.Ask.da.evim.olsun.service.abstracts.EmailService;
 import com.askidaevimproject.Ask.da.evim.olsun.service.abstracts.MemberService;
 import com.askidaevimproject.Ask.da.evim.olsun.service.requests.CreateMemberRequest;
 
@@ -13,6 +16,8 @@ import com.askidaevimproject.Ask.da.evim.olsun.service.responses.GetByMemberName
 import com.askidaevimproject.Ask.da.evim.olsun.service.rules.MemberBusinessRules;
 import lombok.AllArgsConstructor;
 import org.jetbrains.annotations.NotNull;
+import org.springframework.http.ResponseEntity;
+import org.springframework.mail.SimpleMailMessage;
 import org.springframework.stereotype.Service;
 import java.util.List;
 
@@ -22,7 +27,9 @@ public class MemberServiceImpl implements MemberService {
 
     private  MemberRepository memberRepository;
     private ModelMapperService modelMapperService;
-    
+
+    private EmailService emailService;
+    private VerifyRepository verifyRepository;
 
     private MemberBusinessRules memberBusinessRules;
 
@@ -43,7 +50,7 @@ public class MemberServiceImpl implements MemberService {
     }
 
     @Override
-    public void addMember(@NotNull CreateMemberRequest createMemberRequest) {
+    public void registerMember(@NotNull CreateMemberRequest createMemberRequest) {
 
         this.memberBusinessRules.checkIfMemberMailExists(createMemberRequest.getMemberMail());
         this.memberBusinessRules.checkIfMemberPhoneExists(createMemberRequest.getMemberPhone());
@@ -54,6 +61,19 @@ public class MemberServiceImpl implements MemberService {
 
         this.memberRepository.save(member);
 
+
+        Verify confirmationToken = new Verify(member);
+
+        verifyRepository.save(confirmationToken);
+
+        SimpleMailMessage mailMessage = new SimpleMailMessage();
+        mailMessage.setTo(member.getMemberMail());
+        mailMessage.setSubject("Complete Registration!");
+        mailMessage.setText("To confirm your account, please click here : "
+                +"http://localhost:8081/confirm-account?token="+confirmationToken.getConfirmationToken());
+        emailService.sendEmail(mailMessage);
+
+        System.out.println("Confirmation Token: " + confirmationToken.getConfirmationToken());
 
     }
 
@@ -101,8 +121,19 @@ public class MemberServiceImpl implements MemberService {
     }
 
     @Override
-    public void confirmEmail(String confirmationToken) {
-        System.out.println("confirm email ");
+    public ResponseEntity<?> confirmEmail(String confirmationToken) {
+
+
+        Verify token = verifyRepository.findByConfirmationToken(confirmationToken);
+
+        if(token != null)
+        {
+            Member member = memberRepository.findByMemberMailIgnoreCase(token.getMember().getMemberMail());
+            member.setIsActivate(1);
+            memberRepository.save(member);
+            return ResponseEntity.ok("Email verified successfully!");
+        }
+        return ResponseEntity.badRequest().body("Error: Couldn't verify email");
     }
 
 

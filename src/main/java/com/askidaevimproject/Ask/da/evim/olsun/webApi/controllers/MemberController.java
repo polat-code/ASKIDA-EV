@@ -9,6 +9,7 @@ import com.askidaevimproject.Ask.da.evim.olsun.service.responses.GetByMemberMail
 import com.askidaevimproject.Ask.da.evim.olsun.service.responses.GetByMemberNameResponse;
 import lombok.AllArgsConstructor;
 import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import javax.validation.Valid;
@@ -21,6 +22,16 @@ public class MemberController {
 
     private MemberService memberService;
 
+
+    @PostMapping(value = "/register")
+    public void registerMember(@RequestBody @Valid CreateMemberRequest createMemberRequest) {
+         memberService.registerMember(createMemberRequest);
+    }
+
+    @RequestMapping(value="/confirm-account", method= {RequestMethod.GET, RequestMethod.POST})
+    public ResponseEntity<?> confirmUserAccount(@RequestParam("token")String confirmationToken) {
+        return memberService.confirmEmail(confirmationToken);
+    }
 
     @GetMapping("")
     @ResponseStatus(HttpStatus.OK)
@@ -53,11 +64,7 @@ public class MemberController {
         return memberService.getByMemberMail(member_mail);
     }
 
-    @PostMapping("")
-    @ResponseStatus(HttpStatus.CREATED)
-    public void addMember(@RequestBody @Valid CreateMemberRequest createMemberRequest){
-         memberService.addMember(createMemberRequest);
-    }
+
 
     @DeleteMapping("/{member_id}")
     @ResponseStatus(HttpStatus.OK)
