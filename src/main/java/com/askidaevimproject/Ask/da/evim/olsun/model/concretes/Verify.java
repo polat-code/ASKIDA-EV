@@ -7,6 +7,7 @@ import lombok.NoArgsConstructor;
 import lombok.RequiredArgsConstructor;
 
 import java.util.Date;
+import java.util.UUID;
 
 @Data
 @AllArgsConstructor
@@ -34,6 +35,8 @@ public class Verify {
 
 
     public Verify(Member member) {
-        this.member=member;
+        this.member = member;
+        createdDate = new Date();
+        confirmationToken = UUID.randomUUID().toString();
     }
 }
