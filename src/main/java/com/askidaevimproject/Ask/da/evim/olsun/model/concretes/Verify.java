@@ -28,8 +28,8 @@ public class Verify {
     private Date createdDate;
 
 
-    @ManyToOne(targetEntity = Member.class, fetch = FetchType.EAGER)
-    @JoinColumn(nullable = false, name = "member_id")
+    @OneToOne(targetEntity = Member.class, fetch = FetchType.EAGER)
+    @JoinColumn(nullable = false, name = "member_id", referencedColumnName = "member_id")
     private Member member;
 
 
