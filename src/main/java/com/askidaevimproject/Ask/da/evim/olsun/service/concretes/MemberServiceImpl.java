@@ -55,8 +55,10 @@ public class MemberServiceImpl implements MemberService {
         this.memberBusinessRules.checkIfMemberMailExists(createMemberRequest.getMemberMail());
         this.memberBusinessRules.checkIfMemberPhoneExists(createMemberRequest.getMemberPhone());
 
+        System.out.println(createMemberRequest.getMemberMail());
 
         Member member=this.modelMapperService.forRequest().map(createMemberRequest, Member.class);
+
         member.setIsActivate(0);
 
         this.memberRepository.save(member);

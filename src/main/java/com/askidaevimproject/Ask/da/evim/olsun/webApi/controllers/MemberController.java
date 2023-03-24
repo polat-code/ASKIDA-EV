@@ -25,15 +25,8 @@ public class MemberController {
 
     @PostMapping(value = "/register")
     public void registerMember(@RequestBody @Valid CreateMemberRequest createMemberRequest) {
-        CreateMemberRequest createMemberRequest1 = new CreateMemberRequest();
-        createMemberRequest1.setMemberName("Özgürhan");
-        createMemberRequest1.setMemberSurname("Polat");
-        createMemberRequest1.setMemberPhone("54353631");
-        createMemberRequest1.setMemberMail("ozgurhan.45@gmail.com");
-        createMemberRequest1.setMemberAddress("532566");
-        createMemberRequest1.setMemberAddress("Ali Mah");
-        createMemberRequest1.setStatus("0");
-        memberService.registerMember(createMemberRequest1);
+
+        memberService.registerMember(createMemberRequest);
     }
 
     @RequestMapping(value="/confirm-account", method= {RequestMethod.GET, RequestMethod.POST})
