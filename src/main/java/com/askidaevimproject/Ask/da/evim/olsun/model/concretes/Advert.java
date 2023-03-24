@@ -26,7 +26,8 @@ public class Advert {
 
 
     @OneToOne(fetch = LAZY)
-    @JoinColumn(name = "dwelling_id")
+    @JoinColumn(name = "dwelling_id",
+        referencedColumnName = "dwelling_id")
     private Dwelling dwelling;
 
 

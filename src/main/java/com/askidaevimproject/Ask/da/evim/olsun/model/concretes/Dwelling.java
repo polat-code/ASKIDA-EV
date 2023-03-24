@@ -14,6 +14,7 @@ public class Dwelling {
 
     @Id
     @GeneratedValue(strategy = IDENTITY)
+    @Column(name = "dwelling_id")
     private Long dwelling_id;
 
    @ManyToOne
