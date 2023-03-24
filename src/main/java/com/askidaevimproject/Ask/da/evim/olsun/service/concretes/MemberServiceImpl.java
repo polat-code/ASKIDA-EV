@@ -65,15 +65,20 @@ public class MemberServiceImpl implements MemberService {
         Verify confirmationToken = new Verify(member);
 
         verifyRepository.save(confirmationToken);
+        System.out.println(member.getMemberMail());
+        System.out.println(createMemberRequest.getMemberMail());
 
         SimpleMailMessage mailMessage = new SimpleMailMessage();
-        mailMessage.setTo(member.getMemberMail());
+        mailMessage.setFrom("askindaev@gmail.com");
+        mailMessage.setTo(createMemberRequest.getMemberMail());
         mailMessage.setSubject("Complete Registration!");
         mailMessage.setText("To confirm your account, please click here : "
                 +"http://localhost:8081/confirm-account?token="+confirmationToken.getConfirmationToken());
         emailService.sendEmail(mailMessage);
 
+
         System.out.println("Confirmation Token: " + confirmationToken.getConfirmationToken());
+
 
     }
 

@@ -59,6 +59,10 @@ public class CreateMemberRequest {
 
     @NotNull
     @NotBlank
+    /*
+     * status 0 = > benefactor
+     * status 1 => applicant
+     * */
     private String status;
 
 }
