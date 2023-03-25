@@ -25,6 +25,10 @@ public class DwellingPhoto {
 
 
 
+    @Column(name = "photo_way")
+    private String photoWay;
+
+
     /* Another fields about photo !
     *  This code will be written with controller and service layers.
     *
