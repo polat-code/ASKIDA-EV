@@ -10,8 +10,8 @@ import lombok.NoArgsConstructor;
 public class GetAllApplyResponse {
 
     private Long apply_id;
-    private String member_name;
-    private String member_surname;
-    private String member_phone;
+    private String memberName;
+    private String memberSurname;
+    private String memberPhone;
 
 }
