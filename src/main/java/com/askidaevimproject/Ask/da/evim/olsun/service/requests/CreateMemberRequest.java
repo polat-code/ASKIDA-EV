@@ -51,10 +51,6 @@ public class CreateMemberRequest {
 
 
 
-    @Enumerated(EnumType.STRING)
-    @Builder.Default
-    @Column(nullable = false)
-    private Role role = Role.USER;
 
 
     @NotNull

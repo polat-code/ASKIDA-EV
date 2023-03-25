@@ -3,13 +3,11 @@ package com.askidaevimproject.Ask.da.evim.olsun.service.rules;
 import com.askidaevimproject.Ask.da.evim.olsun.core.utilities.exceptions.*;
 import com.askidaevimproject.Ask.da.evim.olsun.model.concretes.Member;
 import com.askidaevimproject.Ask.da.evim.olsun.repository.abstracts.MemberRepository;
-import com.askidaevimproject.Ask.da.evim.olsun.service.requests.UpdateMemberEmailVerifyRequest;
 import lombok.AllArgsConstructor;
 
 import org.springframework.stereotype.Service;
 
 import java.util.List;
-import java.util.Random;
 
 @AllArgsConstructor
 @Service

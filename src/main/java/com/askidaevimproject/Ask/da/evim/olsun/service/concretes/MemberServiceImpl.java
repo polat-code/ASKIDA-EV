@@ -1,6 +1,7 @@
 package com.askidaevimproject.Ask.da.evim.olsun.service.concretes;
 import com.askidaevimproject.Ask.da.evim.olsun.core.utilities.mappers.abstracts.ModelMapperService;
 import com.askidaevimproject.Ask.da.evim.olsun.model.concretes.Member;
+import com.askidaevimproject.Ask.da.evim.olsun.model.concretes.Role;
 import com.askidaevimproject.Ask.da.evim.olsun.model.concretes.Verify;
 import com.askidaevimproject.Ask.da.evim.olsun.repository.abstracts.MemberRepository;
 import com.askidaevimproject.Ask.da.evim.olsun.repository.abstracts.VerifyRepository;
@@ -60,6 +61,7 @@ public class MemberServiceImpl implements MemberService {
         Member member=this.modelMapperService.forRequest().map(createMemberRequest, Member.class);
 
         member.setIsActivate(0);
+        member.setRole(Role.USER);
 
         this.memberRepository.save(member);
 
@@ -134,8 +136,16 @@ public class MemberServiceImpl implements MemberService {
 
         Verify token = verifyRepository.findByConfirmationToken(confirmationToken);
 
+
+
+
         if(token != null)
         {
+            /*
+            * By matching the mail address in the member table with the member_id in the verify table,
+            * it is the token belonging to that member and the is activate part of that member is converted from offline to online.
+            *
+            * */
             Member member = memberRepository.findByMemberMailIgnoreCase(token.getMember().getMemberMail());
             member.setIsActivate(1);
             memberRepository.save(member);
