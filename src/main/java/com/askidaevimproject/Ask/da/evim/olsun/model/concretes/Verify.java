@@ -4,7 +4,6 @@ import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
-import lombok.RequiredArgsConstructor;
 
 import java.util.Date;
 import java.util.UUID;
@@ -31,7 +30,6 @@ public class Verify {
     @OneToOne(targetEntity = Member.class, fetch = FetchType.EAGER)
     @JoinColumn(nullable = false, name = "member_id", referencedColumnName = "member_id")
     private Member member;
-
 
 
     public Verify(Member member) {
