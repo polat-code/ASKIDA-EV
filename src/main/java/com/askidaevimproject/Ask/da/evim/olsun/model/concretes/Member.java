@@ -51,7 +51,8 @@ public class Member {
 
 
     /**
-     * After verify it activate will be changed.When the user is registered is_Activate default 0
+     * After verify it activate will be changed.
+     * When the user is registered is_Activate default 0
      * **/
     @Column(name="is_activate")
     private int isActivate;

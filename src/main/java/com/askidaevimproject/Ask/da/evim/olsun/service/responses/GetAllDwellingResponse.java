@@ -15,7 +15,7 @@ public class GetAllDwellingResponse {
     private Long dwelling_id;
     private String cityName;
     private String districtName;
-    private String neighborhoodname;
+    private String neighborhoodName;
     private String fuelType;
     private String description;
     private String ageOfDwelling;

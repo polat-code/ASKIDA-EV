@@ -31,6 +31,17 @@ public class Application {
 
 	}
 
+	/*
+	when the security methods are implementing ,
+	the comment block is deleted.
+
+	@Bean
+	public PasswordEncoder passwordEncoder() {
+		return new BCryptPasswordEncoder();
+	}
+
+	*/
+
 
 	/*
 	* RestTample AND HttpHeaders => pull the data from city-district-neighborhood data
@@ -58,19 +69,21 @@ public class Application {
 
 	@ExceptionHandler
 	@ResponseStatus(HttpStatus.INTERNAL_SERVER_ERROR)
-	public MemberIdNotFoundException handleMemberIdNotFoundException(NoSuchElementException noSuchElementException){
+	public IdProblemDetails handleMemberIdNotFoundException(NoSuchElementException noSuchElementException){
+
 		MemberIdNotFoundException memberIdNotFoundException = new MemberIdNotFoundException();
-		memberIdNotFoundException.setMessage(noSuchElementException.getMessage());
+		memberIdNotFoundException.setMessage("Id Error");
 
 		memberIdNotFoundException.setErrors(new HashMap<>());
-		for (StackTraceElement fieldError:noSuchElementException.getStackTrace()){
 
-			for (int i = 0 ; i < fieldError.getLineNumber();i++){
-				memberIdNotFoundException.getErrors().put(fieldError.getMethodName(),fieldError.getFileName());
+		for (StackTraceElement stackTraceElement : noSuchElementException.getStackTrace())
+		{
+			for (int i = 0 ; i < stackTraceElement.getLineNumber();i++){
+				memberIdNotFoundException.getErrors().put(stackTraceElement.getFileName(),stackTraceElement.getMethodName());
 			}
 		}
+		return  memberIdNotFoundException;
 
-		return memberIdNotFoundException;
 
 	}
 
