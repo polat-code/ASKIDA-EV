@@ -67,8 +67,9 @@ public class MemberServiceImpl implements MemberService {
         Verify confirmationToken = new Verify(member);
 
         verifyRepository.save(confirmationToken);
-        System.out.println(member.getMemberMail());
-        System.out.println(createMemberRequest.getMemberMail());
+
+        //System.out.println(member.getMemberMail());
+        //System.out.println(createMemberRequest.getMemberMail());
 
         SimpleMailMessage mailMessage = new SimpleMailMessage();
         mailMessage.setFrom("askindaev@gmail.com");
@@ -79,7 +80,7 @@ public class MemberServiceImpl implements MemberService {
         emailService.sendEmail(mailMessage);
 
 
-        System.out.println("Confirmation Token: " + confirmationToken.getConfirmationToken());
+        // System.out.println("Confirmation Token: " + confirmationToken.getConfirmationToken());
 
 
     }

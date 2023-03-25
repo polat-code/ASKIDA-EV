@@ -55,6 +55,7 @@ public class Dwelling {
 
     @Column(name="description")
     private String description;
+
     @Column(name = "age_of_dwelling")
     private String ageOfDwelling;
 
