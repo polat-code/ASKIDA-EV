@@ -34,7 +34,7 @@ public class AdvertServiceImpl implements AdvertService {
                         this.
                                 modelMapperService.
                                 forResponse().
-                                map(advert,GetAllAdvertResponse.class)).
+                                map(advertc,GetAllAdvertResponse.lass)).
                 toList();
     }
 

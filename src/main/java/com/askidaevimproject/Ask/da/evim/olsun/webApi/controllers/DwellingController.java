@@ -4,7 +4,6 @@ package com.askidaevimproject.Ask.da.evim.olsun.webApi.controllers;
 import com.askidaevimproject.Ask.da.evim.olsun.service.abstracts.DwellingService;
 
 import com.askidaevimproject.Ask.da.evim.olsun.service.requests.CreateDwellingRequest;
-import com.askidaevimproject.Ask.da.evim.olsun.service.responses.GetAllDwellingResponse;
 import lombok.AllArgsConstructor;
 import org.springframework.web.bind.annotation.*;
 

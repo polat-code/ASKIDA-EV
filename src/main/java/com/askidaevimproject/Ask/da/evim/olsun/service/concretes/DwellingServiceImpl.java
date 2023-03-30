@@ -4,7 +4,6 @@ import com.askidaevimproject.Ask.da.evim.olsun.core.utilities.mappers.abstracts.
 import com.askidaevimproject.Ask.da.evim.olsun.repository.abstracts.*;
 import com.askidaevimproject.Ask.da.evim.olsun.service.abstracts.DwellingService;
 import com.askidaevimproject.Ask.da.evim.olsun.service.requests.CreateDwellingRequest;
-import com.askidaevimproject.Ask.da.evim.olsun.service.responses.GetAllDwellingResponse;
 import jakarta.transaction.Transactional;
 import lombok.AllArgsConstructor;
 import org.springframework.stereotype.Service;

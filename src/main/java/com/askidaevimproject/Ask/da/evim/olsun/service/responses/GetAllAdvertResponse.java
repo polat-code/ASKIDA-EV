@@ -14,4 +14,14 @@ public class GetAllAdvertResponse {
     private String memberName;
     private String cityName;
     private String advertTitle;
+    private String districtName;
+    private String neighborhoodName;
+    private String roomType;
+    private String fuelType;
+    private String description;
+    private String ageOfDwelling;
+    private String meterSquare;
+    private String isActivate;
+    private String street;
 }
+
