@@ -34,7 +34,7 @@ public class AdvertServiceImpl implements AdvertService {
                         this.
                                 modelMapperService.
                                 forResponse().
-                                map(advertc,GetAllAdvertResponse.lass)).
+                                map(advert,GetAllAdvertResponse.class)).
                 toList();
     }
 
@@ -50,7 +50,8 @@ public class AdvertServiceImpl implements AdvertService {
 
     @Override
     public void updateAdvert(UpdateAdvertRequest updateAdvertRequest) {
-
+        // There will be error here because there is id in updateAdvertRequest but in Advert.class , there is object.
+        // They cannot be mapped each other.
         Advert advert=this.modelMapperService.forRequest().map(updateAdvertRequest,Advert.class);
 
         this.advertRepository.save(advert);

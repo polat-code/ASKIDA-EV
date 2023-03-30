@@ -22,4 +22,50 @@ public class UpdateAdvertRequest {
     @NotNull
     @Size(min = 6)
     private String advert_title;
+
+    @NotNull
+    @NotBlank
+    private Long cityId;
+
+    @NotNull
+    @NotBlank
+    private Long districtId;
+
+    @NotNull
+    @NotBlank
+    private Long neighborhoodId;
+
+    @NotNull
+    @NotBlank
+    private Long fuelId;
+
+    @NotNull
+    @NotBlank
+    private Long roomId;
+
+    @NotNull
+    @NotBlank
+    private Long description;
+
+    @NotNull
+    @NotBlank
+    private Long ageOfDwelling;
+
+    @NotNull
+    @NotBlank
+    private Long meterSquare;
+
+    @NotNull
+    @NotBlank
+    private Long isActivate;
+
+    @NotNull
+    @NotBlank
+    private Long street;
+
+
+
+
+
+
 }
