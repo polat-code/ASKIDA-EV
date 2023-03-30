@@ -20,7 +20,6 @@ public class AdvertServiceImpl implements AdvertService {
 
     private  AdvertRepository advertRepository;
     private  MemberRepository memberRepository;
-    private  DwellingRepository dwellingRepository;
     private  ModelMapperService modelMapperService;
 
 
@@ -43,7 +42,6 @@ public class AdvertServiceImpl implements AdvertService {
 
         if(advertRepository.existsById(advert_id))
             if(memberRepository.existsById(advertRepository.findById(advert_id).get().getMember().getMemberId()))
-                if(dwellingRepository.existsById(advertRepository.findById(advert_id).get().getAdvert_id()))
                     advertRepository.deleteById(advert_id);
 
     }
