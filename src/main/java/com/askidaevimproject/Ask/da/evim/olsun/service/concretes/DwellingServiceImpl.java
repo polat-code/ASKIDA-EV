@@ -1,7 +1,6 @@
 package com.askidaevimproject.Ask.da.evim.olsun.service.concretes;
 
 import com.askidaevimproject.Ask.da.evim.olsun.core.utilities.mappers.abstracts.ModelMapperService;
-import com.askidaevimproject.Ask.da.evim.olsun.model.concretes.Dwelling;
 import com.askidaevimproject.Ask.da.evim.olsun.repository.abstracts.*;
 import com.askidaevimproject.Ask.da.evim.olsun.service.abstracts.DwellingService;
 import com.askidaevimproject.Ask.da.evim.olsun.service.requests.CreateDwellingRequest;
@@ -34,6 +33,9 @@ public class DwellingServiceImpl implements DwellingService {
     public void addDistrict(CreateDwellingRequest createDwellingRequest) {
 
         Dwelling dwelling = this.modelMapperService.forRequest().map(createDwellingRequest,Dwelling.class);
+
+        // Save images under images directory as a format like advert_id
+
         if(
                 cityRepository.existsById(dwelling.getCity().getCityId())
                 && districtRepository.existsById(dwelling.getDistrict().getDistrict_id())
