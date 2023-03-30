@@ -2,7 +2,9 @@ package com.askidaevimproject.Ask.da.evim.olsun.service.concretes;
 
 import com.askidaevimproject.Ask.da.evim.olsun.core.utilities.mappers.abstracts.ModelMapperService;
 import com.askidaevimproject.Ask.da.evim.olsun.model.concretes.Advert;
+import com.askidaevimproject.Ask.da.evim.olsun.model.concretes.Media;
 import com.askidaevimproject.Ask.da.evim.olsun.repository.abstracts.AdvertRepository;
+import com.askidaevimproject.Ask.da.evim.olsun.repository.abstracts.MediaRepository;
 import com.askidaevimproject.Ask.da.evim.olsun.repository.abstracts.MemberRepository;
 import com.askidaevimproject.Ask.da.evim.olsun.service.abstracts.AdvertService;
 import com.askidaevimproject.Ask.da.evim.olsun.service.requests.CreateAdvertRequest;
@@ -21,6 +23,8 @@ public class AdvertServiceImpl implements AdvertService {
     private  AdvertRepository advertRepository;
     private  MemberRepository memberRepository;
     private  ModelMapperService modelMapperService;
+
+    private MediaRepository mediaRepository;
 
 
 
@@ -66,6 +70,15 @@ public class AdvertServiceImpl implements AdvertService {
         // There will be error here because there is id in updateAdvertRequest but in Advert.class , there is object.
         // They cannot be mapped each other.
         Advert advert = this.modelMapperService.forRequest().map(createAdvertRequest,Advert.class);
+
+        //Saving photoWays into Media Table.
+        List<String> photoWays = createAdvertRequest.getPhoto_ways();
+        for (int i = 0; i < photoWays.size() ; i++) {
+            Media media = new Media();
+            media.setAdvert(advert);
+            media.setPhotoWay(photoWays.get(i));
+            mediaRepository.save(media);
+        }
         this.advertRepository.save(advert);
     }
 }
