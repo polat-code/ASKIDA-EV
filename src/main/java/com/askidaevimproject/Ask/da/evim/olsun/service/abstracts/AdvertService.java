@@ -19,4 +19,6 @@ public interface AdvertService {
     void updateAdvert(UpdateAdvertRequest updateAdvertRequest);
 
     GetByAdvertTitle getByAdvertTitle(String advert_title);
+
+
 }

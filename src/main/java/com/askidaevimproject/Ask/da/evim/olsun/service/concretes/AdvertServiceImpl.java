@@ -65,8 +65,8 @@ public class AdvertServiceImpl implements AdvertService {
     }
 
     public void addAdvert(CreateAdvertRequest createAdvertRequest) {
-
-
+        // There will be error here because there is id in updateAdvertRequest but in Advert.class , there is object.
+        // They cannot be mapped each other.
         Advert advert = this.modelMapperService.forRequest().map(createAdvertRequest,Advert.class);
         this.advertRepository.save(advert);
     }
