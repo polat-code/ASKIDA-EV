@@ -19,12 +19,52 @@ public class CreateAdvertRequest {
     @Size(min = 6)
     private String advertTitle;
 
-    @NotNull
-    @NotBlank
-    private Long dwellingId;
 
     @NotNull
     @NotBlank
     private Long memberId;
+    @NotBlank
+    @NotNull
+    private Long cityId;
+
+    @NotBlank
+    @NotNull
+    private Long districtId;
+
+    @NotBlank
+    @NotNull
+    private Long neighborhoodId;
+
+    @NotBlank
+    @NotNull
+    private Long fuelId;
+
+    @NotBlank
+    @NotNull
+    private Long room_id;
+
+
+    @NotBlank
+    @NotNull
+    @Size(min = 5)
+    private String description;
+
+    @NotBlank
+    @NotNull
+    @Size(min = 2)
+    private String ageOfDwelling;
+
+    @NotBlank
+    @NotNull
+    @Size(min = 2)
+    private String meterSquare;
+
+    @NotBlank
+    @NotNull
+    private int isActivate;
+
+    @NotBlank
+    @NotNull
+    private String street;
 
 }

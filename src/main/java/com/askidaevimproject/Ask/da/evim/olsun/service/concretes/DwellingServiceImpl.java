@@ -3,7 +3,6 @@ package com.askidaevimproject.Ask.da.evim.olsun.service.concretes;
 import com.askidaevimproject.Ask.da.evim.olsun.core.utilities.mappers.abstracts.ModelMapperService;
 import com.askidaevimproject.Ask.da.evim.olsun.repository.abstracts.*;
 import com.askidaevimproject.Ask.da.evim.olsun.service.abstracts.DwellingService;
-import com.askidaevimproject.Ask.da.evim.olsun.service.requests.CreateDwellingRequest;
 import jakarta.transaction.Transactional;
 import lombok.AllArgsConstructor;
 import org.springframework.stereotype.Service;
