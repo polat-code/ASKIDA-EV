@@ -3,7 +3,6 @@ package com.askidaevimproject.Ask.da.evim.olsun.service.concretes;
 import com.askidaevimproject.Ask.da.evim.olsun.core.utilities.mappers.abstracts.ModelMapperService;
 import com.askidaevimproject.Ask.da.evim.olsun.model.concretes.Advert;
 import com.askidaevimproject.Ask.da.evim.olsun.repository.abstracts.AdvertRepository;
-import com.askidaevimproject.Ask.da.evim.olsun.repository.abstracts.DwellingRepository;
 import com.askidaevimproject.Ask.da.evim.olsun.repository.abstracts.MemberRepository;
 import com.askidaevimproject.Ask.da.evim.olsun.service.abstracts.AdvertService;
 import com.askidaevimproject.Ask.da.evim.olsun.service.requests.CreateAdvertRequest;
