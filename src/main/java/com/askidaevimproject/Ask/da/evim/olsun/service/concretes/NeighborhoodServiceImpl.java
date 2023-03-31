@@ -2,6 +2,7 @@ package com.askidaevimproject.Ask.da.evim.olsun.service.concretes;
 
 import com.askidaevimproject.Ask.da.evim.olsun.core.utilities.mappers.abstracts.ModelMapperService;
 import com.askidaevimproject.Ask.da.evim.olsun.model.concretes.Neighborhood;
+import com.askidaevimproject.Ask.da.evim.olsun.repository.abstracts.DistrictRepository;
 import com.askidaevimproject.Ask.da.evim.olsun.repository.abstracts.NeighborhoodRepository;
 import com.askidaevimproject.Ask.da.evim.olsun.service.abstracts.NeighborhoodService;
 import com.askidaevimproject.Ask.da.evim.olsun.service.requests.CreateNeighborhoodRequest;
@@ -14,6 +15,7 @@ import jakarta.transaction.Transactional;
 import lombok.AllArgsConstructor;
 import org.springframework.stereotype.Service;
 
+import java.util.ArrayList;
 import java.util.List;
 
 @Service
@@ -24,11 +26,24 @@ public class NeighborhoodServiceImpl implements NeighborhoodService {
     private NeighborhoodRepository neighborhoodRepository;
     private ModelMapperService modelMapperService;
 
+    private DistrictRepository districtRepository;
+
     @Override
     public List<GetAllNeighBorHoodResponse> getAllNeighBorHood() {
         List<Neighborhood> neighborhoods = this.neighborhoodRepository.findAll();
-
+        List<GetAllNeighBorHoodResponse> responseList = new ArrayList<>();
+        for (int i = 0; neighborhoods.size() > i; i++) {
+            GetAllNeighBorHoodResponse getAllNeighBorHoodResponse = new GetAllNeighBorHoodResponse();
+            Neighborhood neighborhood = neighborhoods.get(i);
+            getAllNeighBorHoodResponse.setNeighborhood_id(neighborhood.getNeighborhoodId());
+            getAllNeighBorHoodResponse.setNeighborhoodName(neighborhood.getNeighborhoodName());
+            getAllNeighBorHoodResponse.setZipCode(neighborhood.getZipCode());
+            getAllNeighBorHoodResponse.setDistrictName(neighborhood.getDistrict().getDistrictName());
+            responseList.add(getAllNeighBorHoodResponse);
+        }
+        return responseList;
         // Add districtName into response. DistrictName returns null.
+        /*
         return neighborhoods.
                 stream().
                 map
@@ -36,6 +51,8 @@ public class NeighborhoodServiceImpl implements NeighborhoodService {
                                 ->
                                 this.modelMapperService.forResponse().
                                         map(neighborhood,GetAllNeighBorHoodResponse.class)).toList();
+
+         */
     }
 
     @Override
@@ -49,8 +66,13 @@ public class NeighborhoodServiceImpl implements NeighborhoodService {
 
     @Override
     public void addNeighborhood(CreateNeighborhoodRequest createNeighborhoodRequest) {
+        // Mapper ile yeni bir kayıt yapmak istediğimde aynı foregin key e sahip olan diğer datanın üstüne yazıyor.
         Neighborhood neighborhood = this.modelMapperService.forRequest().map(createNeighborhoodRequest,Neighborhood.class);
-        this.neighborhoodRepository.save(neighborhood);
+        Neighborhood neighborhood1 = new Neighborhood();
+        neighborhood1.setNeighborhoodName(createNeighborhoodRequest.getNeighborhoodName());
+        neighborhood1.setDistrict(districtRepository.getById(createNeighborhoodRequest.getDistrictId()));
+        neighborhood1.setZipCode(createNeighborhoodRequest.getZipCode());
+        this.neighborhoodRepository.save(neighborhood1);
     }
 
     @Override

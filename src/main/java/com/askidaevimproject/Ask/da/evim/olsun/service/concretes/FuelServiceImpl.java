@@ -12,6 +12,7 @@ import com.askidaevimproject.Ask.da.evim.olsun.service.rules.FuelBusinessRules;
 import lombok.AllArgsConstructor;
 import org.springframework.stereotype.Service;
 
+import java.util.ArrayList;
 import java.util.List;
 
 @Service
@@ -27,15 +28,22 @@ public class FuelServiceImpl implements FuelService {
     public List<GetAllFuelResponse> getAllFuels(){
 
         List<Fuel> fuels = this.fuelRepository.findAll();
+        List<GetAllFuelResponse> fuelResponses = new ArrayList<>();
+        for(int i = 0; fuels.size() > i; i++) {
+            GetAllFuelResponse getAllFuelResponse = new GetAllFuelResponse();
+            getAllFuelResponse.setFuel_id(fuels.get(i).getFuelId());
+            getAllFuelResponse.setFuelType(fuels.get(i).getFuelType());
+            fuelResponses.add(getAllFuelResponse);
+        }
+        return fuelResponses;
 
-        return fuels.
+        /* return fuels.
                 stream()
                 .map(fuel ->
                         this.modelMapperService.
                                 forResponse().
                                 map(fuel,GetAllFuelResponse.class)).toList();
-
-
+         */
 
     }
 

@@ -2,6 +2,7 @@ package com.askidaevimproject.Ask.da.evim.olsun.service.concretes;
 
 import com.askidaevimproject.Ask.da.evim.olsun.core.utilities.mappers.abstracts.ModelMapperService;
 import com.askidaevimproject.Ask.da.evim.olsun.model.concretes.District;
+import com.askidaevimproject.Ask.da.evim.olsun.repository.abstracts.CityRepository;
 import com.askidaevimproject.Ask.da.evim.olsun.repository.abstracts.DistrictRepository;
 import com.askidaevimproject.Ask.da.evim.olsun.service.abstracts.DistrictService;
 import com.askidaevimproject.Ask.da.evim.olsun.service.requests.CreateDistrictRequest;
@@ -20,11 +21,14 @@ import java.util.List;
 @Service
 @AllArgsConstructor
 @Transactional
+
 public class DistrictServiceImpl implements DistrictService {
 
 
     private DistrictRepository districtRepository;
     private ModelMapperService modelMapperService;
+
+    private CityRepository cityRepository;
 
 
     @Override
@@ -43,7 +47,12 @@ public class DistrictServiceImpl implements DistrictService {
     public void addDistrict(CreateDistrictRequest createDistrictRequest) {
 
         District district = this.modelMapperService.forRequest().map(createDistrictRequest,District.class);
-        this.districtRepository.save(district);
+        District district1 = new District().builder()
+                .districtName(createDistrictRequest.getDistrictName())
+                .city(cityRepository.getById(createDistrictRequest.getCityId()))
+                .build();
+
+        this.districtRepository.save(district1);
 
     }
 
