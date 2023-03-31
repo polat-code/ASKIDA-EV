@@ -10,7 +10,8 @@ import lombok.NoArgsConstructor;
 @Data
 @NoArgsConstructor
 @AllArgsConstructor
-public class DwellingPhoto {
+@Table(name = "media")
+public class Media {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -19,9 +20,9 @@ public class DwellingPhoto {
 
 
     @ManyToOne(fetch = FetchType.EAGER)
-    @JoinColumn(name = "dwelling_id",
-                referencedColumnName = "dwelling_id")
-    private Dwelling dwelling;
+    @JoinColumn(name = "advert_id",
+                referencedColumnName = "advert_id")
+        private Advert advert;
 
 
 

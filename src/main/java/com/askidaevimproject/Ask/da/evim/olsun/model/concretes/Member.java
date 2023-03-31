@@ -55,7 +55,7 @@ public class Member {
      * When the user is registered is_Activate default 0
      * **/
     @Column(name="is_activate")
-    private int isActivate;
+    private int isActivate = 0;
 
 
     /*

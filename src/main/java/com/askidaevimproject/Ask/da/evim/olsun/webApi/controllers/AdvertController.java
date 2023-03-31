@@ -7,8 +7,10 @@ import com.askidaevimproject.Ask.da.evim.olsun.service.responses.GetAllAdvertRes
 import com.askidaevimproject.Ask.da.evim.olsun.service.responses.GetByAdvertTitle;
 import lombok.AllArgsConstructor;
 import org.springframework.web.bind.annotation.*;
+import org.springframework.web.multipart.MultipartFile;
 
 import javax.validation.Valid;
+import java.io.File;
 import java.util.List;
 
 @RestController
@@ -24,8 +26,11 @@ public class AdvertController {
         return advertService.getAllAdvert();
     }
 
+
+
     @PostMapping("")
-    public void addAdvert(@RequestBody @Valid CreateAdvertRequest createAdvertRequest) {
+    public void addAdvert(@RequestBody @Valid CreateAdvertRequest createAdvertRequest
+                          ) {
 
 
         advertService.addAdvert(createAdvertRequest);

@@ -1,4 +1,5 @@
 package com.askidaevimproject.Ask.da.evim.olsun.service.concretes;
+import com.askidaevimproject.Ask.da.evim.olsun.core.utilities.exceptions.GettingInvalidCityByNameException;
 import com.askidaevimproject.Ask.da.evim.olsun.core.utilities.mappers.abstracts.ModelMapperService;
 import com.askidaevimproject.Ask.da.evim.olsun.model.concretes.City;
 import com.askidaevimproject.Ask.da.evim.olsun.repository.abstracts.CityRepository;
@@ -65,11 +66,16 @@ public class CityServiceImpl implements CityService {
     }
 
     @Override
-    public GetByCityNameResponse getByCityName(String cityName) {
+    public GetByCityNameResponse getByCityName(String cityName) throws GettingInvalidCityByNameException {
 
         City city = this.cityRepository.findByCityName(cityName);
-
-        return this.modelMapperService.forResponse().map(city,GetByCityNameResponse.class);
+        GetByCityNameResponse getByCityNameResponse;
+        try{
+            getByCityNameResponse = this.modelMapperService.forResponse().map(city,GetByCityNameResponse.class);
+        }catch (Exception e) {
+            throw new GettingInvalidCityByNameException("There is no such a city!");
+        }
+        return getByCityNameResponse;
 
 
 

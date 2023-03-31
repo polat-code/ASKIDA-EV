@@ -2,6 +2,7 @@ package com.askidaevimproject.Ask.da.evim.olsun.webApi.controllers;
 
 
 import com.askidaevimproject.Ask.da.evim.olsun.core.utilities.exceptions.CityNameFoundException;
+import com.askidaevimproject.Ask.da.evim.olsun.core.utilities.exceptions.GettingInvalidCityByNameException;
 import com.askidaevimproject.Ask.da.evim.olsun.service.abstracts.CityService;
 import com.askidaevimproject.Ask.da.evim.olsun.service.requests.CreateCityRequest;
 import com.askidaevimproject.Ask.da.evim.olsun.service.requests.UpdateCityRequest;
@@ -45,7 +46,7 @@ public class CityController {
     }
 
     @GetMapping("/cityName/{cityName}")
-    public GetByCityNameResponse getByCityNameResponse(@PathVariable String cityName){
+    public GetByCityNameResponse getByCityNameResponse(@PathVariable String cityName) throws GettingInvalidCityByNameException {
 
 
         return cityService.getByCityName(cityName);

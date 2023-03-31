@@ -1,6 +1,7 @@
 package com.askidaevimproject.Ask.da.evim.olsun.service.abstracts;
 
 import com.askidaevimproject.Ask.da.evim.olsun.core.utilities.exceptions.CityNameFoundException;
+import com.askidaevimproject.Ask.da.evim.olsun.core.utilities.exceptions.GettingInvalidCityByNameException;
 import com.askidaevimproject.Ask.da.evim.olsun.service.requests.CreateCityRequest;
 import com.askidaevimproject.Ask.da.evim.olsun.service.requests.UpdateCityRequest;
 import com.askidaevimproject.Ask.da.evim.olsun.service.responses.GetAllCityResponse;
@@ -16,6 +17,6 @@ public interface CityService {
     void deleteCityById(Long city_id);
     void updateCity(UpdateCityRequest updateCityRequest);
 
-    GetByCityNameResponse getByCityName(String cityName);
+    GetByCityNameResponse getByCityName(String cityName) throws GettingInvalidCityByNameException;
 
 }

@@ -28,6 +28,7 @@ public class NeighborhoodServiceImpl implements NeighborhoodService {
     public List<GetAllNeighBorHoodResponse> getAllNeighBorHood() {
         List<Neighborhood> neighborhoods = this.neighborhoodRepository.findAll();
 
+        // Add districtName into response. DistrictName returns null.
         return neighborhoods.
                 stream().
                 map

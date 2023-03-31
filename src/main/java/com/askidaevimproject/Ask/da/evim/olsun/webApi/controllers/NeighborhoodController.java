@@ -26,6 +26,8 @@ public class NeighborhoodController {
         return neighborhoodService.getAllNeighBorHood();
     }
 
+    // We don't need this but there is a semantic and logical mistake. Method should return List because
+    // one zipcode has one more neighborhood.
     @GetMapping("/zip_code/{zip_code}")
     public GetByNeighborHoodZipCodeResponse getByZipcode(@PathVariable String zip_code){
         return neighborhoodService.getByZipcode(zip_code);
@@ -37,6 +39,7 @@ public class NeighborhoodController {
     public void addNeighborhood(@RequestBody @Valid CreateNeighborhoodRequest createNeighborhoodRequest){
         this.neighborhoodService.addNeighborhood(createNeighborhoodRequest);
     }
+
 
     @PutMapping("")
     public void updateNeighborhood(@RequestBody @Valid UpdateNeighborhoodRequest updateNeighborhoodRequest){

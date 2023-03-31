@@ -14,4 +14,5 @@ public class GetByNeighborhoodName {
     private String neighborhood_name;
     private String zip_code;
 
+
 }

@@ -25,11 +25,6 @@ public class Advert {
     private Long advert_id;
 
 
-    @OneToOne(fetch = LAZY)
-    @JoinColumn(name = "dwelling_id",
-        referencedColumnName = "dwelling_id")
-    private Dwelling dwelling;
-
 
     @ManyToOne(fetch = EAGER)
     @JoinColumn(name = "member_id",
@@ -39,6 +34,56 @@ public class Advert {
 
     @Column(name = "advert_title")
     private String advertTitle;
+    @ManyToOne
+    @JoinColumn(
+            name = "city_id",
+            referencedColumnName = "city_id"
+    )
+    private City city;
+
+    @ManyToOne
+    @JoinColumn(
+            name = "district_id",
+            referencedColumnName = "district_id"
+    )
+    private District district;
+
+    @ManyToOne
+    @JoinColumn(
+            name = "neighborhood_id",
+            referencedColumnName = "neighborhood_id"
+    )
+    private Neighborhood neighborhood;
+
+    @ManyToOne
+    @JoinColumn(
+            name = "fuel_id",
+            referencedColumnName = "fuel_id"
+    )
+    private Fuel fuel;
+
+    @ManyToOne(fetch = FetchType.EAGER)
+    @JoinColumn(
+            name = "room_id",
+            referencedColumnName = "room_id"
+    )
+    private Room room;
+
+
+    @Column(name="description")
+    private String description;
+
+    @Column(name = "age_of_dwelling")
+    private String ageOfDwelling;
+
+    @Column(name="meter_square")
+    private String meterSquare;
+
+
+    @Column(name = "street")
+    private String street;
+
+
 
 
 }
