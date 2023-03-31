@@ -39,11 +39,13 @@ public class FuelController {
         this.fuelService.addFuel(createFuelRequest);
     }
 
-    @DeleteMapping(value="/{fuel_id}")
+    @DeleteMapping(value="/delete/{fuel_id}")
     public void deleteFuel(@PathVariable Long fuel_id){
         fuelService.deleteFuel(fuel_id);
     }
 
+
+    // This doesn't work.
     @PutMapping("")
     public void updateFuel(@RequestBody  @Valid UpdateFuelRequest updateFuelRequest){
         this.fuelService.updateFuel(updateFuelRequest);
