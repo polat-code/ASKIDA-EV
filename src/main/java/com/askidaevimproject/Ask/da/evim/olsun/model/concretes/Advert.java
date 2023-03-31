@@ -79,8 +79,6 @@ public class Advert {
     @Column(name="meter_square")
     private String meterSquare;
 
-    @Column(name="is_activate")
-    private int isActivate;
 
     @Column(name = "street")
     private String street;
