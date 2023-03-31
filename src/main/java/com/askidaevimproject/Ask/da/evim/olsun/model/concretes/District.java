@@ -21,7 +21,7 @@ public class District {
     @Id
     @GeneratedValue(strategy = IDENTITY)
     @Column(name="district_id")
-    private Long district_id;
+    private Long districtId;
 
     @ManyToOne(fetch = EAGER)
     @JoinColumn(

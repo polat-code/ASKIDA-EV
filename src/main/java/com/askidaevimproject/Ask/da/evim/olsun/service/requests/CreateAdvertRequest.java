@@ -42,7 +42,7 @@ public class CreateAdvertRequest {
 
     @NotBlank
     @NotNull
-    private Long room_id;
+    private Long roomId;
 
 
     @NotBlank
@@ -60,13 +60,7 @@ public class CreateAdvertRequest {
     @Size(min = 2)
     private String meterSquare;
 
-    @NotBlank
-    @NotNull
-    private int isActivate;
 
-    @NotBlank
-    @NotNull
-    private String street;
 
     @NotBlank
     @NotNull

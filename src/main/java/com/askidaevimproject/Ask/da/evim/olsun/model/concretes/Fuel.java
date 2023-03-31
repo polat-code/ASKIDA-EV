@@ -18,7 +18,7 @@ public class Fuel {
     @Id
     @GeneratedValue(strategy = IDENTITY)
     @Column(name="fuel_id")
-    private Long fuel_id;
+    private Long fuelId;
 
 
     @Column(name="fuel_type")

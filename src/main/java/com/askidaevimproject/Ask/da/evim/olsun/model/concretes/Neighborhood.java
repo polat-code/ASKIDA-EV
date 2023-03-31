@@ -20,7 +20,7 @@ public class Neighborhood {
     @Id
     @GeneratedValue(strategy = IDENTITY)
     @Column(name="neighborhood_id")
-    private Long neighborhood_id;
+    private Long neighborhoodId;
 
     @Column(name = "neighborhood_name")
     private String neighborhoodName;

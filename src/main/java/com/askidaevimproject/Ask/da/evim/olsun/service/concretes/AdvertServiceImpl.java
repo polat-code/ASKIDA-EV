@@ -71,7 +71,8 @@ public class AdvertServiceImpl implements AdvertService {
         // They cannot be mapped each other.
         Advert advert = this.modelMapperService.forRequest().map(createAdvertRequest,Advert.class);
 
-        //Saving photoWays into Media Table.
+        advert.setIsActivate(0);
+
         List<String> photoWays = createAdvertRequest.getPhoto_ways();
         if(photoWays != null) {
             for (int i = 0; i < photoWays.size() ; i++) {

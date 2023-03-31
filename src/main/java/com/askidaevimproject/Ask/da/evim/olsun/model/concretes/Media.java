@@ -19,7 +19,7 @@ public class Media {
     private Long dphotoId;
 
 
-    @ManyToOne(fetch = FetchType.EAGER)
+    @ManyToOne(fetch = FetchType.EAGER,cascade = CascadeType.ALL)
     @JoinColumn(name = "advert_id",
                 referencedColumnName = "advert_id")
         private Advert advert;

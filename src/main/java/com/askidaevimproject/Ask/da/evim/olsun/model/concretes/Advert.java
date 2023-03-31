@@ -6,6 +6,8 @@ import lombok.Data;
 import lombok.NoArgsConstructor;
 
 
+import java.util.List;
+
 import static jakarta.persistence.FetchType.EAGER;
 import static jakarta.persistence.FetchType.LAZY;
 import static jakarta.persistence.GenerationType.*;
@@ -80,9 +82,11 @@ public class Advert {
     private String meterSquare;
 
 
-    @Column(name = "street")
-    private String street;
+    @Column(name="is_activate")
+    private int isActivate;
 
+    @Transient
+    private List<String> photoWay;
 
 
 
