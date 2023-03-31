@@ -24,7 +24,7 @@ public class Advert {
     @Id
     @GeneratedValue(strategy = IDENTITY)
     @Column(name = "advert_id")
-    private Long advert_id;
+    private Long advertId;
 
 
 

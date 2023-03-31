@@ -15,8 +15,8 @@ public class Media {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name = "dphoto_id")
-    private Long dphotoId;
+    @Column(name = "media_id")
+    private Long mediaId;
 
 
     @ManyToOne(fetch = FetchType.EAGER,cascade = CascadeType.ALL)
