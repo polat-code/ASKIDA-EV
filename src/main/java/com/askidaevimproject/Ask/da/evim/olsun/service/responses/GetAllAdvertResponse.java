@@ -11,6 +11,7 @@ import lombok.NoArgsConstructor;
 @Data
 public class GetAllAdvertResponse {
 
+    private Long advertId;
     private String memberName;
     private String cityName;
     private String advertTitle;

@@ -48,7 +48,17 @@ public class AdvertServiceImpl implements AdvertService {
 
         if(advertRepository.existsById(advert_id))
             if(memberRepository.existsById(advertRepository.findById(advert_id).get().getMember().getMemberId()))
-                    advertRepository.deleteById(advert_id);
+
+            {
+                //Delete medias that have related advert id from media table.
+                List<Media> mediaList = mediaRepository.getAllMediaById(advert_id);
+                if(mediaList != null) {
+                    for (int i = 0; mediaList.size() > i; i++) {
+                        mediaRepository.deleteById(mediaList.get(i).getMediaId());
+                    }
+                }
+                advertRepository.deleteById(advert_id);
+            }
 
     }
 

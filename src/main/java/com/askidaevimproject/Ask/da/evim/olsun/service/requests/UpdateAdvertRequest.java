@@ -21,7 +21,7 @@ public class UpdateAdvertRequest {
     @NotBlank
     @NotNull
     @Size(min = 6)
-    private String advert_title;
+    private String advertTitle;
 
     @NotNull
     @NotBlank
@@ -59,9 +59,6 @@ public class UpdateAdvertRequest {
     @NotBlank
     private Long isActivate;
 
-    @NotNull
-    @NotBlank
-    private Long street;
 
 
 
