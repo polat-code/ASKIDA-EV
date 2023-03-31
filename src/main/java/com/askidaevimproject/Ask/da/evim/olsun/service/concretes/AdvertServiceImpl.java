@@ -73,12 +73,16 @@ public class AdvertServiceImpl implements AdvertService {
 
         //Saving photoWays into Media Table.
         List<String> photoWays = createAdvertRequest.getPhoto_ways();
-        for (int i = 0; i < photoWays.size() ; i++) {
-            Media media = new Media();
-            media.setAdvert(advert);
-            media.setPhotoWay(photoWays.get(i));
-            mediaRepository.save(media);
+        if(photoWays != null) {
+            for (int i = 0; i < photoWays.size() ; i++) {
+                Media media = new Media();
+                media.setAdvert(advert);
+                media.setPhotoWay(photoWays.get(i));
+                mediaRepository.save(media);
+            }
         }
+
         this.advertRepository.save(advert);
     }
+
 }
