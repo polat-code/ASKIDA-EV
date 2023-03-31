@@ -1,5 +1,6 @@
 package com.askidaevimproject.Ask.da.evim.olsun.service.requests;
 
+import jakarta.persistence.Transient;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
@@ -64,6 +65,7 @@ public class CreateAdvertRequest {
 
     @NotBlank
     @NotNull
-    private List<String> photo_ways;
+    @Transient
+    private List<String> photoWays;
 
 }

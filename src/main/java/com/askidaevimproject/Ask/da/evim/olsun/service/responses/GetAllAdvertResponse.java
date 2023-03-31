@@ -22,6 +22,5 @@ public class GetAllAdvertResponse {
     private String ageOfDwelling;
     private String meterSquare;
     private String isActivate;
-    private String street;
 }
 

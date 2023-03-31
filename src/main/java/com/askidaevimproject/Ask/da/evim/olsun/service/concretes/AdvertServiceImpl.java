@@ -11,6 +11,7 @@ import com.askidaevimproject.Ask.da.evim.olsun.service.requests.CreateAdvertRequ
 import com.askidaevimproject.Ask.da.evim.olsun.service.requests.UpdateAdvertRequest;
 import com.askidaevimproject.Ask.da.evim.olsun.service.responses.GetAllAdvertResponse;
 import com.askidaevimproject.Ask.da.evim.olsun.service.responses.GetByAdvertTitle;
+import com.askidaevimproject.Ask.da.evim.olsun.service.rules.AdvertBusinessRules;
 import lombok.AllArgsConstructor;
 import org.springframework.stereotype.Service;
 
@@ -24,6 +25,7 @@ public class AdvertServiceImpl implements AdvertService {
     private  MemberRepository memberRepository;
     private  ModelMapperService modelMapperService;
 
+    private AdvertBusinessRules advertBusinessRules;
     private MediaRepository mediaRepository;
 
 
@@ -73,17 +75,20 @@ public class AdvertServiceImpl implements AdvertService {
 
         advert.setIsActivate(0);
 
-        List<String> photoWays = createAdvertRequest.getPhoto_ways();
+        List<String> photoWays = createAdvertRequest.getPhotoWays();
         if(photoWays != null) {
-            for (int i = 0; i < photoWays.size() ; i++) {
+            for (String photoWay : photoWays) {
                 Media media = new Media();
                 media.setAdvert(advert);
-                media.setPhotoWay(photoWays.get(i));
+                media.setPhotoWay(photoWay);
                 mediaRepository.save(media);
             }
         }
 
-        this.advertRepository.save(advert);
+        boolean flag = this.advertBusinessRules.checkPointBeforeUserAddAdvert(advert);
+        if(flag)
+            this.advertRepository.save(advert);
+
     }
 
 }

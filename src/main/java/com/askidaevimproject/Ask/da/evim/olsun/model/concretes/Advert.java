@@ -85,6 +85,7 @@ public class Advert {
     @Column(name="is_activate")
     private int isActivate;
 
+
     @Transient
     private List<String> photoWay;
 

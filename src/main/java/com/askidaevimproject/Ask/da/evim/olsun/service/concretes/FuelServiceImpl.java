@@ -68,9 +68,6 @@ public class FuelServiceImpl implements FuelService {
 
     public void deleteFuel(Long fuel_id) {
 
-        if(this.fuelRepository.existsById(fuel_id)) {
-            this.fuelRepository.deleteById(fuel_id);
-
-        }
+        if(this.fuelRepository.existsById(fuel_id)) this.fuelRepository.deleteById(fuel_id);
     }
 }

@@ -15,7 +15,7 @@ public class Media {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name = "media_id")
+    @Column(name = "dphoto_id")
     private Long mediaId;
 
 
