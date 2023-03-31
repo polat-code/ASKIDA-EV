@@ -10,7 +10,7 @@ import lombok.NoArgsConstructor;
 @NoArgsConstructor
 public class GetAllDistrictResponse {
 
-    private Long district_id;
+    private Long districtId;
 
     private String cityName;
 

@@ -3,9 +3,7 @@ package com.askidaevimproject.Ask.da.evim.olsun.service.concretes;
 import com.askidaevimproject.Ask.da.evim.olsun.core.utilities.mappers.abstracts.ModelMapperService;
 import com.askidaevimproject.Ask.da.evim.olsun.model.concretes.Advert;
 import com.askidaevimproject.Ask.da.evim.olsun.model.concretes.Media;
-import com.askidaevimproject.Ask.da.evim.olsun.repository.abstracts.AdvertRepository;
-import com.askidaevimproject.Ask.da.evim.olsun.repository.abstracts.MediaRepository;
-import com.askidaevimproject.Ask.da.evim.olsun.repository.abstracts.MemberRepository;
+import com.askidaevimproject.Ask.da.evim.olsun.repository.abstracts.*;
 import com.askidaevimproject.Ask.da.evim.olsun.service.abstracts.AdvertService;
 import com.askidaevimproject.Ask.da.evim.olsun.service.requests.CreateAdvertRequest;
 import com.askidaevimproject.Ask.da.evim.olsun.service.requests.UpdateAdvertRequest;
@@ -25,8 +23,16 @@ public class AdvertServiceImpl implements AdvertService {
     private  MemberRepository memberRepository;
     private  ModelMapperService modelMapperService;
 
+    private CityRepository cityRepository;
+
+    private DistrictRepository districtRepository;
     private AdvertBusinessRules advertBusinessRules;
     private MediaRepository mediaRepository;
+
+    private FuelRepository fuelRepository;
+
+    private RoomRepository roomRepository;
+    private NeighborhoodRepository neighborhoodRepository;
 
 
 
@@ -67,8 +73,24 @@ public class AdvertServiceImpl implements AdvertService {
         // There will be error here because there is id in updateAdvertRequest but in Advert.class , there is object.
         // They cannot be mapped each other.
         Advert advert=this.modelMapperService.forRequest().map(updateAdvertRequest,Advert.class);
+        Advert advert1 = new Advert().builder()
+                .advertId(updateAdvertRequest.getAdvertId())
+                .advertTitle(updateAdvertRequest.getAdvertTitle())
+                .ageOfDwelling(updateAdvertRequest.getAgeOfDwelling())
+                .city(cityRepository.findById(updateAdvertRequest.getCityId()).get())
+                .description(updateAdvertRequest.getDescription())
+                .district(districtRepository.findById(updateAdvertRequest.getDistrictId()).get())
+                .fuel(fuelRepository.findById(updateAdvertRequest.getFuelId()).get())
+                .room(roomRepository.findById(updateAdvertRequest.getRoomId()).get())
+                .meterSquare(updateAdvertRequest.getMeterSquare())
+                .neighborhood(neighborhoodRepository.findById(updateAdvertRequest.getNeighborhoodId()).get())
+                .member(memberRepository.findById(updateAdvertRequest.getMemberId()).get())
+                .build();
 
-        this.advertRepository.save(advert);
+        this.advertRepository.save(advert1);
+
+
+
     }
 
     @Override

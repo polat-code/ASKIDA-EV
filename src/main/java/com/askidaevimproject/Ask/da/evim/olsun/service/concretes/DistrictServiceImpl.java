@@ -47,6 +47,7 @@ public class DistrictServiceImpl implements DistrictService {
     public void addDistrict(CreateDistrictRequest createDistrictRequest) {
 
         District district = this.modelMapperService.forRequest().map(createDistrictRequest,District.class);
+
         District district1 = new District().builder()
                 .districtName(createDistrictRequest.getDistrictName())
                 .city(cityRepository.getById(createDistrictRequest.getCityId()))
