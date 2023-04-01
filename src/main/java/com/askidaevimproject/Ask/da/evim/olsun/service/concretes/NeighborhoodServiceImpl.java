@@ -35,7 +35,7 @@ public class NeighborhoodServiceImpl implements NeighborhoodService {
         for (int i = 0; neighborhoods.size() > i; i++) {
             GetAllNeighBorHoodResponse getAllNeighBorHoodResponse = new GetAllNeighBorHoodResponse();
             Neighborhood neighborhood = neighborhoods.get(i);
-            getAllNeighBorHoodResponse.setNeighborhood_id(neighborhood.getNeighborhoodId());
+            getAllNeighBorHoodResponse.setNeighborhoodId(neighborhood.getNeighborhoodId());
             getAllNeighBorHoodResponse.setNeighborhoodName(neighborhood.getNeighborhoodName());
             getAllNeighBorHoodResponse.setZipCode(neighborhood.getZipCode());
             getAllNeighBorHoodResponse.setDistrictName(neighborhood.getDistrict().getDistrictName());
