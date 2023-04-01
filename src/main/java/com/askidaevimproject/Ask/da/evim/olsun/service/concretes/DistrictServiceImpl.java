@@ -2,6 +2,7 @@ package com.askidaevimproject.Ask.da.evim.olsun.service.concretes;
 
 import com.askidaevimproject.Ask.da.evim.olsun.core.utilities.mappers.abstracts.ModelMapperService;
 import com.askidaevimproject.Ask.da.evim.olsun.model.concretes.District;
+import com.askidaevimproject.Ask.da.evim.olsun.repository.abstracts.CityRepository;
 import com.askidaevimproject.Ask.da.evim.olsun.repository.abstracts.DistrictRepository;
 import com.askidaevimproject.Ask.da.evim.olsun.service.abstracts.DistrictService;
 import com.askidaevimproject.Ask.da.evim.olsun.service.requests.CreateDistrictRequest;
@@ -12,6 +13,7 @@ import com.askidaevimproject.Ask.da.evim.olsun.service.responses.GetByDistrictId
 import com.askidaevimproject.Ask.da.evim.olsun.service.responses.GetByDistrictName;
 import jakarta.transaction.Transactional;
 import lombok.AllArgsConstructor;
+import lombok.Builder;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
@@ -19,11 +21,12 @@ import java.util.List;
 
 @Service
 @AllArgsConstructor
-@Transactional
+
 public class DistrictServiceImpl implements DistrictService {
 
 
     private DistrictRepository districtRepository;
+    private CityRepository cityRepository;
     private ModelMapperService modelMapperService;
 
 
@@ -42,8 +45,16 @@ public class DistrictServiceImpl implements DistrictService {
     @Override
     public void addDistrict(CreateDistrictRequest createDistrictRequest) {
 
+        System.out.println(createDistrictRequest);
         District district = this.modelMapperService.forRequest().map(createDistrictRequest,District.class);
-        this.districtRepository.save(district);
+
+        System.out.println(district);
+
+        District district1 = new District().builder()
+                .districtName(createDistrictRequest.getDistrictName())
+                .city(cityRepository.findById(createDistrictRequest.getCityId()).get())
+                .build();
+        this.districtRepository.save(district1);
 
     }
 

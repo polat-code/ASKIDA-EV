@@ -9,7 +9,7 @@ import lombok.NoArgsConstructor;
 @NoArgsConstructor
 public class GetAllNeighBorHoodResponse {
 
-    private Long neighborhood_id;
+    private Long neighborhoodId;
     private String neighborhoodName;
     private String districtName;
     private String zipCode;

@@ -13,7 +13,6 @@ public class GetAllDistrictResponse {
     private Long districtId;
 
     private String cityName;
-
     private String districtName;
 
 }

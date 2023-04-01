@@ -27,7 +27,7 @@ public class Neighborhood {
 
     @ManyToOne(fetch = EAGER)
     @JoinColumn(
-            name = "f_district_id", // add f_ tag to show
+            name = "district_id",
             referencedColumnName = "district_id"
     )
     private District district;
