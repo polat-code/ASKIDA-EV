@@ -19,6 +19,7 @@ import static org.springframework.http.HttpStatus.CREATED;
 @AllArgsConstructor
 @RestController
 @RequestMapping("/api/cities")
+@CrossOrigin("http://localhost:3000")
 public class CityController {
 
     private CityService cityService;

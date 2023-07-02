@@ -7,6 +7,7 @@ import com.askidaevimproject.Ask.da.evim.olsun.repository.abstracts.DistrictRepo
 import com.askidaevimproject.Ask.da.evim.olsun.service.abstracts.DistrictService;
 import com.askidaevimproject.Ask.da.evim.olsun.service.requests.CreateDistrictRequest;
 import com.askidaevimproject.Ask.da.evim.olsun.service.requests.UpdateDistrictRequest;
+import com.askidaevimproject.Ask.da.evim.olsun.service.responses.DistrictsByCityIdResponse;
 import com.askidaevimproject.Ask.da.evim.olsun.service.responses.GetAllDistrictResponse;
 
 import com.askidaevimproject.Ask.da.evim.olsun.service.responses.GetByDistrictIdResponse;
@@ -16,6 +17,7 @@ import lombok.AllArgsConstructor;
 import lombok.Builder;
 import org.springframework.stereotype.Service;
 
+import java.util.ArrayList;
 import java.util.List;
 
 
@@ -81,6 +83,21 @@ public class DistrictServiceImpl implements DistrictService {
     public GetByDistrictIdResponse getById(Long district_id) {
         District district = this.districtRepository.findById(district_id).orElseThrow();
         return this.modelMapperService.forResponse().map(district,GetByDistrictIdResponse.class);
+    }
+
+    @Override
+    public List<DistrictsByCityIdResponse> getDistrictsByCityId(Long cityId) {
+        List<District> districtsByCityId = districtRepository.findDistrictByCityId(cityId);
+        System.out.println(districtsByCityId);
+        List<DistrictsByCityIdResponse> districtsByCityIdResponses = new ArrayList<>();
+        for(District district : districtsByCityId) {
+            DistrictsByCityIdResponse districtResponse = new DistrictsByCityIdResponse().builder()
+                    .districtName(district.getDistrictName())
+                    .districtId(district.getDistrictId())
+                    .build();
+            districtsByCityIdResponses.add(districtResponse);
+        }
+        return districtsByCityIdResponses;
     }
 
 

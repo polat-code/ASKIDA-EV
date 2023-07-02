@@ -35,7 +35,7 @@ public class CreateAdvertRequest {
 
     @NotBlank
     @NotNull
-    private Long neighborhoodId;
+    private String neighborhoodName;
 
     @NotBlank
     @NotNull
@@ -62,10 +62,11 @@ public class CreateAdvertRequest {
     private String meterSquare;
 
 
-
+/*
     @NotBlank
     @NotNull
     @Transient
     private List<String> photoWays;
 
+ */
 }

@@ -2,11 +2,14 @@ package com.askidaevimproject.Ask.da.evim.olsun.service.concretes;
 
 import com.askidaevimproject.Ask.da.evim.olsun.core.utilities.mappers.abstracts.ModelMapperService;
 import com.askidaevimproject.Ask.da.evim.olsun.model.concretes.Advert;
+import com.askidaevimproject.Ask.da.evim.olsun.model.concretes.City;
 import com.askidaevimproject.Ask.da.evim.olsun.model.concretes.Media;
+import com.askidaevimproject.Ask.da.evim.olsun.model.concretes.Neighborhood;
 import com.askidaevimproject.Ask.da.evim.olsun.repository.abstracts.*;
 import com.askidaevimproject.Ask.da.evim.olsun.service.abstracts.AdvertService;
 import com.askidaevimproject.Ask.da.evim.olsun.service.requests.CreateAdvertRequest;
 import com.askidaevimproject.Ask.da.evim.olsun.service.requests.UpdateAdvertRequest;
+import com.askidaevimproject.Ask.da.evim.olsun.service.responses.GetAdvertByIdResponse;
 import com.askidaevimproject.Ask.da.evim.olsun.service.responses.GetAllAdvertResponse;
 import com.askidaevimproject.Ask.da.evim.olsun.service.responses.GetByAdvertTitle;
 import com.askidaevimproject.Ask.da.evim.olsun.service.rules.AdvertBusinessRules;
@@ -14,6 +17,7 @@ import lombok.AllArgsConstructor;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
+import java.util.Optional;
 
 @Service
 @AllArgsConstructor
@@ -100,13 +104,51 @@ public class AdvertServiceImpl implements AdvertService {
         return this.modelMapperService.forResponse().map(advert,GetByAdvertTitle.class);
     }
 
+    @Override
+    public GetAdvertByIdResponse getAdvertById(Long advertId) {
+        Optional<Advert> advert1 = advertRepository.findById(advertId);
+        if(advert1.isEmpty()){
+            return null;
+        }
+        Advert advert = advert1.get();
+        GetAdvertByIdResponse getAdvertByIdResponse = new GetAdvertByIdResponse().builder()
+                .advertId(advert.getAdvertId())
+                .advertTitle(advert.getAdvertTitle())
+                .fuelType(advert.getFuel().getFuelType())
+                .memberName(advert.getMember().getMemberName())
+                .cityName(advert.getCity().getCityName())
+                .neighborhoodName(advert.getNeighborhood().getNeighborhoodName())
+                .districtName(advert.getDistrict().getDistrictName())
+                .roomType(advert.getRoom().getRoomType())
+                .ageOfDwelling(advert.getAgeOfDwelling())
+                .description(advert.getDescription())
+                .meterSquare(advert.getMeterSquare())
+                .build();
+        return getAdvertByIdResponse;
+    }
+
     public void addAdvert(CreateAdvertRequest createAdvertRequest) {
         // There will be error here because there is id in updateAdvertRequest but in Advert.class , there is object.
         // They cannot be mapped each other.
-        Advert advert = this.modelMapperService.forRequest().map(createAdvertRequest,Advert.class);
-
-        advert.setIsActivate(0);
-
+        Neighborhood neighborhood = new Neighborhood().builder()
+                .neighborhoodName(createAdvertRequest.getNeighborhoodName())
+                .build();
+        neighborhoodRepository.save(neighborhood);
+        Neighborhood savedNeighborhood = neighborhoodRepository.findByNeighborhoodName(neighborhood.getNeighborhoodName());
+        Advert advert = new Advert().builder()
+                .advertTitle(createAdvertRequest.getAdvertTitle())
+                .city(cityRepository.findById(createAdvertRequest.getCityId()).get())
+                .fuel(fuelRepository.findById(createAdvertRequest.getFuelId()).get())
+                .district(districtRepository.findById(createAdvertRequest.getDistrictId()).get())
+                .member(memberRepository.findById(createAdvertRequest.getMemberId()).get())
+                .neighborhood(savedNeighborhood)
+                .ageOfDwelling(createAdvertRequest.getAgeOfDwelling())
+                .room(roomRepository.findById(createAdvertRequest.getRoomId()).get())
+                .description(createAdvertRequest.getDescription())
+                .meterSquare(createAdvertRequest.getMeterSquare())
+                .isActivate(0)
+                .build();
+        /*
         List<String> photoWays = createAdvertRequest.getPhotoWays();
         if(photoWays != null) {
             for (String photoWay : photoWays) {
@@ -116,6 +158,8 @@ public class AdvertServiceImpl implements AdvertService {
                 mediaRepository.save(media);
             }
         }
+
+         */
 
         boolean flag = this.advertBusinessRules.checkPointBeforeUserAddAdvert(advert);
         if(flag)

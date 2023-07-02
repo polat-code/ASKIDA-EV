@@ -4,6 +4,7 @@ package com.askidaevimproject.Ask.da.evim.olsun.service.abstracts;
 import com.askidaevimproject.Ask.da.evim.olsun.service.requests.CreateDistrictRequest;
 
 import com.askidaevimproject.Ask.da.evim.olsun.service.requests.UpdateDistrictRequest;
+import com.askidaevimproject.Ask.da.evim.olsun.service.responses.DistrictsByCityIdResponse;
 import com.askidaevimproject.Ask.da.evim.olsun.service.responses.GetAllDistrictResponse;
 import com.askidaevimproject.Ask.da.evim.olsun.service.responses.GetByDistrictIdResponse;
 import com.askidaevimproject.Ask.da.evim.olsun.service.responses.GetByDistrictName;
@@ -23,4 +24,6 @@ public interface DistrictService {
     void updateDistrict(UpdateDistrictRequest updateDistrictRequest);
 
     GetByDistrictIdResponse getById(Long district_id);
+
+    List<DistrictsByCityIdResponse> getDistrictsByCityId(Long cityId);
 }

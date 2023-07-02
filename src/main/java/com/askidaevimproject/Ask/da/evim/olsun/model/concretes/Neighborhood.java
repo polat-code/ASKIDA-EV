@@ -3,6 +3,7 @@ package com.askidaevimproject.Ask.da.evim.olsun.model.concretes;
 
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
+import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
@@ -15,6 +16,7 @@ import static jakarta.persistence.GenerationType.*;
 @Data
 @NoArgsConstructor
 @AllArgsConstructor
+@Builder
 public class Neighborhood {
 
     @Id

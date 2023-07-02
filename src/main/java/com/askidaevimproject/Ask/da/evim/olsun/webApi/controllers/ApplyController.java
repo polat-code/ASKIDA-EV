@@ -3,6 +3,7 @@ package com.askidaevimproject.Ask.da.evim.olsun.webApi.controllers;
 import com.askidaevimproject.Ask.da.evim.olsun.service.abstracts.ApplyService;
 import com.askidaevimproject.Ask.da.evim.olsun.service.responses.GetAllApplyResponse;
 import lombok.AllArgsConstructor;
+import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
@@ -12,6 +13,7 @@ import java.util.List;
 @AllArgsConstructor
 @RestController
 @RequestMapping("/api/applies")
+@CrossOrigin("http://localhost:3000")
 public class ApplyController {
 
 

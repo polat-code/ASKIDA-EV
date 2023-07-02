@@ -4,6 +4,8 @@ import com.askidaevimproject.Ask.da.evim.olsun.service.abstracts.DistrictService
 import com.askidaevimproject.Ask.da.evim.olsun.service.requests.CreateDistrictRequest;
 
 import com.askidaevimproject.Ask.da.evim.olsun.service.requests.UpdateDistrictRequest;
+
+import com.askidaevimproject.Ask.da.evim.olsun.service.responses.DistrictsByCityIdResponse;
 import com.askidaevimproject.Ask.da.evim.olsun.service.responses.GetAllDistrictResponse;
 
 import com.askidaevimproject.Ask.da.evim.olsun.service.responses.GetByDistrictIdResponse;
@@ -18,6 +20,7 @@ import java.util.List;
 @RestController
 @RequestMapping("/api/districts")
 @AllArgsConstructor
+@CrossOrigin("http://localhost:3000")
 public class DistrictController {
 
     private DistrictService districtService;
@@ -28,6 +31,12 @@ public class DistrictController {
 
         return districtService.getAllDistrict();
 
+    }
+
+
+    @GetMapping("/city-id/{cityId}")
+    public List<DistrictsByCityIdResponse> getDistrictsByCityId(@PathVariable("cityId") Long cityId) {
+        return  districtService.getDistrictsByCityId(cityId);
     }
 
     @PostMapping("")

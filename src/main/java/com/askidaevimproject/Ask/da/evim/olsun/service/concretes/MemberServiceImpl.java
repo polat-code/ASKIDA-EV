@@ -77,8 +77,9 @@ public class MemberServiceImpl implements MemberService {
         mailMessage.setFrom("askindaev@gmail.com");
         mailMessage.setTo(createMemberRequest.getMemberMail());
         mailMessage.setSubject("Complete Registration!");
-        mailMessage.setText("To confirm your account, please click here : "
-                +"http://localhost:8081/confirm-account?token="+confirmationToken.getConfirmationToken());
+        mailMessage.setText( "Hello " + member.getMemberName() +" " +member.getMemberSurname()
+                + "\nTo confirm your account, please click here : "
+                +"http://localhost:8082/api/members/confirm-account?token="+confirmationToken.getConfirmationToken());
         emailService.sendEmail(mailMessage);
 
 

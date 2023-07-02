@@ -2,20 +2,20 @@ package com.askidaevimproject.Ask.da.evim.olsun.webApi.controllers;
 
 import com.askidaevimproject.Ask.da.evim.olsun.service.abstracts.AdvertService;
 import com.askidaevimproject.Ask.da.evim.olsun.service.requests.CreateAdvertRequest;
+import com.askidaevimproject.Ask.da.evim.olsun.service.responses.GetAdvertByIdResponse;
 import com.askidaevimproject.Ask.da.evim.olsun.service.requests.UpdateAdvertRequest;
 import com.askidaevimproject.Ask.da.evim.olsun.service.responses.GetAllAdvertResponse;
 import com.askidaevimproject.Ask.da.evim.olsun.service.responses.GetByAdvertTitle;
 import lombok.AllArgsConstructor;
 import org.springframework.web.bind.annotation.*;
-import org.springframework.web.multipart.MultipartFile;
 
 import javax.validation.Valid;
-import java.io.File;
 import java.util.List;
 
 @RestController
 @RequestMapping("/api/adverts")
 @AllArgsConstructor
+@CrossOrigin("http://localhost:3000")
 public class AdvertController {
 
     private AdvertService advertService;
@@ -31,8 +31,6 @@ public class AdvertController {
     @PostMapping("")
     public void addAdvert(@RequestBody @Valid CreateAdvertRequest createAdvertRequest
                           ) {
-
-
         advertService.addAdvert(createAdvertRequest);
     }
 
@@ -51,4 +49,8 @@ public class AdvertController {
         return advertService.getByAdvertTitle(advert_title);
     }
 
+   @GetMapping("/advert-id/{advertId}")
+    public GetAdvertByIdResponse getAdvertById(@PathVariable("advertId") Long advertId) {
+        return advertService.getAdvertById(advertId);
+   }
 }

@@ -16,9 +16,10 @@ import java.util.List;
 
 import static org.springframework.http.HttpStatus.*;
 
-@RestController
+@RestController()
 @RequestMapping("/api/fuels")
 @AllArgsConstructor
+@CrossOrigin("http://localhost:3000")
 public class FuelController {
 
     private FuelService fuelService;

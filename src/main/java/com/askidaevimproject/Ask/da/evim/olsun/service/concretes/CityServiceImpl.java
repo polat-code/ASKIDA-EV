@@ -27,10 +27,14 @@ public class CityServiceImpl implements CityService {
     @Override
     public List<GetAllCityResponse> getAllCity() {
         List<City> cities = this.cityRepository.findAll();
+        System.out.println(cities.
+                stream().
+                map(city -> this.modelMapperService.forResponse().map(city,GetAllCityResponse.class)).toList());
 
         return cities.
                 stream().
                 map(city -> this.modelMapperService.forResponse().map(city,GetAllCityResponse.class)).toList();
+
     }
 
     @Override
