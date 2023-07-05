@@ -80,5 +80,9 @@ public class MemberController {
         memberService.updateMember(updateMemberRequest);
     }
 
+    @GetMapping("/number-of-member")
+    public Integer getNumberOfMember() {
+        return  memberService.getNumberOfMember();
+    }
 
 }

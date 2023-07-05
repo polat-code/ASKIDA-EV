@@ -42,6 +42,7 @@ public class AuthServiceImp implements AuthService {
                     .memberAddress(member.getMemberAddress())
                     .memberId(member.getMemberId())
                     .memberMail(member.getMemberMail())
+                    .isActivate(member.getIsActivate())
                     .build();
         return new ResponseEntity<>(userAuthenticationResponse,HttpStatus.OK);
         }

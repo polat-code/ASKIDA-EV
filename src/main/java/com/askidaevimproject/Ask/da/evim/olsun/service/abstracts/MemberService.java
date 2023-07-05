@@ -32,4 +32,5 @@ public interface MemberService {
 
     ResponseEntity<?> confirmEmail(String confirmationToken);
 
+    Integer getNumberOfMember();
 }

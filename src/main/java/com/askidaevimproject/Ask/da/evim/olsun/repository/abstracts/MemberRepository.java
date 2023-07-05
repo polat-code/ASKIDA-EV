@@ -24,4 +24,6 @@ public interface MemberRepository extends JpaRepository<Member,Long> {
 
     Member findByMemberMailIgnoreCase(String memberMail);
 
+    @Query(value = "select count(*) from member",nativeQuery = true)
+    Integer getNumberOfMember();
 }

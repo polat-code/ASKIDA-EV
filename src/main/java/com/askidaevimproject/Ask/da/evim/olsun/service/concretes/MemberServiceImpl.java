@@ -155,5 +155,10 @@ public class MemberServiceImpl implements MemberService {
         return ResponseEntity.badRequest().body("Error: Couldn't verify email");
     }
 
+    @Override
+    public Integer getNumberOfMember() {
+        return memberRepository.getNumberOfMember();
+    }
+
 
 }

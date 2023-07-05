@@ -1,10 +1,7 @@
 package com.askidaevimproject.Ask.da.evim.olsun.service.concretes;
 
 import com.askidaevimproject.Ask.da.evim.olsun.core.utilities.mappers.abstracts.ModelMapperService;
-import com.askidaevimproject.Ask.da.evim.olsun.model.concretes.Advert;
-import com.askidaevimproject.Ask.da.evim.olsun.model.concretes.City;
-import com.askidaevimproject.Ask.da.evim.olsun.model.concretes.Media;
-import com.askidaevimproject.Ask.da.evim.olsun.model.concretes.Neighborhood;
+import com.askidaevimproject.Ask.da.evim.olsun.model.concretes.*;
 import com.askidaevimproject.Ask.da.evim.olsun.repository.abstracts.*;
 import com.askidaevimproject.Ask.da.evim.olsun.service.abstracts.AdvertService;
 import com.askidaevimproject.Ask.da.evim.olsun.service.requests.CreateAdvertRequest;
@@ -14,6 +11,8 @@ import com.askidaevimproject.Ask.da.evim.olsun.service.responses.GetAllAdvertRes
 import com.askidaevimproject.Ask.da.evim.olsun.service.responses.GetByAdvertTitle;
 import com.askidaevimproject.Ask.da.evim.olsun.service.rules.AdvertBusinessRules;
 import lombok.AllArgsConstructor;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
@@ -127,9 +126,20 @@ public class AdvertServiceImpl implements AdvertService {
         return getAdvertByIdResponse;
     }
 
-    public void addAdvert(CreateAdvertRequest createAdvertRequest) {
+    @Override
+    public Integer getNumberOfAdvert() {
+        return advertRepository.getNumberOfAdvert();
+    }
+
+    public ResponseEntity<Object> addAdvert(CreateAdvertRequest createAdvertRequest) {
         // There will be error here because there is id in updateAdvertRequest but in Advert.class , there is object.
         // They cannot be mapped each other.
+        Member member = memberRepository.findById(createAdvertRequest.getMemberId()).get();
+        System.out.println(member.getIsActivate());
+        if(member.getIsActivate() == 0){
+            return new ResponseEntity<>(HttpStatus.NOT_ACCEPTABLE);
+        }
+
         Neighborhood neighborhood = new Neighborhood().builder()
                 .neighborhoodName(createAdvertRequest.getNeighborhoodName())
                 .build();
@@ -161,9 +171,15 @@ public class AdvertServiceImpl implements AdvertService {
 
          */
 
+        /*
         boolean flag = this.advertBusinessRules.checkPointBeforeUserAddAdvert(advert);
-        if(flag)
+        if(flag){
             this.advertRepository.save(advert);
+            return new ResponseEntity<>(HttpStatus.OK);
+        }
+*/
+        this.advertRepository.save(advert);
+        return new ResponseEntity<>(HttpStatus.OK);
 
     }
 

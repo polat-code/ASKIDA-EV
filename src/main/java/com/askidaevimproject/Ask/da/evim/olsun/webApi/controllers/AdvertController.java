@@ -7,6 +7,7 @@ import com.askidaevimproject.Ask.da.evim.olsun.service.requests.UpdateAdvertRequ
 import com.askidaevimproject.Ask.da.evim.olsun.service.responses.GetAllAdvertResponse;
 import com.askidaevimproject.Ask.da.evim.olsun.service.responses.GetByAdvertTitle;
 import lombok.AllArgsConstructor;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import javax.validation.Valid;
@@ -29,9 +30,9 @@ public class AdvertController {
 
 
     @PostMapping("")
-    public void addAdvert(@RequestBody @Valid CreateAdvertRequest createAdvertRequest
+    public ResponseEntity<Object> addAdvert(@RequestBody @Valid CreateAdvertRequest createAdvertRequest
                           ) {
-        advertService.addAdvert(createAdvertRequest);
+        return advertService.addAdvert(createAdvertRequest);
     }
 
 
@@ -50,7 +51,12 @@ public class AdvertController {
     }
 
    @GetMapping("/advert-id/{advertId}")
-    public GetAdvertByIdResponse getAdvertById(@PathVariable("advertId") Long advertId) {
+   public GetAdvertByIdResponse getAdvertById(@PathVariable("advertId") Long advertId) {
         return advertService.getAdvertById(advertId);
+   }
+
+   @GetMapping("/number-of-advert")
+   public Integer getNumberOfAdvert( ){
+        return advertService.getNumberOfAdvert();
    }
 }

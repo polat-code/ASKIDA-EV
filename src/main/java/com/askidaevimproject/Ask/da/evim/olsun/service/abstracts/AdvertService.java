@@ -6,6 +6,7 @@ import com.askidaevimproject.Ask.da.evim.olsun.service.requests.UpdateAdvertRequ
 import com.askidaevimproject.Ask.da.evim.olsun.service.responses.GetAdvertByIdResponse;
 import com.askidaevimproject.Ask.da.evim.olsun.service.responses.GetAllAdvertResponse;
 import com.askidaevimproject.Ask.da.evim.olsun.service.responses.GetByAdvertTitle;
+import org.springframework.http.ResponseEntity;
 
 import java.util.List;
 
@@ -13,7 +14,7 @@ public interface AdvertService {
 
     List<GetAllAdvertResponse> getAllAdvert();
 
-    void addAdvert(CreateAdvertRequest createAdvertRequest);
+    ResponseEntity<Object> addAdvert(CreateAdvertRequest createAdvertRequest);
 
     void deleteAdvert(Long advert_id);
 
@@ -23,4 +24,6 @@ public interface AdvertService {
 
 
     GetAdvertByIdResponse getAdvertById(Long advertId);
+
+    Integer getNumberOfAdvert();
 }
