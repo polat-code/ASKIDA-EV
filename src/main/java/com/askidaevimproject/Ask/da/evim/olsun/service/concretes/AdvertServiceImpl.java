@@ -116,7 +116,7 @@ public class AdvertServiceImpl implements AdvertService {
                 .fuelType(advert.getFuel().getFuelType())
                 .memberName(advert.getMember().getMemberName())
                 .cityName(advert.getCity().getCityName())
-                .neighborhoodName(advert.getNeighborhood().getNeighborhoodName())
+                .neighborhoodName("Mahalle")
                 .districtName(advert.getDistrict().getDistrictName())
                 .roomType(advert.getRoom().getRoomType())
                 .ageOfDwelling(advert.getAgeOfDwelling())
@@ -124,6 +124,7 @@ public class AdvertServiceImpl implements AdvertService {
                 .meterSquare(advert.getMeterSquare())
                 .build();
         return getAdvertByIdResponse;
+        
     }
 
     @Override
