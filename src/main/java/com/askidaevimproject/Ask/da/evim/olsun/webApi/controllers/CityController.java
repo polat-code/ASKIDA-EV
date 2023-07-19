@@ -19,7 +19,8 @@ import static org.springframework.http.HttpStatus.CREATED;
 @AllArgsConstructor
 @RestController
 @RequestMapping("/api/cities")
-@CrossOrigin("http://localhost:3000")
+@CrossOrigin("https://askidaev-57ca6b6ed886.herokuapp.com")
+//@CrossOrigin("http://localhost:3000")
 public class CityController {
 
     private CityService cityService;

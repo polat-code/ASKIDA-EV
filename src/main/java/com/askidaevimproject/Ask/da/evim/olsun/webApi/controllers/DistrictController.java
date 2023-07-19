@@ -20,7 +20,8 @@ import java.util.List;
 @RestController
 @RequestMapping("/api/districts")
 @AllArgsConstructor
-@CrossOrigin("http://localhost:3000")
+@CrossOrigin("https://askidaev-57ca6b6ed886.herokuapp.com")
+//@CrossOrigin("http://localhost:3000")
 public class DistrictController {
 
     private DistrictService districtService;

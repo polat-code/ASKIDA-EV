@@ -14,7 +14,8 @@ import java.util.List;
 @AllArgsConstructor
 @RestController
 @RequestMapping("/api/contact")
-@CrossOrigin("http://localhost:3000")
+@CrossOrigin("https://askidaev-57ca6b6ed886.herokuapp.com")
+//@CrossOrigin("http://localhost:3000")
 public class ContactController {
 
     private ContactService contactService;
