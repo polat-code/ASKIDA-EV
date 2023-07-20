@@ -79,7 +79,7 @@ public class MemberServiceImpl implements MemberService {
         mailMessage.setSubject("Complete Registration!");
         mailMessage.setText( "Hello " + member.getMemberName() +" " +member.getMemberSurname()
                 + "\nTo confirm your account, please click here : "
-                +"http://localhost:8082/api/members/confirm-account?token="+confirmationToken.getConfirmationToken());
+                +"https://askidaevbackend-6593566faf1d.herokuapp.com/api/members/confirm-account?token="+confirmationToken.getConfirmationToken());
         emailService.sendEmail(mailMessage);
 
 
